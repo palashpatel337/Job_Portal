@@ -14,15 +14,17 @@ const app = express();
 
 dotenv.config();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.FRONTEND_URL
+];
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-
+    origin: allowedOrigins,
+    credentials: true
   })
 );
-
 
 // middleware
 app.use(express.json());
