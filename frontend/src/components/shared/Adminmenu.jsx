@@ -129,7 +129,7 @@ const mainNav = [
   { title: "Dashboard", url: "/dashboard/recruiter", icon: LayoutDashboard },
   { title: "Create Company", url: "/dashboard/recruiter/create-company", icon: PlusCircle },
   { title: "Post Job", url: "/dashboard/recruiter/post-job", icon: PlusCircle },
-  { title: "Applicants", url: "/dashboard/recruiter/applicants", icon: Users },
+  // { title: "Applicants", url: "/dashboard/recruiter/applicants", icon: Users },
   { title: "My Jobs", url: "/dashboard/recruiter/my-jobs", icon: Briefcase },
 ];
 
