@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
+import fs from "fs";
 import connectDB from "./config/db.js";
 
 import userRoute from "./routes/userRoute.js";
@@ -46,6 +47,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads");
+}
 // static folder
 app.use("/uploads", express.static("uploads"));
 
