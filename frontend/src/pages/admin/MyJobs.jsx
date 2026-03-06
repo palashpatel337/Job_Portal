@@ -14,11 +14,11 @@ function MyJobs() {
 
       const {data} = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/job/get/admin`,
-      //         {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      // }
+              {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
 
       )
       if(data?.success){

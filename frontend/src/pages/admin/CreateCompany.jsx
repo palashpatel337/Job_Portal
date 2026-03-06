@@ -47,7 +47,12 @@ function CreateCompany() {
   const getAllCompany = async () => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/v1/company/get-company`
+        `${import.meta.env.VITE_API_URL}/api/v1/company/get-company`,
+        {
+    headers: {
+      Authorization: `Bearer ${auth?.token}`
+    }
+  }
       );
       if (data?.success) {
         setCompanies(data?.companies || []);

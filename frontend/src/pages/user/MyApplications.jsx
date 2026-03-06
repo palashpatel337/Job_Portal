@@ -16,6 +16,11 @@ function MyApplications() {
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/application/get`,
+        {
+    headers: {
+      Authorization: `Bearer ${auth?.token}`
+    }
+  }
       );
       if (data?.success) {
         setApplication(data?.application);

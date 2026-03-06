@@ -83,7 +83,12 @@ function PostJob() {
   const getAllCompany = async () => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/v1/company/get-company`
+        `${import.meta.env.VITE_API_URL}/api/v1/company/get-company`,
+        {
+    headers: {
+      Authorization: `Bearer ${auth?.token}`
+    }
+  }
       );
           console.log("API DATA:", data); // 🔥 check this
 

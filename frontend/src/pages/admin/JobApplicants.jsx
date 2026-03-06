@@ -19,6 +19,11 @@ function JobApplicants() {
 
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/application/${jobId}/applicants`,
+        {
+    headers: {
+      Authorization: `Bearer ${auth?.token}`
+    }
+  }
       );
 
       if (data?.success) {
