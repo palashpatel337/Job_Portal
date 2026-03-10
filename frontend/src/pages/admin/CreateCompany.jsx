@@ -34,6 +34,7 @@ function CreateCompany() {
         {
           headers: {
             Authorization: `Bearer ${auth?.token}`,
+            "Content-Type": "multipart/form-data",
           },
         },
       );
@@ -178,12 +179,11 @@ function CreateCompany() {
                 >
                   <div className="flex items-center gap-4">
                     {c.logo ? (
-                      <img
-                        src={c.logo}
-                        alt={c.name}
-                        className="h-14 w-14 rounded-xl object-cover border"
-                      />
-                    ) : (
+<img
+  src={`${import.meta.env.VITE_API_URL}/uploads/${c.logo}`}
+  alt={c.name}
+  className="h-14 w-14 rounded-xl object-cover border"
+/>                    ) : (
                       <div className="h-14 w-14 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-lg">
                         {c.name.charAt(0)}
                       </div>
