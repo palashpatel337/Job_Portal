@@ -23,20 +23,20 @@ import EditProfile from "./pages/user/EditProfile";
 
 function App() {
   const [auth, setAuth] = useAuth();
-useEffect(() => {
-  const data = localStorage.getItem("auth");
+// useEffect(() => {
+//   const data = localStorage.getItem("auth");
 
-  if (data) {
-    const parseData = JSON.parse(data);
-    setAuth({
-      ...auth,
-      token: parseData.token,
-      user: parseData.user,
-    });
+//   if (data) {
+//     const parseData = JSON.parse(data);
+//     setAuth({
+//       ...auth,
+//       token: parseData.token,
+//       user: parseData.user,
+//     });
 
-    axios.defaults.headers.common["Authorization"] = `Bearer ${parseData.token}`;
-  }
-}, []);
+//     axios.defaults.headers.common["Authorization"] = `Bearer ${parseData.token}`;
+//   }
+// }, []);
   return (
     <>
       <Routes>
