@@ -21,7 +21,13 @@ function Homepage() {
   const getAllJobs = async() => {
     try {
       const {data} = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/v1/job/get`
+        `${import.meta.env.VITE_API_URL}/api/v1/job/get`,
+                {
+    headers: {
+      Authorization: `Bearer ${auth?.token}`
+    }
+  }
+
       )
       if(data?.success){
         setJobs(data?.jobs || [])
