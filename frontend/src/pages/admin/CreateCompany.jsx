@@ -9,8 +9,10 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/Auth";
 
 function CreateCompany() {
+  const [auth, setAuth] = useAuth()
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
   const [logo, setLogo] = useState(null);
@@ -49,10 +51,12 @@ function CreateCompany() {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/company/get-company`,
         {
-    headers: {
+              headers: {
       Authorization: `Bearer ${auth?.token}`
     }
-  }
+
+        }
+  
       );
       if (data?.success) {
         setCompanies(data?.companies || []);
