@@ -96,6 +96,8 @@ function PostJob() {
         setCompanyList(data?.companies);
       }
     } catch (error) {
+      console.log(error);
+      
       console.log(error.response?.data?.message || "Error");
     }
   };
