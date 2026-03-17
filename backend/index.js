@@ -49,18 +49,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-if (!fs.existsSync("uploads")) {
-  fs.mkdirSync("uploads");
-}
-// static folder
-app.use("/uploads", express.static("uploads"));
+// if (!fs.existsSync("uploads")) {
+//   fs.mkdirSync("uploads");
+// }
+// // static folder
+// app.use("/uploads", express.static("uploads"));
 
 // routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
-app.use("/api/upload", uploadRoutes);
+app.use("/api", uploadRoutes);
 
 
 const PORT = process.env.PORT || 3000;
