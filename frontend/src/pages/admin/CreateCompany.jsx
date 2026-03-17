@@ -64,6 +64,7 @@ function CreateCompany() {
           },
         }
       );
+      console.log("UPLOAD URL:", `${import.meta.env.VITE_API_URL}/api/upload`);
 
       if (data?.success) {
         // getAllCompany();

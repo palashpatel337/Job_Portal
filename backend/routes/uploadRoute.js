@@ -25,7 +25,7 @@ router.post("/upload", upload.single("file"), async (req, res) => {
     };
 
     const result = await streamUpload();
-
+console.log("✅ Upload route loaded");
     res.status(200).json({
       success: true,
       url: result.secure_url,
