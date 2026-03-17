@@ -91,7 +91,7 @@ function CreateCompany() {
         setCompanies(data?.companies || []);
       }
     } catch (error) {
-      console.log( error.response?.data?.message || "Error");
+      console.log( error.response?.data?.message || "Errorss");
     }
   };
 
