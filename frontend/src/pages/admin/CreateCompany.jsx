@@ -22,7 +22,13 @@ function CreateCompany() {
 
     const res = await axios.post(
       `${import.meta.env.VITE_API_URL}/api/upload`,
-      formData
+      formData,
+        {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  }
+
     );
 
     return res.data.url;
@@ -59,14 +65,14 @@ function CreateCompany() {
         }
       );
 
-      // if (data?.success) {
-      //   getAllCompany();
-      // }
+      if (data?.success) {
+        // getAllCompany();
 
       setName("");
       setUrl("");
       setLogo(null);
       setPreview(null);
+      }
     } catch (error) {
       console.log(error.response?.data?.message || "Error");
     } finally {
