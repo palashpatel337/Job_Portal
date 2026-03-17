@@ -93,11 +93,10 @@ function PostJob() {
       console.log("API DATA:", data); // 🔥 check this
 
       if (data?.success) {
-        setCompanyList(data?.companies);
+        setCompanyList(data?.companies || []);
       }
     } catch (error) {
       console.log(error);
-      
       console.log(error.response?.data?.message || "Error");
     }
   };
@@ -214,9 +213,9 @@ function PostJob() {
                   required
                 >
                   <option value="">Choose Company</option>
-                  {companyList.map((c) => (
+                  {companyList?.map((c) => (
                     <option key={c._id} value={c._id}>
-                      {c.name}
+                      {c?.name}
                     </option>
                   ))}
                 </select>
