@@ -9,8 +9,10 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useAuth, useAuth } from "@/context/Auth";
 
 function PostJob() {
+  const [auth, setAuth] = useAuth();
   const [title, setTitle] = useState("");
   const [jobType, setJobType] = useState("");
   const [salary, setSalary] = useState("");
@@ -20,9 +22,8 @@ function PostJob() {
   const [position, setPosition] = useState("");
   const [experienceLevel, setExperienceLevel] = useState("");
 
-
   const [companyList, setCompanyList] = useState([]); // all companies
-  const [companyId, setCompanyId] = useState("");     // selected company
+  const [companyId, setCompanyId] = useState(""); // selected company
 
   const handlePost = async (e) => {
     e.preventDefault();
@@ -41,24 +42,23 @@ function PostJob() {
 
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/job/post`,
-              {
-        title,
-        jobType,
-        salary,
-        description,
-        location,
-        requirements,
-        companyId,
-        position,
-        experienceLevel,
-      },      {
-        headers: {
-          "Content-Type": "application/json",
+        {
+          title,
+          jobType,
+          salary,
+          description,
+          location,
+          requirements,
+          companyId,
+          position,
+          experienceLevel,
         },
-        withCredentials: true,
-      }
-
-
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        },
       );
 
       if (data?.success) {
@@ -85,13 +85,12 @@ function PostJob() {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/company/get-company`,
         {
-    headers: {
-      Authorization: `Bearer ${auth?.token}`
-    }
-  }
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        },
       );
-          console.log("API DATA:", data); // 🔥 check this
-
+      console.log("API DATA:", data); // 🔥 check this
 
       if (data?.success) {
         setCompanyList(data?.companies);
@@ -115,7 +114,6 @@ function PostJob() {
         <form onSubmit={handlePost}>
           <FieldSet className="space-y-6 w-[40vw]">
             <FieldGroup>
-
               <Field>
                 <FieldLabel>Job Title</FieldLabel>
                 <Input
@@ -143,21 +141,20 @@ function PostJob() {
               </Field>
 
               <Field>
-  <FieldLabel>Experience Level</FieldLabel>
-  <select
-    className="w-full border rounded-md p-2"
-    value={experienceLevel}
-    onChange={(e) => setExperienceLevel(e.target.value)}
-    required
-  >
-    <option value="">Select Experience Level</option>
-    <option value="Fresher">Fresher</option>
-    <option value="1-2 Years">1-2 Years</option>
-    <option value="3-5 Years">3-5 Years</option>
-    <option value="5+ Years">5+ Years</option>
-  </select>
-</Field>
-
+                <FieldLabel>Experience Level</FieldLabel>
+                <select
+                  className="w-full border rounded-md p-2"
+                  value={experienceLevel}
+                  onChange={(e) => setExperienceLevel(e.target.value)}
+                  required
+                >
+                  <option value="">Select Experience Level</option>
+                  <option value="Fresher">Fresher</option>
+                  <option value="1-2 Years">1-2 Years</option>
+                  <option value="3-5 Years">3-5 Years</option>
+                  <option value="5+ Years">5+ Years</option>
+                </select>
+              </Field>
 
               <Field>
                 <FieldLabel>Salary (₹) in Lakh Per Annum (LPA)</FieldLabel>
@@ -232,7 +229,6 @@ function PostJob() {
               >
                 Post Job
               </Button>
-
             </FieldGroup>
           </FieldSet>
         </form>
