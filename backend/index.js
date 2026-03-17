@@ -10,6 +10,8 @@ import userRoute from "./routes/userRoute.js";
 import jobRoute from "./routes/jobRoute.js";
 import companyRoute from "./routes/companyRoute.js";
 import applicationRoute from "./routes/applicationRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
+
 
 const app = express();
 
@@ -58,6 +60,8 @@ app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
+app.use("/api", uploadRoutes);
+
 
 const PORT = process.env.PORT || 3000;
 
