@@ -10,7 +10,7 @@ import userRoute from "./routes/userRoute.js";
 import jobRoute from "./routes/jobRoute.js";
 import companyRoute from "./routes/companyRoute.js";
 import applicationRoute from "./routes/applicationRoutes.js";
-import uploadRoutes from "./routes/uploadRoutes.js";
+import router from "./routes/uploadRoute.js";
 
 
 const app = express();
@@ -56,7 +56,7 @@ app.use(cookieParser());
 // app.use("/uploads", express.static("uploads"));
 
 // routes
-app.use("/api/v1/user", userRoute);
+app.use("/api/v1/user", router);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
