@@ -48,9 +48,9 @@ export const getCompanyController = async (req, res) => {
         const companies = await Company.find({ userId });
 
         if (!companies || companies.length === 0) {
-            return res.status(404).json({
+            return res.status(204).json({
                 message: "No companies found",
-                success: false
+                success: true
             });
         }
 
