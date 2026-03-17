@@ -59,9 +59,9 @@ function CreateCompany() {
         }
       );
 
-      if (data?.success) {
-        getAllCompany();
-      }
+      // if (data?.success) {
+      //   getAllCompany();
+      // }
 
       setName("");
       setUrl("");
