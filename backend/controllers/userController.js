@@ -21,6 +21,7 @@ export const registerController = async (req,res) => {
     } 
     
     const hashedPassword = await bcrypt.hash(password,10);
+    const photo = req.file ? req.file.filename : null;
 
     await User.create({
       fullname,
@@ -28,6 +29,9 @@ export const registerController = async (req,res) => {
       email,
       password: hashedPassword,
       role,
+      profile: {
+        profilePhoto: photo
+      },
     });
 
     return res.status(200).json({

@@ -28,22 +28,22 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-const formData = new FormData();
-formData.append("fullname", fullname);
-formData.append("email", email);
-formData.append("phone", phone);
-formData.append("password", password);
-formData.append("role", role);
-if (photo) formData.append("photo", photo);
+      const formData = new FormData();
+      formData.append("fullname", fullname);
+      formData.append("email", email);
+      formData.append("phone", phone);
+      formData.append("password", password);
+      formData.append("role", role);
+      if (photo) formData.append("photo", photo);
 
-const res = await axios.post(
-  `${import.meta.env.VITE_API_URL}/api/v1/user/register`,
-  formData,
-  {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  }
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/user/register`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        },
       );
       if (res.data.success) {
         navigate("/login");
@@ -53,7 +53,6 @@ const res = await axios.post(
     }
   };
 
-
   return (
     <Layout>
       <div className="max-w-3xl py-5 my-10 mx-auto flex flex-col items-center justify-center shadow-xl border-r-1 max-h-[200vh] border-b-1 border-zinc-400">
@@ -62,11 +61,7 @@ const res = await axios.post(
             <h1 className="text-2xl ">New User, Sign up</h1>
             <KeyRoundIcon />
           </div>
-          <form
-            action=""
-            onSubmit={handleSubmit}
-            className=""
-          >
+          <form action="" onSubmit={handleSubmit} className="">
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="form-fullname">Name</FieldLabel>
@@ -154,12 +149,12 @@ const res = await axios.post(
                   <Label className="pb-3" htmlFor="profile">
                     Profile Photo
                   </Label>
-<Input
-  id="profile-photo"
-  type="file"
-  accept="image/*"
-  onChange={(e) => setPhoto(e.target.files[0])}
-/>
+                  <Input
+                    id="profile-photo"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setPhoto(e.target.files[0])}
+                  />
                 </div>
               </div>
               <Field orientation="horizontal">
