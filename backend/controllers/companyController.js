@@ -34,6 +34,7 @@ export const registerCompanyController = async (req, res) => {
       success: true,
     });
   } catch (error) {
+    console.log("❌ COMPANY ERROR:", error);
     console.error(error);
     return res.status(500).json({
       message: "Something went wrong",

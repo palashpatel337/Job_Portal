@@ -42,7 +42,10 @@ dotenv.config();
 // );
 
 app.use(cors({
-  origin: true,
+  origin: [
+    "http://localhost:5173",
+    "https://job-portal-omega-rose.vercel.app"
+  ],
   credentials: true
 }));
 
