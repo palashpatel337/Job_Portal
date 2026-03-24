@@ -14,11 +14,13 @@ const companySchema = new mongoose.Schema({
     },
     website: {
         type: String,
-        unique: true
+        unique: true,
+        sparse: true
     },
     logo: {
         type: String,
-        unique: true
+        unique: true,
+        sparse: true
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
