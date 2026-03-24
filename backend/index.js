@@ -13,6 +13,8 @@ import applicationRoute from "./routes/applicationRoutes.js";
 import router from "./routes/uploadRoute.js";
 
 console.log("🔥 NEW DEPLOY VERSION WORKING");
+console.log(process.env.CLOUD_NAME);
+console.log(process.env.CLOUD_API_KEY);
 const app = express();
 
 dotenv.config();
