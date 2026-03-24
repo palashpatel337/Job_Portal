@@ -12,7 +12,7 @@ import companyRoute from "./routes/companyRoute.js";
 import applicationRoute from "./routes/applicationRoutes.js";
 import router from "./routes/uploadRoute.js";
 
-
+console.log("🔥 NEW DEPLOY VERSION WORKING");
 const app = express();
 
 dotenv.config();
