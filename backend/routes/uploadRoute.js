@@ -1,9 +1,9 @@
-// import express from "express";
-// import upload from "../cloud/multer.js";
-// import cloudinary from "../cloud/cloudinary.js";
-// import streamifier from "streamifier";
+import express from "express";
+import upload from "../cloud/multer.js";
+import cloudinary from "../cloud/cloudinary.js";
+import streamifier from "streamifier";
 
-// const router = express.Router();
+const router = express.Router();
 
 // router.post("/upload", upload.single("file"), async (req, res) => {
 //   try {
@@ -37,7 +37,6 @@
 //   }
 // });
 
-// export default router;
 
 
 
@@ -80,3 +79,5 @@ router.post("/upload", upload.single("file"), async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+export default router;
