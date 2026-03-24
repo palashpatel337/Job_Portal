@@ -15,6 +15,7 @@ import router from "./routes/uploadRoute.js";
 console.log("🔥 NEW DEPLOY VERSION WORKING");
 console.log(process.env.CLOUD_NAME);
 console.log(process.env.CLOUD_API_KEY);
+console.log(process.env.CLOUD_API_SECRET);
 const app = express();
 
 dotenv.config();
