@@ -46,28 +46,31 @@ router.post("/upload", upload.single("file"), async (req, res) => {
   try {
     console.log("FILE:", req.file);
 
-    if (!req.file) {
-      return res.status(400).json({ message: "No file uploaded" });
+    if (!req.file || !req.file.buffer) {
+      return res.status(400).json({
+        message: "File buffer missing",
+      });
     }
 
-    const streamUpload = () => {
-      return new Promise((resolve, reject) => {
-        const stream = cloudinary.uploader.upload_stream(
-          { folder: "job_portal_uploads" },
-          (error, result) => {
-            if (error) {
-              console.log("❌ CLOUDINARY ERROR:", error); // 🔥 IMPORTANT
-              reject(error);
-            } else {
-              resolve(result);
-            }
+    const result = await new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        {
+          folder: "job_portal_uploads",
+          resource_type: "image", // ✅ ADD THIS
+        },
+        (error, result) => {
+          if (error) {
+            console.log("❌ CLOUDINARY ERROR:", error);
+            return reject(error);
           }
-        );
-        streamifier.createReadStream(req.file.buffer).pipe(stream);
-      });
-    };
+          resolve(result);
+        }
+      );
 
-    const result = await streamUpload();
+      streamifier.createReadStream(req.file.buffer).pipe(stream);
+    });
+
+    console.log("✅ UPLOADED:", result.secure_url);
 
     res.status(200).json({
       success: true,
@@ -75,8 +78,10 @@ router.post("/upload", upload.single("file"), async (req, res) => {
     });
 
   } catch (error) {
-    console.log("❌ FINAL ERROR:", error); // 🔥 IMPORTANT
-    res.status(500).json({ error: error.message });
+    console.log("❌ FINAL ERROR:", error);
+    res.status(500).json({
+      error: error.message,
+    });
   }
 });
 
