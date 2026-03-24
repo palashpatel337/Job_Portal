@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useAuth, useAuth } from "@/context/Auth";
+import { useAuth } from "@/context/Auth";
 
 function PostJob() {
   const [auth, setAuth] = useAuth();
