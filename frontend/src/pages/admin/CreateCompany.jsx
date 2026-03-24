@@ -23,8 +23,8 @@ function CreateCompany() {
     const res = await axios.post(
       `${import.meta.env.VITE_API_URL}/api/upload`,
       formData,
-
     );
+  console.log("UPLOAD RESPONSE:", res.data); // 👈 ADD THIS
 
     return res.data.url;
   };
@@ -60,6 +60,7 @@ function CreateCompany() {
         }
       );
       console.log("UPLOAD URL:", `${import.meta.env.VITE_API_URL}/api/upload`);
+    console.log("FINAL DATA SENT:", { name, url, logoUrl });
 
       if (data?.success) {
         // getAllCompany();
