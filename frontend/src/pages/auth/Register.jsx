@@ -153,8 +153,10 @@ function Register() {
                     id="profile-photo"
                     type="file"
                     accept="image/*"
-                    onChange={(e) => setPhoto(e.target.files[0])}
-                  />
+                    onChange={(e) => {
+                      console.log(e.target.files[0]); // 👈 check this
+                      setPhoto(e.target.files[0]);
+                    }}                  />
                 </div>
               </div>
               <Field orientation="horizontal">
