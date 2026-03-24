@@ -2,7 +2,7 @@ import Company from "../models/companyModel.js";
 
 export const registerCompanyController = async (req, res) => {
   try {
-    const { name, website , logo} = req.body;
+    const { name, website } = req.body;
 
     if (!name) {
       return res.status(400).json({
@@ -18,6 +18,8 @@ export const registerCompanyController = async (req, res) => {
         success: false,
       });
     }
+
+    const logo = req.file ? req.file.filename : null;
 
     const company = await Company.create({
       name,
