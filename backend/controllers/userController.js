@@ -22,6 +22,7 @@ export const registerController = async (req,res) => {
     
     const hashedPassword = await bcrypt.hash(password,10);
 const photo = req.file ? req.file.path || req.file.secure_url : null;
+
     await User.create({
       fullname,
       phone,
@@ -38,9 +39,12 @@ const photo = req.file ? req.file.path || req.file.secure_url : null;
             success: true
         })
     } catch (error) {
-        console.log(error);
-        
-    }
+  console.log("REGISTER ERROR:", error);
+  return res.status(500).json({
+    success: false,
+    message: error.message
+  });
+}
 }
 
 export const loginController = async (req, res) => {
