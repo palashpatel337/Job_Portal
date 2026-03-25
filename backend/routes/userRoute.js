@@ -18,12 +18,13 @@ router.get("/logout", logoutController)
 router.put(
   "/profile/update",
   requireSignIn,
-  upload.fields([
-    { name: "profilePhoto", maxCount: 1 },
-    { name: "resume", maxCount: 1 },
-  ]),
+  // upload.fields([
+  //   { name: "profilePhoto", maxCount: 1 },
+  //   { name: "resume", maxCount: 1 },
+  // ]),
   updateController
 );
+
 router.get("/profile",requireSignIn, userProfileController)
 
 router.get("/user-auth",requireSignIn,((req,res) => {
