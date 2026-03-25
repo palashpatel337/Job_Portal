@@ -50,15 +50,10 @@ function Homepage() {
     <Layout>
 <div className="relative top-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6 px-36 py-8">
   {jobs.map((j) => (
+    
     <Card key={j._id} className="w-full">
-      <CardHeader>
-        <Badge className={"capitalize"} variant="secondary">{j.jobType}</Badge>
-
-        <CardTitle className="text-lg font-semibold capitalize">
-          {j.title}
-        </CardTitle>
-<div className="flex items-center gap-3 mb-2">
-      {j.companyId?.logo ? (
+      <div className="flex items-center gap-3 mb-2">
+      {j?.companyId?.logo ? (
         <img
           src={j.companyId.logo}
           alt="company logo"
@@ -70,6 +65,13 @@ function Homepage() {
         </div>
       )}
       </div>
+      <CardHeader>
+        <Badge className={"capitalize"} variant="secondary">{j.jobType}</Badge>
+
+        <CardTitle className="text-lg font-semibold capitalize">
+          {j.title}
+        </CardTitle>
+
         <CardDescription>
           {j.companyId.name} • {j.location}
         </CardDescription>
