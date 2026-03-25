@@ -7,9 +7,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, FileText, Calendar } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "@/context/Auth";
 
 function Profile() {
   const [user, setUser] = useState(null);
+  const [auth, setAuth] = useAuth();
 
   const getUserProfile = async () => {
     try {
