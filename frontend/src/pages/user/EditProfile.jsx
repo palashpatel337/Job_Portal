@@ -66,49 +66,51 @@ function EditProfile() {
   }, []);
 
   // 🔹 Update profile
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+const handleUpdate = async (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-    const formData = new FormData();
+  try {
+    let profilePhotoUrl = user.profile.profilePhoto;
+    let resumeUrl = user.profile.resume;
 
-    formData.append("fullname", user.fullname);
-    formData.append("phone", user.phone);
-    formData.append("bio", user.profile.bio);
-    formData.append("skills", user.profile.skills.join(","));
+    // 🔥 Upload Profile Photo
     if (profilePhoto) {
-      formData.append("profilePhoto", profilePhoto);
+      profilePhotoUrl = await uploadFile(profilePhoto);
     }
 
+    // 🔥 Upload Resume
     if (resume) {
-      formData.append("resume", resume);
+      resumeUrl = await uploadFile(resume);
     }
 
-    try {
-      const res = await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/v1/user/profile/update`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${auth?.token}`,
-            "Content-Type": "multipart/form-data",
-          },
+    const res = await axios.put(
+      `${import.meta.env.VITE_API_URL}/api/v1/user/profile/update`,
+      {
+        fullname: user.fullname,
+        phone: user.phone,
+        bio: user.profile.bio,
+        skills: user.profile.skills.join(","),
+        profilePhoto: profilePhotoUrl,
+        resume: resumeUrl,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`,
         },
-      );
-
-      if (res?.data?.success) {
-        setUser(res.data.user); // 🔥 update state instantly
-        console.log(res.data.user);
-        navigate("/profile");
-
-        // alert("Profile Updated Successfully 🚀");
       }
-    } catch (error) {
-      console.log(error.response?.data?.message);
+    );
+
+    if (res.data.success) {
+      navigate("/profile");
     }
 
-    setLoading(false);
-  };
+  } catch (error) {
+    console.log(error);
+  }
+
+  setLoading(false);
+};
 
   return (
     <Layout>

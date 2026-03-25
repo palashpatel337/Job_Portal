@@ -56,7 +56,7 @@ router.post("/upload", upload.single("file"), async (req, res) => {
       const stream = cloudinary.uploader.upload_stream(
         {
           folder: "job_portal_uploads",
-          resource_type: "image", // ✅ ADD THIS
+          resource_type: "auto", // ✅ ADD THIS
         },
         (error, result) => {
           if (error) {

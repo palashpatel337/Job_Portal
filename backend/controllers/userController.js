@@ -218,74 +218,119 @@ export const logoutController = async (req, res) => {
     }
 };
 
-export const updateController = async (req,res) => {
-    try {
-        let {fullname, phone, email, bio, skills} = req.body;
+// export const updateController = async (req,res) => {
+//     try {
+//         let {fullname, phone, email, bio, skills} = req.body;
 
-    const profilePhoto = req.files?.profilePhoto?.[0];
-    const resume = req.files?.resume?.[0];
-        const skillsArray = skills
-        ? skills.split(",").map((s) => s.trim())
-        : [];
+//     const profilePhoto = req.files?.profilePhoto?.[0];
+//     const resume = req.files?.resume?.[0];
+//         const skillsArray = skills
+//         ? skills.split(",").map((s) => s.trim())
+//         : [];
 
-        const userId = req.user;
+//         const userId = req.user;
 
-        let user = await User.findById(userId);
+//         let user = await User.findById(userId);
 
-        if(!user){
-            return res.status(400).json({
-                message:"User doesn't exist",
-                success:false
-            })
-        }
-        if(!user.profile){
-            user.profile = {};
-        }
+//         if(!user){
+//             return res.status(400).json({
+//                 message:"User doesn't exist",
+//                 success:false
+//             })
+//         }
+//         if(!user.profile){
+//             user.profile = {};
+//         }
 
-        if(fullname) user.fullname = fullname
-        if(email) user.email = email
-        if(phone) user.phone = phone
-        if(bio) user.profile.bio = bio
+//         if(fullname) user.fullname = fullname
+//         if(email) user.email = email
+//         if(phone) user.phone = phone
+//         if(bio) user.profile.bio = bio
 
-        if(skillsArray.length > 0){
-            user.profile.skills = skillsArray
-        }
+//         if(skillsArray.length > 0){
+//             user.profile.skills = skillsArray
+//         }
 
-        // 🔥 PROFILE PHOTO
-    if (profilePhoto) {
-      user.profile.profilePhoto = profilePhoto.filename;
+//         // 🔥 PROFILE PHOTO
+//     if (profilePhoto) {
+//       user.profile.profilePhoto = profilePhoto.filename;
+//     }
+
+//     // resume
+//     if (resume) {
+//       user.profile.resume = resume.filename;
+//     }
+
+//         await user.save();
+
+//         user = {
+//             _id: user._id,
+//             fullname: user.fullname,
+//             email: user.email,
+//             phone: user.phone,
+//             role: user.role,
+//             profile: user.profile
+//         }
+
+//         return res.status(200).json({
+//             message:'Profile updated successfully',
+//             user,
+//             success:true
+//         })
+
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({
+//             message:"Internal server error",
+//             success:false
+//         });
+//     }
+// }
+
+export const updateController = async (req, res) => {
+  try {
+    const { fullname, phone, bio, skills, profilePhoto, resume } = req.body;
+
+    const skillsArray = skills
+      ? skills.split(",").map((s) => s.trim())
+      : [];
+
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(400).json({
+        message: "User not found",
+        success: false,
+      });
     }
 
-    // resume
-    if (resume) {
-      user.profile.resume = resume.filename;
-    }
+    if (!user.profile) user.profile = {};
 
-        await user.save();
+    if (fullname) user.fullname = fullname;
+    if (phone) user.phone = phone;
+    if (bio) user.profile.bio = bio;
+    if (skillsArray.length > 0) user.profile.skills = skillsArray;
 
-        user = {
-            _id: user._id,
-            fullname: user.fullname,
-            email: user.email,
-            phone: user.phone,
-            role: user.role,
-            profile: user.profile
-        }
+    // 🔥 Save URLs directly
+    if (profilePhoto) user.profile.profilePhoto = profilePhoto;
+    if (resume) user.profile.resume = resume;
 
-        return res.status(200).json({
-            message:'Profile updated successfully',
-            user,
-            success:true
-        })
+    await user.save();
 
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({
-            message:"Internal server error",
-            success:false
-        });
-    }
-}
+    res.status(200).json({
+      success: true,
+      message: "Profile updated",
+      user,
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Error updating profile",
+    });
+  }
+};
 
 export const userProfileController = async(req,res) => {
   try {
