@@ -57,7 +57,19 @@ function Homepage() {
         <CardTitle className="text-lg font-semibold capitalize">
           {j.title}
         </CardTitle>
-
+<div className="flex items-center gap-3 mb-2">
+      {j.companyId?.logo ? (
+        <img
+          src={j.companyId.logo}
+          alt="company logo"
+          className="h-10 w-10 rounded object-cover border"
+        />
+      ) : (
+        <div className="h-10 w-10 bg-gray-200 flex items-center justify-center rounded">
+          {j.companyId?.name?.charAt(0)}
+        </div>
+      )}
+      </div>
         <CardDescription>
           {j.companyId.name} • {j.location}
         </CardDescription>
