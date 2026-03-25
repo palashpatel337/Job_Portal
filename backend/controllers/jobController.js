@@ -118,12 +118,13 @@ export const getAdminJobController = async (req, res) => {
 
 
   const jobs = await Job.find({ createdBy: adminId }).populate("companyId").populate('applications');
-  if (jobs.length == 0) {
-    return res.status(404).json({
-      message: "No results",
-      success: false,
-    });
-  }
+  if (jobs.length === 0) {
+  return res.status(200).json({
+    message: "No jobs found",
+    jobs: [],
+    success: true,
+  });
+}
   return res.status(200).json({
     message: "Jobs successfully fetched",
     jobs,
