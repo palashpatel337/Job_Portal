@@ -13,10 +13,12 @@ import {
 import { useState } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '@/context/Auth';
 
 
 function Homepage() {
   const [jobs,setJobs] = useState([])
+  const [auth, setAuth] = useAuth();
 
   const getAllJobs = async() => {
     try {
@@ -42,6 +44,8 @@ function Homepage() {
   useEffect(() => {
     getAllJobs()
   },[])
+
+
   return (
     <Layout>
 <div className="relative top-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6 px-36 py-8">
