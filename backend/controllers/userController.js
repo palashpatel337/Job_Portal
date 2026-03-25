@@ -2,6 +2,8 @@ import jwt from "jsonwebtoken";
 import User  from "../models/userModel.js";
 import bcrypt,{  hash } from 'bcryptjs';
 import userModel from "../models/userModel.js";
+import cloudinary from "../cloud/cloudinary.js";
+import streamifier from 'streamifier';
 
 export const registerController = async (req,res) => {
     try {
@@ -21,8 +23,25 @@ export const registerController = async (req,res) => {
     } 
     
     const hashedPassword = await bcrypt.hash(password,10);
-const photo = req.file ? req.file.path || req.file.secure_url : null;
+let photoUrl = null;
 
+    if (req.file) {
+      const streamUpload = () => {
+        return new Promise((resolve, reject) => {
+          const stream = cloudinary.uploader.upload_stream(
+            { folder: "user_profiles" },
+            (error, result) => {
+              if (result) resolve(result);
+              else reject(error);
+            }
+          );
+          streamifier.createReadStream(req.file.buffer).pipe(stream);
+        });
+      };
+
+      const result = await streamUpload();
+      photoUrl = result.secure_url;
+    }
     await User.create({
       fullname,
       phone,
@@ -30,7 +49,7 @@ const photo = req.file ? req.file.path || req.file.secure_url : null;
       password: hashedPassword,
       role,
       profile: {
-        profilePhoto: photo
+        profilePhoto: photoUrl
       },
     });
 
