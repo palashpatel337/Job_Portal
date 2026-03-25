@@ -52,7 +52,9 @@ function Homepage() {
   {jobs.map((j) => (
     
     <Card key={j._id} className="w-full">
-      <div className="flex items-center gap-3 mb-2">
+      
+      <CardHeader>
+        <div className="flex items-center gap-3 mb-2">
       {j?.companyId?.logo ? (
         <img
           src={j.companyId.logo}
@@ -65,7 +67,6 @@ function Homepage() {
         </div>
       )}
       </div>
-      <CardHeader>
         <Badge className={"capitalize"} variant="secondary">{j.jobType}</Badge>
 
         <CardTitle className="text-lg font-semibold capitalize">
