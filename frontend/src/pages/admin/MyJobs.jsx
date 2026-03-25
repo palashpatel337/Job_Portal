@@ -1,10 +1,12 @@
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/context/Auth';
 import axios from 'axios';
 import { ChevronRight, MoveRight, PanelRight } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
 
 function MyJobs() {
+  const [auth, setAuth] = useAuth();
   const [jobs, setJobs] = useState([]);
   const params = useParams()
 
@@ -16,7 +18,7 @@ function MyJobs() {
         `${import.meta.env.VITE_API_URL}/api/v1/job/get/admin`,
               {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${auth?.token}`,
         },
       }
 
