@@ -7,7 +7,9 @@ import { upload } from "../middlewares/uploadmiddleware.js";
 const router = express.Router();
 
 
-router.post("/register", upload.single("photo"), registerController);
+router.post("/register", 
+  // upload.single("photo"),
+   registerController);
 
 router.post("/login", loginController)
 

@@ -22,7 +22,7 @@ function Register() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
-  const [photo, setPhoto] = useState(null);
+  // const [photo, setPhoto] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -34,7 +34,7 @@ function Register() {
       formData.append("phone", phone);
       formData.append("password", password);
       formData.append("role", role);
-      if (photo) formData.append("photo", photo);
+      // if (photo) formData.append("photo", photo);
 
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/user/register`,
@@ -145,7 +145,7 @@ function Register() {
                     </div>
                   </RadioGroup>
                 </div>
-                <div>
+                {/* <div>
                   <Label className="pb-3" htmlFor="profile">
                     Profile Photo
                   </Label>
@@ -157,7 +157,7 @@ function Register() {
                       console.log(e.target.files[0]); // 👈 check this
                       setPhoto(e.target.files[0]);
                     }}                  />
-                </div>
+                </div> */}
               </div>
               <Field orientation="horizontal">
                 <Button type="button" variant="outline">

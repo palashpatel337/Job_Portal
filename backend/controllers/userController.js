@@ -48,9 +48,9 @@ let photoUrl = null;
       email,
       password: hashedPassword,
       role,
-      profile: {
-        profilePhoto: photoUrl
-      },
+      // profile: {
+      //   profilePhoto: photoUrl
+      // },
     });
 
     return res.status(200).json({
