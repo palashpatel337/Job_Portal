@@ -21,8 +21,7 @@ export const registerController = async (req,res) => {
     } 
     
     const hashedPassword = await bcrypt.hash(password,10);
-    const photo = req.file ? req.file.filename : null;
-
+const photo = req.file ? req.file.path || req.file.secure_url : null;
     await User.create({
       fullname,
       phone,
