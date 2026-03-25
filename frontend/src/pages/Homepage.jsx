@@ -178,7 +178,7 @@ function Homepage() {
               Latest Openings
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 tracking-tight leading-tight">
-              Find Your Next <span className="text-rose-600 italic">Role</span>
+              Find Your Next <span className="text-purple-600 italic">Role</span>
             </h2>
           </div>
           {!loading && (
@@ -189,7 +189,7 @@ function Homepage() {
         </div>
 
         {/* ── Accent line ── */}
-        <div className="h-px bg-gradient-to-r from-rose-500 via-zinc-200 to-transparent mb-8" />
+        <div className="h-px bg-gradient-to-r from-purple-500 via-zinc-200 to-transparent mb-8" />
 
         {/* ── Grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -209,7 +209,7 @@ function Homepage() {
               : jobs.map((j) => (
                 <div
                   key={j._id}
-                  className="group bg-white border border-zinc-200 rounded-2xl p-5 flex flex-col gap-4 hover:border-rose-400 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                  className="group bg-white border border-zinc-200 rounded-2xl p-5 flex flex-col gap-4 hover:border-purple-400 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                 >
 
                   {/* Logo + badge */}
