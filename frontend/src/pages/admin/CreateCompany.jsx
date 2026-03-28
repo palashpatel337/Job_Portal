@@ -25,6 +25,8 @@ function CreateCompany() {
       formData,
     );
   console.log("UPLOAD RESPONSE:", res.data); // 👈 ADD THIS
+  console.log(`${import.meta.env.VITE_API_URL}/api/upload`);
+  
 
     return res.data.url;
   };
