@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import User  from "../models/userModel.js";
 import bcrypt,{  hash } from 'bcryptjs';
-import userModel from "../models/userModel.js";
+// import userModel from "../models/userModel.js";
 import cloudinary from "../cloud/cloudinary.js";
 import streamifier from 'streamifier';
 
@@ -334,7 +334,7 @@ export const updateController = async (req, res) => {
 
 export const userProfileController = async(req,res) => {
   try {
-    const userId = req.user
+    const userId = req.user._id
     const user = await User.findById(userId)
     if(!user){
       return res.status(404).json({

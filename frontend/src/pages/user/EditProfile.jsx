@@ -25,8 +25,8 @@ function EditProfile() {
       bio: "",
       skills: [],
       resume: "",
-      resumeOriginalName: "",
-      company: "",
+      // resumeOriginalName: "",
+      // company: "",
       profilePhoto: "",
     },
   });
