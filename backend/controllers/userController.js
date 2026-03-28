@@ -290,7 +290,8 @@ export const logoutController = async (req, res) => {
 export const updateController = async (req, res) => {
   try {
     const { fullname, phone, bio, skills, profilePhoto, resume } = req.body;
-
+console.log("🔥 UPDATE API HIT");
+console.log("BODY:", req.body);
     console.log("Update request received:", { fullname, phone, bio, skills, profilePhoto, resume });
 
     const skillsArray = skills
