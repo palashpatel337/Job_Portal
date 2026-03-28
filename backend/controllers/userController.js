@@ -295,7 +295,7 @@ export const updateController = async (req, res) => {
       ? skills.split(",").map((s) => s.trim())
       : [];
 
-    const user = await User.findById(req.user._id);
+    const user = await userModel.findById(req.user._id);
 
     if (!user) {
       return res.status(400).json({
