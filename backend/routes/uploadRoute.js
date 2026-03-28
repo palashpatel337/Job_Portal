@@ -39,12 +39,12 @@ const router = express.Router();
 
 
 
-router.get("/upload/test", (req, res) => {
+router.get("/test", (req, res) => {
   res.send("Upload routes working");
 });
 
 
-router.post("/upload/image", upload.single("file"), async (req, res) => {
+router.post("/image", upload.single("file"), async (req, res) => {
   try {
     console.log("FILE:", req.file);
 
