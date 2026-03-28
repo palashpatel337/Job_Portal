@@ -29,7 +29,7 @@ phone: {
     profile: {
         bio:{type: String},
         skills: {type: Array},
-        resume: {type: String},
+        resume: {type: String, default: ''},
         resumeOriginalName: {type: String},
         company: {type: mongoose.Schema.Types.ObjectId, ref: 'Company'},
         profilePhoto: {type: String, default: ''}

@@ -10,7 +10,7 @@ import userRoute from "./routes/userRoute.js";
 import jobRoute from "./routes/jobRoute.js";
 import companyRoute from "./routes/companyRoute.js";
 import applicationRoute from "./routes/applicationRoutes.js";
-import router from "./routes/uploadRoute.js";
+import uploadRoute from "./routes/uploadRoute.js";
 
 console.log("🔥 NEW DEPLOY VERSION WORKING");
 console.log(process.env.CLOUD_NAME);
@@ -66,7 +66,7 @@ app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
-app.use("/api", router);
+app.use("/api", uploadRoute);
 
 
 const PORT = process.env.PORT || 3000;
