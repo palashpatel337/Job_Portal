@@ -45,7 +45,7 @@ function EditProfile() {
         type === "resume" ? "/api/v1/upload/resume" : "/api/v1/upload/image";
 
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v1/${endpoint}`,
+        `${import.meta.env.VITE_API_URL}/api/${endpoint}`,
         formData,
         {
           headers: {
