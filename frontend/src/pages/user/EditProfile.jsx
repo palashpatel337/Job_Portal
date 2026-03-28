@@ -41,11 +41,11 @@ function EditProfile() {
       const formData = new FormData();
       formData.append("file", file);
 
-      const endpoint =
-        type === "resume" ? "/upload/resume" : "/upload/image";
+      // const endpoint =
+      //   type === "resume" ? "/upload/resume" : "/upload/image";
 
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api${endpoint}`,
+        `${import.meta.env.VITE_API_URL}/api/upload`,
         formData,
         {
           headers: {

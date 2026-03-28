@@ -39,66 +39,112 @@ const router = express.Router();
 
 
 
-router.get("/test", (req, res) => {
-  res.send("Upload routes working");
-});
+
+// router.post("upload/image", upload.single("file"), async (req, res) => {
+//   try {
+//     console.log("FILE:", req.file);
+
+//     if (!req.file || !req.file.buffer) {
+//       return res.status(400).json({
+//         message: "File buffer missing",
+//       });
+//     }
+
+//     const result = await new Promise((resolve, reject) => {
+//       const stream = cloudinary.uploader.upload_stream(
+//         {
+//           folder: "job_portal_uploads",
+//           resource_type: "image", // ✅ ADD THIS
+//         },
+//         (error, result) => {
+//           if (error) {
+//             console.log("❌ CLOUDINARY ERROR:", error);
+//             return reject(error);
+//           }
+//           resolve(result);
+//         }
+//       );
+
+//       streamifier.createReadStream(req.file.buffer).pipe(stream);
+//     });
+
+//     console.log("✅ UPLOADED:", result.secure_url);
+
+//     res.status(200).json({
+//       success: true,
+//       url: result.secure_url,
+//     });
+
+//   } catch (error) {
+//     console.log("❌ FINAL ERROR:", error);
+//     res.status(500).json({
+//       error: error.message,
+//     });
+//   }
+// });
 
 
-router.post("upload/image", upload.single("file"), async (req, res) => {
+// router.post("/upload/resume", upload.single("file"), async (req, res) => {
+//   try {
+//     if (!req.file || !req.file.buffer) {
+//       return res.status(400).json({ success: false, message: "No resume uploaded" });
+//     }
+
+//     const result = await new Promise((resolve, reject) => {
+//       const stream = cloudinary.uploader.upload_stream(
+//         {
+//           folder: "job_portal_uploads/resumes",
+//           resource_type: "raw", // ✅ IMPORTANT FOR PDF
+//         },
+//         (error, result) => {
+//           if (error) return reject(error);
+//           resolve(result);
+//         }
+//       );
+
+//       streamifier.createReadStream(req.file.buffer).pipe(stream);
+//     });
+
+//     return res.status(200).json({
+//       success: true,
+//       url: result.secure_url,
+//     });
+
+//   } catch (error) {
+//     console.log("UPLOAD RESUME ERROR:", error);
+//     return res.status(500).json({ success: false, message: error.message });
+//   }
+// });
+
+
+
+
+
+
+router.post("/upload", upload.single("file"), async (req, res) => {
   try {
-    console.log("FILE:", req.file);
-
     if (!req.file || !req.file.buffer) {
-      return res.status(400).json({
-        message: "File buffer missing",
-      });
+      return res.status(400).json({ success: false, message: "No file uploaded" });
+    }
+
+    const mime = req.file.mimetype;
+
+    let resourceType = "auto";
+    let folder = "job_portal_uploads";
+
+    if (mime === "application/pdf") {
+      folder = "job_portal_uploads/resumes";
+      resourceType = "raw";
+    } else {
+      folder = "job_portal_uploads/images";
+      resourceType = "image";
     }
 
     const result = await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         {
-          folder: "job_portal_uploads",
-          resource_type: "image", // ✅ ADD THIS
-        },
-        (error, result) => {
-          if (error) {
-            console.log("❌ CLOUDINARY ERROR:", error);
-            return reject(error);
-          }
-          resolve(result);
-        }
-      );
-
-      streamifier.createReadStream(req.file.buffer).pipe(stream);
-    });
-
-    console.log("✅ UPLOADED:", result.secure_url);
-
-    res.status(200).json({
-      success: true,
-      url: result.secure_url,
-    });
-
-  } catch (error) {
-    console.log("❌ FINAL ERROR:", error);
-    res.status(500).json({
-      error: error.message,
-    });
-  }
-});
-
-
-router.post("/upload/resume", upload.single("file"), async (req, res) => {
-  try {
-    if (!req.file || !req.file.buffer) {
-      return res.status(400).json({ success: false, message: "No resume uploaded" });
-    }
-
-    const result = await new Promise((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream(
-        {
-          folder: "job_portal_uploads/resumes",
-          resource_type: "raw", // ✅ IMPORTANT FOR PDF
+          folder,
+          resource_type: resourceType,
         },
         (error, result) => {
           if (error) return reject(error);
@@ -115,8 +161,10 @@ router.post("/upload/resume", upload.single("file"), async (req, res) => {
     });
 
   } catch (error) {
-    console.log("UPLOAD RESUME ERROR:", error);
-    return res.status(500).json({ success: false, message: error.message });
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 });
 
