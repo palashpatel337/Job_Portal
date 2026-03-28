@@ -44,7 +44,7 @@ function EditProfile() {
       // const endpoint =
       //   type === "resume" ? "/upload/resume" : "/upload/image";
 
-      const { data } = await axios.post(
+      const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/upload`,
         formData,
         {
@@ -54,7 +54,7 @@ function EditProfile() {
         }
       );
 
-      return data?.url;
+      return res.data?.url;
     } catch (error) {
       console.log("UPLOAD ERROR:", error.response?.data || error.message);
       return null;
