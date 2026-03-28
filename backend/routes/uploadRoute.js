@@ -44,7 +44,7 @@ router.get("/test", (req, res) => {
 });
 
 
-router.post("/image", upload.single("file"), async (req, res) => {
+router.post("upload/image", upload.single("file"), async (req, res) => {
   try {
     console.log("FILE:", req.file);
 
