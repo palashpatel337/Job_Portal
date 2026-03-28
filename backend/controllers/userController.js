@@ -291,6 +291,8 @@ export const updateController = async (req, res) => {
   try {
     const { fullname, phone, bio, skills, profilePhoto, resume } = req.body;
 
+    console.log("Update request received:", { fullname, phone, bio, skills, profilePhoto, resume });
+
     const skillsArray = skills
       ? skills.split(",").map((s) => s.trim())
       : [];
@@ -312,10 +314,18 @@ export const updateController = async (req, res) => {
     if (skillsArray.length > 0) user.profile.skills = skillsArray;
 
     // 🔥 Save URLs directly
-    if (profilePhoto) user.profile.profilePhoto = profilePhoto;
-    if (resume) user.profile.resume = resume;
+    if (profilePhoto) {
+      console.log("Setting profile photo:", profilePhoto);
+      user.profile.profilePhoto = profilePhoto;
+    }
+    if (resume) {
+      console.log("Setting resume:", resume);
+      user.profile.resume = resume;
+    }
 
     await user.save();
+
+    console.log("User updated successfully:", user);
 
     res.status(200).json({
       success: true,
@@ -324,10 +334,11 @@ export const updateController = async (req, res) => {
     });
 
   } catch (error) {
-    console.log(error);
+    console.error("UPDATE ERROR:", error);
     res.status(500).json({
       success: false,
-      message: "Error updating profile",
+      message: "Error updating profile: " + error.message,
+      error: error.message,
     });
   }
 };

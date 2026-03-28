@@ -38,6 +38,8 @@ function EditProfile() {
   // ======================================
   const uploadFile = async (file, type) => {
     try {
+      console.log("Uploading file:", file.name, "Type:", type);
+      
       const formData = new FormData();
       formData.append("file", file);
 
@@ -54,9 +56,11 @@ function EditProfile() {
         }
       );
 
+      console.log("Upload successful, URL:", res.data?.url);
       return res.data?.url;
     } catch (error) {
-      console.log("UPLOAD ERROR:", error.response?.data || error.message);
+      console.error("UPLOAD ERROR:", error.response?.data || error.message);
+      alert("Failed to upload " + type + ": " + (error.response?.data?.message || error.message));
       return null;
     }
   };
@@ -121,6 +125,9 @@ function EditProfile() {
         if (uploadedResume) resumeUrl = uploadedResume;
       }
 
+      console.log("Profile Photo URL:", profilePhotoUrl);
+      console.log("Resume URL:", resumeUrl);
+
       const res = await axios.put(
         `${import.meta.env.VITE_API_URL}/api/v1/user/profile/update`,
         {
@@ -138,6 +145,8 @@ function EditProfile() {
         }
       );
 
+      console.log("Update Response:", res.data);
+
       if (res?.data?.success) {
         setUser(res.data.user);
 
@@ -151,9 +160,12 @@ function EditProfile() {
         localStorage.setItem("auth", JSON.stringify(ls));
 
         navigate("/profile");
+      } else {
+        console.error("Update failed:", res.data?.message);
       }
     } catch (error) {
-      console.log("UPDATE ERROR:", error.response?.data || error.message);
+      console.error("UPDATE ERROR:", error.response?.data || error.message);
+      alert("Error updating profile: " + (error.response?.data?.message || error.message));
     }
 
     setLoading(false);

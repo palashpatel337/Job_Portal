@@ -10,11 +10,15 @@ const router = express.Router();
 
 router.post("/upload", upload.single("file"), async (req, res) => {
   try {
+    console.log("Upload request received, file:", req.file?.filename || "No file");
+
     if (!req.file || !req.file.buffer) {
+      console.log("No file buffer found");
       return res.status(400).json({ success: false, message: "No file uploaded" });
     }
 
     const mime = req.file.mimetype;
+    console.log("File MIME type:", mime);
 
     let resourceType = "auto";
     let folder = "job_portal_uploads";
@@ -22,9 +26,11 @@ router.post("/upload", upload.single("file"), async (req, res) => {
     if (mime === "application/pdf") {
       folder = "job_portal_uploads/resumes";
       resourceType = "raw";
+      console.log("Detected PDF file, uploading to resumes folder");
     } else {
       folder = "job_portal_uploads/images";
       resourceType = "image";
+      console.log("Detected image file, uploading to images folder");
     }
 
     const result = await new Promise((resolve, reject) => {
@@ -34,7 +40,11 @@ router.post("/upload", upload.single("file"), async (req, res) => {
           resource_type: resourceType,
         },
         (error, result) => {
-          if (error) return reject(error);
+          if (error) {
+            console.error("Cloudinary upload error:", error);
+            return reject(error);
+          }
+          console.log("Successfully uploaded to Cloudinary:", result.secure_url);
           resolve(result);
         }
       );
@@ -48,6 +58,7 @@ router.post("/upload", upload.single("file"), async (req, res) => {
     });
 
   } catch (error) {
+    console.error("Upload route error:", error);
     return res.status(500).json({
       success: false,
       message: error.message,
