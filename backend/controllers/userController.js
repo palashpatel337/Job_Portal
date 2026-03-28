@@ -306,14 +306,22 @@ export const updateController = async (req, res) => {
       });
     }
 
-    if (!user.profile) user.profile = {};
+    // Ensure profile object exists
+    if (!user.profile) {
+      user.profile = {
+        bio: '',
+        skills: [],
+        resume: '',
+        profilePhoto: ''
+      };
+    }
 
     if (fullname) user.fullname = fullname;
     if (phone) user.phone = phone;
     if (bio) user.profile.bio = bio;
     if (skillsArray.length > 0) user.profile.skills = skillsArray;
 
-    // 🔥 Save URLs directly
+    // 🔥 Save URLs directly - explicitly set even if empty
     if (profilePhoto) {
       console.log("Setting profile photo:", profilePhoto);
       user.profile.profilePhoto = profilePhoto;
@@ -323,14 +331,18 @@ export const updateController = async (req, res) => {
       user.profile.resume = resume;
     }
 
-    await user.save();
+    // Mark the profile as modified so Mongoose picks up nested changes
+    user.markModified('profile');
+    
+    const updatedUser = await user.save();
 
-    console.log("User updated successfully:", user);
+    console.log("User updated successfully:", updatedUser);
+    console.log("Profile photo in DB:", updatedUser.profile.profilePhoto);
 
     res.status(200).json({
       success: true,
-      message: "Profile updated",
-      user,
+      message: "Profile updated successfully",
+      user: updatedUser,
     });
 
   } catch (error) {
