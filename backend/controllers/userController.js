@@ -295,7 +295,7 @@ export const updateController = async (req, res) => {
       ? skills.split(",").map((s) => s.trim())
       : [];
 
-    const user = await userModel.findById(req.user._id);
+    const user = await User.findById(req.user._id);
 
     if (!user) {
       return res.status(400).json({
@@ -335,7 +335,7 @@ export const updateController = async (req, res) => {
 export const userProfileController = async(req,res) => {
   try {
     const userId = req.user
-    const user = await userModel.findById(userId)
+    const user = await User.findById(userId)
     if(!user){
       return res.status(404).json({
         message: "User Profile Missing",
