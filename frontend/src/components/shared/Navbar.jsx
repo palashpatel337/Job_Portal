@@ -154,12 +154,12 @@ function Navbar() {
   return (
     <div
       className="bg-purple-900 stick top- z-50 flex justify-between items-center mx-auto max-w-7xl h-16 px-8 mt-3 rounded-2xl"
-      style={{
-        background: "rgba(26, 5, 77, 0.04)",
-        border: "1px solid rgba(196,181,253,0.15)",
+      // style={{
+      //   background: "rgba(26, 5, 77, 0.04)",
+      //   border: "1px solid rgba(196,181,253,0.15)",
         // backdropFilter: "blur(16px)",
         // WebkitBackdropFilter: "blur(16px)",
-      }}
+      // }}
     >
       {/* ── Logo ── */}
       <NavLink to="/" className="flex items-center gap-1 select-none">
