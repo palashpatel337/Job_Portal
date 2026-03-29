@@ -153,12 +153,12 @@ function Navbar() {
 
   return (
     <div
-      className="sticky top-0 z-50 flex justify-between items-center mx-auto max-w-7xl h-16 px-8 mt-3 rounded-2xl"
+      className="stick top- z-50 flex justify-between items-center mx-auto max-w-7xl h-16 px-8 mt-3 rounded-2xl"
       style={{
-        background: "rgba(255,255,255,0.04)",
+        background: "rgba(26, 5, 77, 0.04)",
         border: "1px solid rgba(196,181,253,0.15)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
+        // backdropFilter: "blur(16px)",
+        // WebkitBackdropFilter: "blur(16px)",
       }}
     >
       {/* ── Logo ── */}
