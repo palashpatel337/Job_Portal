@@ -47,7 +47,7 @@ function Profile() {
                 <div className="flex items-center gap-6">
                   <div className="w-24 h-24 rounded-full overflow-hidden shadow-xl">
                     <img
-                      src={`${import.meta.env.VITE_API_URL}/uploads/${user?.profile?.profilePhoto}`}
+                      src={`${user?.profile?.profilePhoto}`}
                       alt="profile"
                       className="w-full h-full object-cover"
                     />
