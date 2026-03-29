@@ -268,7 +268,7 @@ function DetailRow({ label, value }) {
 function JobDetails() {
   const params = useParams();
   const [job, setJob] = useState(null);
-  const [auth] = useAuth();
+  const [auth,setAuth] = useAuth();
   const [loading, setLoading] = useState(true);
   const [applied, setApplied] = useState(false);
   const [applying, setApplying] = useState(false);
@@ -514,6 +514,7 @@ function JobDetails() {
                 <div className="h-px" style={{ background: "rgba(196,181,253,0.1)" }} />
 
                 {/* Apply button */}
+                {/* <p>{job.status === "open" ? "Job is still open for applications" : "This job is no longer accepting applications"}</p> */}
                 <button
                   onClick={handleApplication}
                   disabled={applied || applying}
