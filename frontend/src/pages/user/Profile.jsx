@@ -134,6 +134,7 @@ function Profile() {
                     {user.profile.resume ? (
                       <a
                         href={`${user?.profile?.resume}`}
+                        download
                         target="_blank"
                         rel="noreferrer"
                         className="text-indigo-600 font-medium hover:underline"
