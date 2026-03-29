@@ -16,26 +16,6 @@ const app = express();
 
 dotenv.config();
 
-// const allowedOrigins = [
-//   "http://localhost:5173",
-//   process.env.FRONTEND_URL,
-//   "https://job-portal.vercel.app"
-// ];
-
-// app.use(
-//   cors({
-//     origin: function (origin, callback) {
-//       if (!origin || allowedOrigins.includes(origin)) {
-//         callback(null, true);
-//       } else {
-//         callback(null, true); // allow all vercel preview urls
-//       }
-//     },
-//     credentials: true,
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     allowedHeaders: ["Content-Type", "Authorization"]
-//   })
-// );
 
 app.use(cors({
   origin: [
@@ -51,11 +31,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-// if (!fs.existsSync("uploads")) {
-//   fs.mkdirSync("uploads");
-// }
-// // static folder
-// app.use("/uploads", express.static("uploads"));
 
 // routes
 app.use("/api/v1/user", userRoute);
