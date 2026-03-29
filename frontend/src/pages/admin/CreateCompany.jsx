@@ -109,7 +109,7 @@ function CreateCompany() {
       <div className="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
 
         {/* FORM */}
-        <div className="bg-white p-8 rounded-2xl shadow">
+        <div className="bg-transparent p-8 rounded-2xl shadow">
           <h2 className="text-xl font-semibold mb-6">Create Company</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -151,7 +151,7 @@ function CreateCompany() {
         </div>
 
         {/* COMPANY LIST */}
-        <div className="bg-white p-8 rounded-2xl shadow">
+        <div className="bg-transparent p-8 rounded-2xl shadow">
           <h2 className="text-xl font-semibold mb-6">Companies</h2>
 
           {companies.length === 0 ? (

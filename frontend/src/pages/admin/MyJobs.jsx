@@ -39,7 +39,7 @@ function MyJobs() {
 
 
   return (
-  <div className="min-h-screen bg-gray-100 p-8 ml-[8vw] bg-gradient-to-br form-purple-300 to-red-400">
+  <div className="min-h-screen bg-transparent p-8 ml-[8vw] bg-gradient-to-br form-purple-300 to-red-400">
     <h1 className="text-3xl font-bold mb-8 text-gray-800">
       My Posted Jobs
     </h1>
