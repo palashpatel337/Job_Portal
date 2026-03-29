@@ -133,7 +133,7 @@ function Profile() {
                     <FileText size={20} className="text-indigo-600" />
                     {user.profile.resume ? (
                       <a
-                        href={`${import.meta.env.VITE_API_URL}/uploads/${user?.profile?.resume}`}
+                        href={`${user?.profile?.resume}`}
                         target="_blank"
                         rel="noreferrer"
                         className="text-indigo-600 font-medium hover:underline"
