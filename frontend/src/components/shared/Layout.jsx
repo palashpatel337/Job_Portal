@@ -16,8 +16,9 @@ const Layout = ({children, description,title, author, keywords}) => {
         <meta name="author" content={author} />
         <title>{title}</title>
       </Helmet>
-          <Navbar className='z-100' />
       <main className="flex-grow min-h-[79vh] bg-purple-900 from-indigo-50 via-white to-purple-50 relative z-0">
+                          <Navbar className='z-100' />
+
                 <ToastContainer/>
                 {children} 
               </main>
