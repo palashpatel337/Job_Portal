@@ -169,14 +169,14 @@ function Navbar() {
         <span
           className="font-bold text-xl tracking-tight"
           style={{
-            background: "linear-gradient(90deg, #33285b, #2f0a62)",
+            background: "linear-gradient(90deg, #413863, #715893)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
         >
           Jobs
         </span>
-        <span className="font-bold text-xl text-zinc-900 tracking-tight">X</span>
+        <span className="font-bold text-xl text-zinc-100 tracking-tight">X</span>
       </NavLink>
 
       {/* ── Nav links + auth ── */}
@@ -231,7 +231,7 @@ function Navbar() {
               <button className="relative flex-shrink-0 focus:outline-none group">
                 <Avatar className="w-9 h-9 cursor-pointer ring-2 ring-purple-500/30 group-hover:ring-purple-400/60 transition-all duration-200">
                   <AvatarImage
-                    src={`${import.meta.env.VITE_API_URL}/uploads/${user?.profile?.profilePhoto}`}
+                    src={`${user?.profile?.profilePhoto}`}
                   />
                   <AvatarFallback
                     className="text-white text-sm font-semibold"
@@ -262,7 +262,7 @@ function Navbar() {
               >
                 <Avatar className="w-10 h-10 flex-shrink-0">
                   <AvatarImage
-                    src={`${import.meta.env.VITE_API_URL}/uploads/${user?.profile?.profilePhoto}`}
+                    src={`${user?.profile?.profilePhoto}`}
                   />
                   <AvatarFallback
                     className="text-white text-sm font-semibold"
