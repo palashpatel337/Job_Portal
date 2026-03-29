@@ -166,14 +166,14 @@ function Navbar() {
         <span
           className="font-bold text-xl tracking-tight"
           style={{
-            background: "linear-gradient(90deg, #C4B5FD, #9D5CF6)",
+            background: "linear-gradient(90deg, #33285b, #2f0a62)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
         >
           Jobs
         </span>
-        <span className="font-bold text-xl text-white tracking-tight">X</span>
+        <span className="font-bold text-xl text-zinc-900 tracking-tight">X</span>
       </NavLink>
 
       {/* ── Nav links + auth ── */}
