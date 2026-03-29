@@ -261,10 +261,10 @@ function Homepage() {
     <Layout>
       {/* ── Page wrapper with dark gradient background ── */}
       <section
-        className="min-h-screen px-4 sm:px-8 lg:px-16 xl:px-28 py-12 relative overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)',
-        }}
+        className="bg-transparent min-h-screen px-4 sm:px-8 lg:px-16 xl:px-28 py-12 relative overflow-hidden"
+        // style={{
+        //   background: 'linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)',
+        // }}
       >
         {/* Ambient glow orbs */}
         <GlowOrb className="w-96 h-96 bg-purple-600 -top-20 -right-20" />

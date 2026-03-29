@@ -153,10 +153,10 @@ function Navbar() {
 
   return (
     <div
-      className="flex justify-between items-center mx-auto max-w-7xl h-16 px-8 "
-      style={{
-          background: 'linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)',
-        }}
+      className=" bg-transparent flex justify-between items-center mx-auto max-w-7xl h-16 px-8 "
+      // style={{
+      //     background: 'linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)',
+      //   }}
       // style={{
       //   background: "rgba(26, 5, 77, 0.04)",
       //   border: "1px solid rgba(196,181,253,0.15)",

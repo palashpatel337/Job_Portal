@@ -17,7 +17,11 @@ const Layout = ({children, description,title, author, keywords}) => {
         <title>{title}</title>
       </Helmet>
       <Navbar className='z-100' />
-      <main className="flex-grow min-h-[79vh] bg-purple-900 from-indigo-50 via-white to-purple-50 relative z-0">
+      <main className="flex-grow min-h-[79vh] bg-purple-900 from-indigo-50 via-white to-purple-50 relative z-0"
+       style={{
+          background: 'linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)',
+        }}
+      >
                 <ToastContainer/>
                 {children} 
               </main>
