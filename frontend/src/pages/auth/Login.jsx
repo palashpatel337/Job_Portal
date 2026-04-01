@@ -73,7 +73,7 @@ const handleSubmit = async (e) => {
           }}
         >
           Jobs
-        <span className="font-bold text-xl text-zinc-100 tracking-tight">X</span>
+        <span className="font-bold text-xl bg-zinc-100 tracking-tight">X</span>
         </h1>
 </div>
           <div className="flex items-center border-b-4 border-indigo-800">
