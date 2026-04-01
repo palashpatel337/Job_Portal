@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function JobApplicants() {
-  const { jobId } = useParams();
+  const params = useParams();
   const [auth] = useAuth();
   const [job, setJob] = useState(null);
   const [applications, setApplications] = useState([]);
@@ -19,7 +19,7 @@ function JobApplicants() {
       setLoading(true);
 
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/v1/application/${jobId}/applicants`,
+        `${import.meta.env.VITE_API_URL}/api/v1/application/${params.id}/applicants`,
         {
           headers: {
             Authorization: `Bearer ${auth?.token}`
@@ -71,10 +71,10 @@ function JobApplicants() {
   };
 
   useEffect(() => {
-    if (jobId && auth?.token) {
+    if (params.id && auth?.token) {
       getApplicants();
     }
-  }, [jobId, auth?.token]);
+  }, [params.id, auth?.token]);
 
   // ==============================
   // Filter Applicants by Search
