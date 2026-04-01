@@ -47,12 +47,13 @@ export default function AdminMenu() {
       collapsible="icon"
       className="border-r-0 mt-20 bg-transparent w-[20vw] fixed left-0 top-0 h-screen z-50"
       style={{
-        background: "linear-gradient(180deg, #1E1333 0%, #150E28 60%, #0D0A1A 100%)",
+        background: "transparent",
+        // background: "linear-gradient(180deg, #1E1333 0%, #150E28 60%, #0D0A1A 100%)",
         borderRight: "1px solid rgba(196,181,253,0.1)",
       }}
     >
       {/* ── Header ── */}
-      <SidebarHeader className="px-4 py-5">
+      <SidebarHeader className="px-4 py-5 bg-transparent">
         <div className="flex items-center gap-3">
           {/* Brand avatar */}
           <div
@@ -82,7 +83,7 @@ export default function AdminMenu() {
       />
 
       {/* ── Main nav ── */}
-      <SidebarContent className="px-2 pt-4">
+      <SidebarContent className="px-2 pt-4 bg-transparent">
         <SidebarGroup>
           {!collapsed && (
             <SidebarGroupLabel
@@ -138,7 +139,7 @@ export default function AdminMenu() {
       </SidebarContent>
 
       {/* ── Footer nav ── */}
-      <SidebarFooter className="px-2 pb-4">
+      <SidebarFooter className="px-2 pb-4 bg-transparent">
         <SidebarMenu className="space-y-0.5">
           {bottomNav.map((item) => {
             const isLogout = item.title === "Logout";
