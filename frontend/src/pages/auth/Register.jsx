@@ -66,6 +66,7 @@ function Register() {
               <Field>
                 <FieldLabel className="text-white" htmlFor="form-fullname">Name</FieldLabel>
                 <Input
+                  className="text-white"
                   onChange={(e) => setFullName(e.target.value)}
                   value={fullname}
                   id="form-fullname"
@@ -77,6 +78,7 @@ function Register() {
               <Field>
                 <FieldLabel className="text-white" htmlFor="form-email">Email</FieldLabel>
                 <Input
+                  className="text-white"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                   id="form-email"
@@ -92,6 +94,7 @@ function Register() {
                   <FieldLabel className="text-white" htmlFor="form-phone">Phone</FieldLabel>
                   <Input
                     onChange={(e) => setPhone(e.target.value)}
+                    className="text-white"
                     value={phone}
                     id="form-phone"
                     type="tel"
@@ -116,6 +119,7 @@ function Register() {
                 <FieldLabel className="text-white" htmlFor="form-password">Password</FieldLabel>
                 <Input
                   onChange={(e) => setPassword(e.target.value)}
+                  className="text-white"
                   value={password}
                   id="form-password"
                   type="password"
@@ -127,6 +131,7 @@ function Register() {
                   <RadioGroup
                     value={role}
                     onValueChange={(value) => setRole(value)}
+                    className="text-white"
                   >
                     <Label className="text-white" htmlFor="Role">
                       Role
