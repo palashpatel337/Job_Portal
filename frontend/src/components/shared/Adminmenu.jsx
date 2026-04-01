@@ -58,7 +58,7 @@ export default function AdminMenu() {
           {/* Brand avatar */}
           <div
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold text-white"
-            style={{ background: "linear-gradient(135deg, #7C3AED, #9D5CF6)" }}
+            style={{ background: "transparent" }}
           >
             R
           </div>
@@ -111,8 +111,7 @@ export default function AdminMenu() {
                       style={({ isActive }) =>
                         isActive
                           ? {
-                              background:
-                                "linear-gradient(135deg, rgba(124,58,237,0.35), rgba(157,92,246,0.2))",
+                              background: "transparent",
                               border: "1px solid rgba(196,181,253,0.2)",
                             }
                           : { background: "transparent", border: "1px solid transparent" }
@@ -139,7 +138,7 @@ export default function AdminMenu() {
       </SidebarContent>
 
       {/* ── Footer nav ── */}
-      <SidebarFooter className="px-2 pb-4 bg-transparent">
+      <SidebarFooter className="px-2 pb-4 ">
         <SidebarMenu className="space-y-0.5">
           {bottomNav.map((item) => {
             const isLogout = item.title === "Logout";
@@ -174,7 +173,7 @@ export default function AdminMenu() {
           <Avatar className="h-8 w-8 shrink-0 ring-2" style={{ "--tw-ring-color": "rgba(124,58,237,0.4)" }}>
             <AvatarFallback
               className="text-xs font-semibold text-white"
-              style={{ background: "linear-gradient(135deg, #7C3AED, #9D5CF6)" }}
+              style={{ background: "transparent" }}
             >
               JD
             </AvatarFallback>
@@ -196,7 +195,7 @@ export default function AdminMenu() {
             <span
               className="text-[10px] font-semibold px-2 py-0.5 rounded-full shrink-0"
               style={{
-                background: "rgba(124,58,237,0.25)",
+                background: "transparent",
                 color: "#C4B5FD",
               }}
             >
