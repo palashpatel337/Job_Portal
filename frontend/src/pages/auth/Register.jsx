@@ -55,11 +55,11 @@ function Register() {
 
   return (
     <Layout>
-      <div className="max-w-3xl py-5 my-10 mx-auto flex flex-col items-center justify-center shadow-xl border-r-1 max-h-[200vh] border-b-1 border-zinc-400">
+      <div className="max-w-3xl  py-10 mx-auto flex flex-col items-center justify-center shadow-xl border-r-1 max-h-[200vh] border-b-1 border-zinc-400">
         <div className="w-[70%]">
           <div className="flex gap-4 items-center border-b-4 mb-4 border-indigo-800 w-[250px]">
-            <h1 className="text-2xl bg-zinc-100">New User, Sign up</h1>
-            <KeyRoundIcon />
+            <h1 className="text-2xl text-zinc-100">New User, Sign up</h1>
+            <KeyRoundIcon className="text-white"/>
           </div>
           <form action="" onSubmit={handleSubmit} className="">
             <FieldGroup>
