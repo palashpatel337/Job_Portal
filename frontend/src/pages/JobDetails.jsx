@@ -68,15 +68,12 @@ function JobDetails() {
       );
       if (res?.data?.success) {
         console.log("Current user:", auth?.user?._id);
-console.log("Applications:", res.data.job.applications);
+        console.log("Applications:", res.data.job.applications);
         setJob(res.data.job);
 
-        const alreadyApplied = res.data.job.applications?.some((app) => {
-  const applicantId =
-    typeof app.applicant === "object" ? app.applicant?._id : app.applicant;
-
-  return applicantId?.toString() === auth?.user?._id?.toString();
-});
+        const alreadyApplied = job.applications.some(
+  (app) => app.applicant?._id?.toString() === auth?.user?._id?.toString()
+);
         setApplied(alreadyApplied);
       }
     } catch (error) {
