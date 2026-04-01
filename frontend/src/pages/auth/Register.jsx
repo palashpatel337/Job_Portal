@@ -58,13 +58,13 @@ function Register() {
       <div className="max-w-3xl py-5 my-10 mx-auto flex flex-col items-center justify-center shadow-xl border-r-1 max-h-[200vh] border-b-1 border-zinc-400">
         <div className="w-[70%]">
           <div className="flex gap-4 items-center border-b-4 mb-4 border-indigo-800 w-[250px]">
-            <h1 className="text-2xl ">New User, Sign up</h1>
+            <h1 className="text-2xl bg-zinc-100">New User, Sign up</h1>
             <KeyRoundIcon />
           </div>
           <form action="" onSubmit={handleSubmit} className="">
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="form-fullname">Name</FieldLabel>
+                <FieldLabel className="text-white" htmlFor="form-fullname">Name</FieldLabel>
                 <Input
                   onChange={(e) => setFullName(e.target.value)}
                   value={fullname}
@@ -75,7 +75,7 @@ function Register() {
                 />
               </Field>
               <Field>
-                <FieldLabel htmlFor="form-email">Email</FieldLabel>
+                <FieldLabel className="text-white" htmlFor="form-email">Email</FieldLabel>
                 <Input
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
@@ -83,13 +83,13 @@ function Register() {
                   type="email"
                   placeholder="john@example.com"
                 />
-                <FieldDescription>
+                <FieldDescription className="text-white">
                   We&apos;ll never share your email with anyone.
                 </FieldDescription>
               </Field>
               <div className="max-w-5xl">
                 <Field>
-                  <FieldLabel htmlFor="form-phone">Phone</FieldLabel>
+                  <FieldLabel className="text-white" htmlFor="form-phone">Phone</FieldLabel>
                   <Input
                     onChange={(e) => setPhone(e.target.value)}
                     value={phone}
@@ -113,7 +113,7 @@ function Register() {
           </Field> */}
               </div>
               <Field>
-                <FieldLabel htmlFor="form-password">Password</FieldLabel>
+                <FieldLabel className="text-white" htmlFor="form-password">Password</FieldLabel>
                 <Input
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
@@ -128,7 +128,7 @@ function Register() {
                     value={role}
                     onValueChange={(value) => setRole(value)}
                   >
-                    <Label className="pb-" htmlFor="Role">
+                    <Label className="text-white" htmlFor="Role">
                       Role
                     </Label>
                     <div className="flex items-center gap-3">
@@ -159,7 +159,7 @@ function Register() {
                     }}                  />
                 </div> */}
               </div>
-              <Field orientation="horizontal">
+              <Field className="text-white" orientation="horizontal">
                 <Button type="button" variant="outline">
                   Cancel
                 </Button>
