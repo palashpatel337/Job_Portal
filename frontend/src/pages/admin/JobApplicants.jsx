@@ -21,10 +21,10 @@ function JobApplicants() {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/application/${jobId}/applicants`,
         {
-    headers: {
-      Authorization: `Bearer ${auth?.token}`
-    }
-  }
+          headers: {
+            Authorization: `Bearer ${auth?.token}`
+          }
+        }
       );
 
       if (data?.success) {
@@ -51,6 +51,11 @@ function JobApplicants() {
       const { data } = await axios.put(
         `${import.meta.env.VITE_API_URL}/api/v1/application/status/${applicationId}/update`,
         { status: newStatus },
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`
+          }
+        }
       );
 
       if (data?.success) {
@@ -98,7 +103,7 @@ function JobApplicants() {
               placeholder="Search applicant..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="border px-3 py-2 rounded-md mt- w-full"
+              className="border px-3 py-2 rounded-md w-full"
             />
           </div>
         </div>
