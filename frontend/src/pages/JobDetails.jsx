@@ -85,7 +85,6 @@ function JobDetails() {
     try {
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/application/apply/${params.id}`,
-        {},
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
       if (res?.data?.success) setApplied(true);
