@@ -60,7 +60,7 @@ const handleSubmit = async (e) => {
 
   return (
     <Layout>
-      <div className="lg:max-w-4xl lg:py-50 px-20 mx-auto lg:flex  justify-cente items-center lg:gap-4 lg:justify-around lg:shadow-2xl border-r-1 lg:max-h-[200vh] lg:border-1 border-zinc-200 rounded-lg">
+      <div className="lg:max-w-4xl lg:py-[500px] px-20 mx-auto lg:flex  justify-cente items-center lg:gap-4 lg:justify-around lg:shadow-2xl border-r-1 lg:max-h-[200vh] lg:border-1 border-zinc-200 rounded-lg">
         <div className="flex items-center  lg:flex-col lg:w-[180px] lg:h-[50vh] py-5">
           <div className="hidden lg:inline-block">
             <h1 className="text-indigo-700 font-bold text-xl">
@@ -126,10 +126,10 @@ const handleSubmit = async (e) => {
                 </div>
               </RadioGroup>
               <Field orientation="horizontal">
-                <Button type="button text-white" variant="outline">
+                <Button type="button text-zinc-100" variant="outline">
                   Cancel
                 </Button>
-                <Button className="bg-indigo-800 text-white" type="submit">
+                <Button className="bg-purple-800 text-white" type="submit">
                   Submit
                 </Button>
               </Field>
