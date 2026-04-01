@@ -123,7 +123,7 @@ function MyJobs() {
 
             <div className='mt-4 flex'>
               <Button className="px-16">
-                <NavLink className={' '} to={`${j._id}/applicants`}>View Applicants </NavLink>
+                <NavLink className={' text-zinc-300'} to={`${j._id}/applicants`}>View Applicants </NavLink>
                 <ChevronRight/>
               </Button>
             </div>
