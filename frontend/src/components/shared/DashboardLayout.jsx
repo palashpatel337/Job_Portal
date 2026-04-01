@@ -71,7 +71,7 @@ function DashboardLayout() {
           <div className="relative z-10 flex min-h-screen">
 
             {/* ── Sidebar ── */}
-            <AdminMenu />
+            <AdminMenu className="bg-transparent"/>
 
             {/* ── Main content area ── */}
             <main className="flex-1 p-8 overflow-auto">
