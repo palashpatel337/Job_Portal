@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 function JobApplicants() {
   const { jobId } = useParams();
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
   const [job, setJob] = useState(null);
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -71,10 +71,10 @@ function JobApplicants() {
   };
 
   useEffect(() => {
-    if (jobId) {
+    if (jobId && auth?.token) {
       getApplicants();
     }
-  }, [jobId]);
+  }, [jobId, auth?.token]);
 
   // ==============================
   // Filter Applicants by Search
