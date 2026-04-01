@@ -28,22 +28,17 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append("fullname", fullname);
-      formData.append("email", email);
-      formData.append("phone", phone);
-      formData.append("password", password);
-      formData.append("role", role);
-      // if (photo) formData.append("photo", photo);
+      const data = {
+        fullname,
+        email,
+        phone,
+        password,
+        role,
+      };
 
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/user/register`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        },
+        data,
       );
       if (res.data.success) {
         navigate("/login");
