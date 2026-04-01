@@ -45,7 +45,7 @@ export default function AdminMenu() {
   return (
     <Sidebar
       collapsible="icon"
-      className="border-r-0 mt-20 bg-transparent w-[20vw] fixed left-0 top-0 h-screen z-50"
+      className="border-r-0 mt-20 !bg-transparent backdrop-blur-md w-[20vw] fixed left-0 top-0 h-screen z-50"
       style={{
         background: "transparent",
         // background: "linear-gradient(180deg, #1E1333 0%, #150E28 60%, #0D0A1A 100%)",
