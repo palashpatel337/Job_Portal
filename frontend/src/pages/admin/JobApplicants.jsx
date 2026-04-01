@@ -179,7 +179,7 @@ function JobApplicants() {
               {/* Resume Buttons */}
               <div className="flex gap-3 mb-3">
                 <a
-                  href={`${import.meta.env.VITE_API_URL}/uploads/${app?.applicant?.profile?.resume}`}
+                  href={`${app?.applicant?.profile?.resume}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-blue-500 text-white px-3 py-1 rounded-md text-sm hover:bg-blue-600"
@@ -188,7 +188,7 @@ function JobApplicants() {
                 </a>
 
                 <a
-                  href={`${import.meta.env.VITE_API_URL}/uploads/${app?.applicant?.profile?.resume}`}
+                  href={`${app?.applicant?.profile?.resume}`}
                   download
                   className="bg-gray-700 text-white px-3 py-1 rounded-md text-sm hover:bg-gray-800"
                 >
