@@ -69,7 +69,7 @@ function JobDetails() {
       if (res?.data?.success) {
         setJob(res.data.job);
         const alreadyApplied = res.data.job.applications?.some(
-          (app) => app.applicant?.toString()  === auth?.user?._id
+          (app) => app.applicant?.toString()  === auth?.user?._id?.toString()
         );
         setApplied(alreadyApplied);
       }
