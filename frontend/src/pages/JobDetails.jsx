@@ -67,10 +67,16 @@ function JobDetails() {
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
       if (res?.data?.success) {
+        console.log("Current user:", auth?.user?._id);
+console.log("Applications:", res.data.job.applications);
         setJob(res.data.job);
-        const alreadyApplied = res.data.job.applications?.some(
-          (app) => app.applicant?.toString()  === auth?.user?._id?.toString()
-        );
+
+        const alreadyApplied = res.data.job.applications?.some((app) => {
+  const applicantId =
+    typeof app.applicant === "object" ? app.applicant?._id : app.applicant;
+
+  return applicantId?.toString() === auth?.user?._id?.toString();
+});
         setApplied(alreadyApplied);
       }
     } catch (error) {
@@ -84,7 +90,7 @@ function JobDetails() {
     setApplying(true);
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v1/application/apply/${params.id}`,
+        `${import.meta.env.VITE_API_URL}/api/v1/application/apply/${params.id}`,{},
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
       if (res?.data?.success) setApplied(true);
