@@ -31,7 +31,7 @@ const mainNav = [
   { title: "Create Company",  url: "/dashboard/recruiter/create-company", icon: PlusCircle      },
   { title: "Post Job",        url: "/dashboard/recruiter/post-job",       icon: PlusCircle      },
   { title: "My Jobs",         url: "/dashboard/recruiter/my-jobs",        icon: Briefcase       },
-  { title: "Applications",    url: `/dashboard/recruiter/my-jobs/applicants`,     icon: Users           },
+  { title: "Applications",    url: `/dashboard/recruiter/my-jobs/:jobId/applicants`,     icon: Users           },
   ];
 
 const bottomNav = [

@@ -51,7 +51,7 @@ function App() {
             <Route path="recruiter/post-job" element={<PostJob />} />
             <Route path="recruiter/create-company" element={<CreateCompany />}/>
             <Route path="recruiter/my-jobs" element={<MyJobs />} />
-            <Route path="recruiter/my-jobs/applicants" element={<JobApplicants />} />
+            <Route path="recruiter/my-jobs/:jobId/applicants" element={<JobApplicants />} />
           </Route>
         </Route>
         <Route element={<PrivateRoute />}>
