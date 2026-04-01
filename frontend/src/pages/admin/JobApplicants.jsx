@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function JobApplicants() {
-  const params = useParams();
+  const jobId = useParams();
   const [auth] = useAuth();
   const [job, setJob] = useState(null);
   const [applications, setApplications] = useState([]);
@@ -17,10 +17,10 @@ function JobApplicants() {
   const getApplicants = async () => {
     try {
       setLoading(true);
-      console.log("🔍 Params:", params);
+      console.log("🔍 Params:", jobId);
       console.log("🔑 Auth Token:", auth?.token);
       
-      const url = `${import.meta.env.VITE_API_URL}/api/v1/application/${params.jobId}/applicants`;
+      const url = `${import.meta.env.VITE_API_URL}/api/v1/application/${jobId}/applicants`;
       console.log("📡 API URL:", url);
       console.log("🚀 Sending request with header:", { Authorization: `Bearer ${auth?.token}` });
 
@@ -96,14 +96,14 @@ function JobApplicants() {
 
   useEffect(() => {
     console.log("🔍 useEffect triggered");
-    console.log("params.id:", params.id, "auth?.token:", auth?.token);
-    if (params.id && auth?.token) {
+    console.log("jobId:", jobId, "auth?.token:", auth?.token);
+    if (jobId && auth?.token) {
       console.log("✅ Conditions met, calling getApplicants");
       getApplicants();
     } else {
-      console.warn("⚠️ Conditions not met - missing params.id or auth?.token");
+      console.warn("⚠️ Conditions not met - missing jobId or auth?.token");
     }
-  }, [params.id, auth?.token]);
+  }, [jobId, auth?.token]);
 
   // ==============================
   // Filter Applicants by Search
