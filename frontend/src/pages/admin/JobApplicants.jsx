@@ -20,7 +20,7 @@ function JobApplicants() {
       console.log("🔍 Params:", params);
       console.log("🔑 Auth Token:", auth?.token);
       
-      const url = `${import.meta.env.VITE_API_URL}/api/v1/application/${params.id}/applicants`;
+      const url = `${import.meta.env.VITE_API_URL}/api/v1/application/${params.jobId}/applicants`;
       console.log("📡 API URL:", url);
       console.log("🚀 Sending request with header:", { Authorization: `Bearer ${auth?.token}` });
 
