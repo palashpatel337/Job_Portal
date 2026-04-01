@@ -40,7 +40,7 @@ import { Outlet, Navigate } from 'react-router-dom';
 // }
 
 function PrivateRoute() {
-  const [auth] = useAuth();
+  const { auth } = useAuth();
 
   if (!auth?.token) {
     return <Navigate to="/login" />;

@@ -239,7 +239,7 @@ function GlowOrb({ className }) {
 function Homepage() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [auth] = useAuth();
+  const { auth } = useAuth();
 
   const getAllJobs = async () => {
     try {

@@ -22,7 +22,7 @@ import Profile from "./pages/user/Profile";
 import EditProfile from "./pages/user/EditProfile";
 
 function App() {
-  const [auth, setAuth] = useAuth();
+  const { auth, setAuth } = useAuth();
 // useEffect(() => {
 //   const data = localStorage.getItem("auth");
 

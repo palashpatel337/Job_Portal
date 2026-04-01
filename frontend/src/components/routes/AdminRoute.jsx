@@ -5,7 +5,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 function AdminRoute() {
   const [ok, setOk] = useState(false);
-  const [auth] = useAuth();
+  const { auth } = useAuth();
   const [loading, setLoading] = useState(true);
 
   console.log("Auth State:", auth);

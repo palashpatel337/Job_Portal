@@ -130,7 +130,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 function Navbar() {
-  const [auth, setAuth] = useAuth();
+  const { auth, setAuth } = useAuth();
   const [user, setUser] = useState(null);
 
   const getUserProfile = async () => {

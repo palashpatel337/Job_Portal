@@ -408,7 +408,7 @@ function SectionCard({ title, children }) {
 // ── Main ──────────────────────────────────────────────────────────────────────
 function EditProfile() {
   const navigate = useNavigate();
-  const [auth, setAuth] = useAuth();
+  const { auth, setAuth } = useAuth();
 
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/Auth";
 
 function CreateCompany() {
-  const [auth, setAuth] = useAuth();
+  const { auth, setAuth } = useAuth();
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
   const [logo, setLogo] = useState(null);

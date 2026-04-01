@@ -53,7 +53,7 @@ function DetailRow({ label, value }) {
 function JobDetails() {
   const params = useParams();
   const [job, setJob] = useState(null);
-  const [auth] = useAuth();
+  const { auth } = useAuth();
   const [loading, setLoading] = useState(true);
   const [applied, setApplied] = useState(false);
   const [applying, setApplying] = useState(false);

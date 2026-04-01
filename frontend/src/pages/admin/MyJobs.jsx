@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
 
 function MyJobs() {
-  const [auth, setAuth] = useAuth();
+  const { auth, setAuth } = useAuth();
   const [jobs, setJobs] = useState([]);
   const params = useParams()
 

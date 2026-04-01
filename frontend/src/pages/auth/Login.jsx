@@ -26,7 +26,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
-  const [auth, setAuth] = useAuth();
+  const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
 
 const handleSubmit = async (e) => {

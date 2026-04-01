@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/Auth";
 
 function PostJob() {
-  const [auth, setAuth] = useAuth();
+  const { auth, setAuth } = useAuth();
   const [title, setTitle] = useState("");
   const [jobType, setJobType] = useState("");
   const [salary, setSalary] = useState("");

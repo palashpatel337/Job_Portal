@@ -293,7 +293,7 @@ function ProfileSkeleton() {
 // ── Main ──────────────────────────────────────────────────────────────────────
 function Profile() {
   const [user, setUser] = useState(null);
-  const [auth] = useAuth();
+  const { auth } = useAuth();
   const [loading, setLoading] = useState(true);
 
   const getUserProfile = async () => {

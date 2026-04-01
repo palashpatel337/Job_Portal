@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 function JobApplicants() {
   const { jobId } = useParams();
-  const [auth] = useAuth();
+  const { auth } = useAuth();
   const [job, setJob] = useState(null);
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(false);

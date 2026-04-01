@@ -232,7 +232,7 @@ function SkeletonCard() {
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 function MyApplications() {
-  const [auth] = useAuth();
+  const { auth } = useAuth();
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
 
