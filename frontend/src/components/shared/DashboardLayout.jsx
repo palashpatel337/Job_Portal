@@ -51,7 +51,7 @@ function DashboardLayout() {
   return (
     <Layout>
       <div
-        className="min-h-screen"
+        className="min-h-screen bg-red-300"
         style={{
           background:
             "linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)",
