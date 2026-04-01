@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function JobApplicants() {
-  const jobId = useParams();
+  const { jobId } = useParams();
   const [auth] = useAuth();
   const [job, setJob] = useState(null);
   const [applications, setApplications] = useState([]);
