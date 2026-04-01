@@ -28,6 +28,8 @@ function JobApplicants() {
       );
 
       if (data?.success) {
+        console.log(data?.job);
+        
         const sortedApplicants =
           data?.job?.applications?.sort(
             (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
