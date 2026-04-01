@@ -69,7 +69,7 @@ const handleSubmit = async (e) => {
           </div>
           <div className="flex items-center border-b-4 border-indigo-800">
             <div>
-            <h1 className="text-4xl p-2 font-semibold ">Sign in</h1>
+            <h1 className="text-4xl p-2 font-semibold text-white">Sign in</h1>
             </div>
             <div>
             <KeyRoundIcon />
@@ -84,8 +84,9 @@ const handleSubmit = async (e) => {
           >
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="form-email">Email</FieldLabel>
+                <FieldLabel className="text-white" htmlFor="form-email">Email</FieldLabel>
                 <Input
+                  className="text-white"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                   id="form-email"
@@ -94,8 +95,9 @@ const handleSubmit = async (e) => {
                 />
               </Field>
               <Field>
-                <FieldLabel htmlFor="form-password">Password</FieldLabel>
+                <FieldLabel className="text-white" htmlFor="form-password">Password</FieldLabel>
                 <Input
+                  className="text-white"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   id="form-password"
@@ -107,18 +109,18 @@ const handleSubmit = async (e) => {
                 value={role}
                 onValueChange={(value) => setRole(value)}
               >
-                <Label className="pb-3" htmlFor="Role">
+                <Label className="pb-3 text-white" htmlFor="Role">
                   Role
                 </Label>
                 <div className="flex items-center gap-3">
                   <RadioGroupItem value="student" id="student" />
-                  <Label className="text-zinc-500" htmlFor="student">
+                  <Label className="text-white" htmlFor="student">
                     Student
                   </Label>
                 </div>
                 <div className="flex items-center gap-3">
                   <RadioGroupItem value="recruiter" id="recruiter" />
-                  <Label className="text-zinc-500" htmlFor="recruiter">
+                  <Label className="text-white" htmlFor="recruiter">
                     Recruiter
                   </Label>
                 </div>
