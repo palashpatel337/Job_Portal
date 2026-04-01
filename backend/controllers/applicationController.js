@@ -1,6 +1,7 @@
 import { populate } from "dotenv";
 import Application from "../models/applicationModel.js";
 import Job from "../models/jobModel.js";
+import { log } from "console";
 
 export const applyJob = async (req,res) => {
     try {
@@ -107,6 +108,7 @@ export const getApplicants = async (req,res) => {
             })
         }
         return res.status(201).json({
+            
             message: "Applicants fetched successfully",
             job,
             success: true

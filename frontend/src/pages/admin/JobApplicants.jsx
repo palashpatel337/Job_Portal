@@ -17,29 +17,40 @@ function JobApplicants() {
   const getApplicants = async () => {
     try {
       setLoading(true);
+      console.log("🔍 Params:", params);
+      console.log("🔑 Auth Token:", auth?.token);
+      
+      const url = `${import.meta.env.VITE_API_URL}/api/v1/application/${params.id}/applicants`;
+      console.log("📡 API URL:", url);
+      console.log("🚀 Sending request with header:", { Authorization: `Bearer ${auth?.token}` });
 
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/v1/application/${params.id}/applicants`,
-        {
-          headers: {
-            Authorization: `Bearer ${auth?.token}`
-          }
+      const { data } = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`
         }
-      );
+      });
+
+      console.log("✅ Response received:", data);
 
       if (data?.success) {
-        console.log(data?.job);
+        console.log("📦 Job data:", data?.job);
+        console.log("📝 Applications:", data?.job?.applications);
         
         const sortedApplicants =
           data?.job?.applications?.sort(
             (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
           ) || [];
 
+        console.log("📊 Sorted applicants:", sortedApplicants);
         setJob(data?.job);
         setApplications(sortedApplicants);
+      } else {
+        console.warn("⚠️ Response success is false:", data);
       }
     } catch (error) {
-      console.log(error.response?.data?.message || "Error fetching applicants");
+      console.error("❌ Error details:", error);
+      console.error("Response data:", error.response?.data);
+      console.error("Error message:", error.response?.data?.message || error.message);
     } finally {
       setLoading(false);
     }
@@ -50,8 +61,14 @@ function JobApplicants() {
   // ==============================
   const handleStatusChange = async (applicationId, newStatus) => {
     try {
+      console.log("🔄 Updating status for:", applicationId, "to:", newStatus);
+      console.log("🔑 Auth Token:", auth?.token);
+      
+      const url = `${import.meta.env.VITE_API_URL}/api/v1/application/status/${applicationId}/update`;
+      console.log("📡 API URL:", url);
+
       const { data } = await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/v1/application/status/${applicationId}/update`,
+        url,
         { status: newStatus },
         {
           headers: {
@@ -60,21 +77,31 @@ function JobApplicants() {
         }
       );
 
+      console.log("✅ Status update response:", data);
+
       if (data?.success) {
         setApplications((prev) =>
           prev.map((app) =>
             app._id === applicationId ? { ...app, status: newStatus } : app,
           ),
         );
+        console.log("✓ Application state updated");
       }
     } catch (error) {
-      console.log(error.response?.data?.message || "Error updating status");
+      console.error("❌ Status update error:", error);
+      console.error("Response data:", error.response?.data);
+      console.error("Error message:", error.response?.data?.message || error.message);
     }
   };
 
   useEffect(() => {
+    console.log("🔍 useEffect triggered");
+    console.log("params.id:", params.id, "auth?.token:", auth?.token);
     if (params.id && auth?.token) {
+      console.log("✅ Conditions met, calling getApplicants");
       getApplicants();
+    } else {
+      console.warn("⚠️ Conditions not met - missing params.id or auth?.token");
     }
   }, [params.id, auth?.token]);
 
