@@ -121,10 +121,12 @@ export const loginController = async (req, res) => {
     });
 
   } catch (error) {
-    return res.status(500).json({
-      message: "Internal Server Error",
-      success: false,
-    });
+    console.log("🔥 APPLY ERROR:", error);
+  return res.status(500).json({
+    success: false,
+    message: error.message,
+    fullError: error,
+  });
   }
 };
 

@@ -1,7 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config();
 import cookieParser from "cookie-parser";
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
+
 
 import fs from "fs";
 import connectDB from "./config/db.js";
@@ -14,7 +16,6 @@ import uploadRoute from "./routes/uploadRoute.js";
 
 const app = express();
 
-dotenv.config();
 
 
 app.use(cors({
