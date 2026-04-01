@@ -169,7 +169,8 @@ function Navbar() {
         <span
           className="font-bold text-xl tracking-tight"
           style={{
-            background: "linear-gradient(90deg, #413863, #715893)",
+            // background: "linear-gradient(90deg, #413863, #715893)",
+              background: "linear-gradient(90deg, #C4B5FD, #9D5CF6)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
