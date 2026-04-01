@@ -151,7 +151,7 @@ function CreateCompany() {
         </div>
 
         {/* COMPANY LIST */}
-        <div className="bg-transparent p-8 rounded-2xl shadow">
+        <div className="bg-transparent p-8 rounded-2xl shadow blur-sm">
           <h2 className="text-xl font-semibold mb-6">Companies</h2>
 
           {companies.length === 0 ? (
