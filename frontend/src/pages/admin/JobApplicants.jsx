@@ -118,10 +118,10 @@ function JobApplicants() {
   return (
     <div className="min-h-screen bg-transparent p-10 ml-[10vw] w-[60vw] shadow-lg rounded-2xl">
       {/* Job Header */}
-      <div className="bg-transparent shadow-sm rounded-sm p-4 mb-6 border-b-2">
-        <div className="flex justify-between p-2 border-b-2">
+      <div className="bg-transparent shadow-sm rounded-sm px-2 py-4 mb-6 border-b-2 border-zinc-900">
+        <div className="flex justify-between p-2 border-b-2 border-zinc-900">
           <div>
-            <h1 className="text-2xl font-bold text-gray-800 border-b">
+            <h1 className="text-2xl font-bold text-white">
               {job?.title || "Loading..."}
             </h1>
           </div>
@@ -132,16 +132,16 @@ function JobApplicants() {
               placeholder="Search applicant..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="border px-3 py-2 rounded-md w-full"
+              className="border px-3 py-2 rounded-md w-full text-zinc-400"
             />
           </div>
         </div>
 
-        <p className="text-gray-600 mt-2">
+        <p className="text-gray-100 mt-2">
           Total Applicants: {applications.length}
         </p>
 
-        <p className="text-green-600 text-sm">
+        <p className="text-indigo-800 text-sm">
           Accepted: {applications.filter((a) => a.status === "accepted").length}
         </p>
 
