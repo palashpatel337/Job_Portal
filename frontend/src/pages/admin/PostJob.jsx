@@ -107,7 +107,7 @@ function PostJob() {
 
   return (
     <div className="min-h-screen bg-transparent p-8 ml-[10vw]">
-      <h1 className="text-3xl font-bold text-center mb-10 text-gray-800">
+      <h1 className="text-3xl font-bold text-center mb-10 text-white">
         Post a New Job
       </h1>
 
@@ -116,8 +116,9 @@ function PostJob() {
           <FieldSet className="space-y-6 w-[40vw]">
             <FieldGroup>
               <Field>
-                <FieldLabel>Job Title</FieldLabel>
+                <FieldLabel className="text-white">Job Title</FieldLabel>
                 <Input
+                  className="text-zinc-200"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Frontend Developer"
@@ -126,9 +127,9 @@ function PostJob() {
               </Field>
 
               <Field>
-                <FieldLabel>Job Type</FieldLabel>
+                <FieldLabel className="text-white">Job Type</FieldLabel>
                 <select
-                  className="w-full border rounded-md p-2 bg-transparent"
+                  className="w-full border rounded-md p-2 bg-transparent text-zinc-200"
                   value={jobType}
                   onChange={(e) => setJobType(e.target.value)}
                   required
@@ -142,9 +143,9 @@ function PostJob() {
               </Field>
 
               <Field>
-                <FieldLabel>Experience Level</FieldLabel>
+                <FieldLabel className="text-white">Experience Level</FieldLabel>
                 <select
-                  className="w-full border rounded-md p-2 bg-transparent"
+                  className="w-full border rounded-md p-2 bg-transparent text-zinc-200"
                   value={experienceLevel}
                   onChange={(e) => setExperienceLevel(e.target.value)}
                   required
@@ -158,35 +159,38 @@ function PostJob() {
               </Field>
 
               <Field>
-                <FieldLabel>Salary (₹) in Lakh Per Annum (LPA)</FieldLabel>
+                <FieldLabel className="text-white">Salary (₹) in Lakh Per Annum (LPA)</FieldLabel>
                 <Input
                   type="number"
+                  className="text-zinc-200"
                   value={salary}
                   onChange={(e) => setSalary(e.target.value)}
                 />
               </Field>
 
               <Field>
-                <FieldLabel>No. of vacant positions </FieldLabel>
+                <FieldLabel className="text-white">No. of vacant positions </FieldLabel>
                 <Input
                   type="number"
+                  className="text-zinc-200"
                   value={position}
                   onChange={(e) => setPosition(e.target.value)}
                 />
               </Field>
 
               <Field>
-                <FieldLabel>Location</FieldLabel>
+                <FieldLabel className="text-white">Location</FieldLabel>
                 <Input
+                  className="text-zinc-200"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                 />
               </Field>
 
               <Field>
-                <FieldLabel>Requirements</FieldLabel>
+                <FieldLabel className="text-white">Requirements</FieldLabel>
                 <textarea
-                  className="w-full border rounded-md p-2 bg-transparent"
+                  className="w-full border rounded-md p-2 bg-transparent text-zinc-200"
                   rows="3"
                   value={requirements}
                   onChange={(e) => setRequirements(e.target.value)}
@@ -194,9 +198,9 @@ function PostJob() {
               </Field>
 
               <Field>
-                <FieldLabel>Job Description</FieldLabel>
+                <FieldLabel className="text-white">Job Description</FieldLabel>
                 <textarea
-                  className="w-full border rounded-md p-2 bg-transparent"
+                  className="w-full border rounded-md p-2 bg-transparent text-zinc-200"
                   rows="4"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
@@ -205,9 +209,9 @@ function PostJob() {
 
               {/* FIXED SELECT */}
               <Field>
-                <FieldLabel>Select Company</FieldLabel>
+                <FieldLabel className="text-white">Select Company</FieldLabel>
                 <select
-                  className="w-full border rounded-md p-2 bg-transparent"
+                  className="w-full border rounded-md p-2 bg-transparent text-zinc-200"
                   value={companyId}
                   onChange={(e) => setCompanyId(e.target.value)}
                   required
