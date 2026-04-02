@@ -655,7 +655,7 @@ function Homepage() {
 
         {/* ══ BROWSE BY CATEGORY ══ */}
         <div className="relative z-10 mb-10">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex gap-5 items-center justify-between mb-4">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase"
               style={{ color: 'rgba(196,181,253,0.45)' }}>
               Browse by category
@@ -723,7 +723,7 @@ function Homepage() {
         )}
 
         {/* ══ JOB GRID ══ */}
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 bg-yellow-900">
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {loading
             ? Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
 
