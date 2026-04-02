@@ -128,7 +128,7 @@ function PostJob() {
               <Field>
                 <FieldLabel>Job Type</FieldLabel>
                 <select
-                  className="w-full border rounded-md p-2"
+                  className="w-full border rounded-md p-2 bg-transparent"
                   value={jobType}
                   onChange={(e) => setJobType(e.target.value)}
                   required
@@ -144,7 +144,7 @@ function PostJob() {
               <Field>
                 <FieldLabel>Experience Level</FieldLabel>
                 <select
-                  className="w-full border rounded-md p-2"
+                  className="w-full border rounded-md p-2 bg-transparent"
                   value={experienceLevel}
                   onChange={(e) => setExperienceLevel(e.target.value)}
                   required
@@ -186,7 +186,7 @@ function PostJob() {
               <Field>
                 <FieldLabel>Requirements</FieldLabel>
                 <textarea
-                  className="w-full border rounded-md p-2"
+                  className="w-full border rounded-md p-2 bg-transparent"
                   rows="3"
                   value={requirements}
                   onChange={(e) => setRequirements(e.target.value)}
@@ -196,7 +196,7 @@ function PostJob() {
               <Field>
                 <FieldLabel>Job Description</FieldLabel>
                 <textarea
-                  className="w-full border rounded-md p-2"
+                  className="w-full border rounded-md p-2 bg-transparent"
                   rows="4"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
@@ -207,7 +207,7 @@ function PostJob() {
               <Field>
                 <FieldLabel>Select Company</FieldLabel>
                 <select
-                  className="w-full border rounded-md p-2"
+                  className="w-full border rounded-md p-2 bg-transparent"
                   value={companyId}
                   onChange={(e) => setCompanyId(e.target.value)}
                   required
