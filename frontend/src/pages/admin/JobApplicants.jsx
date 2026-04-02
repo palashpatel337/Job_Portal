@@ -116,9 +116,9 @@ function JobApplicants() {
   // UI
   // ==============================
   return (
-    <div className="min-h-screen bg-gray-100 p-10 ml-[10vw] w-[60vw] shadow-lg rounded-2xl">
+    <div className="min-h-screen bg-transparent p-10 ml-[10vw] w-[60vw] shadow-lg rounded-2xl">
       {/* Job Header */}
-      <div className="bg-white shadow-sm rounded-sm p-4 mb-6 border-b-2">
+      <div className="bg-transparent shadow-sm rounded-sm p-4 mb-6 border-b-2">
         <div className="flex justify-between p-2 border-b-2">
           <div>
             <h1 className="text-2xl font-bold text-gray-800 border-b">
@@ -159,7 +159,7 @@ function JobApplicants() {
           filteredApplicants.map((app) => (
             <div
               key={app._id}
-              className="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition"
+              className="bg-transparent shadow-md rounded-xl p-6 hover:shadow-lg transition"
             >
               {/* Applicant Header */}
               <div className="flex justify-between items-center mb-4">
