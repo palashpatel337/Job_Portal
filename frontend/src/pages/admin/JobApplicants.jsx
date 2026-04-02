@@ -141,7 +141,7 @@ function JobApplicants() {
           Total Applicants: {applications.length}
         </p>
 
-        <p className="text-indigo-800 text-sm">
+        <p className="text-indigo-600 text-sm">
           Accepted: {applications.filter((a) => a.status === "accepted").length}
         </p>
 
@@ -159,8 +159,15 @@ function JobApplicants() {
           filteredApplicants.map((app) => (
             <div
               key={app._id}
-              className="bg-transparent shadow-md rounded-xl p-6 hover:shadow-lg transition"
-            >
+ className="
+  bg-white/5 backdrop-blur-xl
+  border border-white/10
+  rounded-2xl p-6
+  shadow-lg shadow-purple-500/20
+  hover:shadow-purple-500/40
+  hover:border-purple-400/30
+  transition-all duration-300
+">    
               {/* Applicant Header */}
               <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-4">
