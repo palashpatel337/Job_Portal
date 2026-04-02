@@ -55,10 +55,10 @@ function Login() {
 
   return (
     <Layout>
-      <div className="lg:h-[100vh]">
+      <div className="lg:h-[100vh] py-[10vh]">
 
       <div className="lg:max-w-4xl lg:py-[20px]  flex lg:h-[50vh] px-20 mx-auto lg:flex  justify-cente items-center lg:gap-4 lg:justify-around lg:shadow-2xl  lg:max-h-[200vh] lg:border-1 border-zinc-200 rounded-lg">
-        <div className="flex items-center  lg:border-2 border-zinc-200 lg:flex-col lg:w-[180px] lg:h-[50vh] py-5">
+        <div className="flex items-center  lg:flex-col lg:w-[180px] lg:h-[50vh] py-5">
           <div className="hidden lg:inline-block">
             <span
               className="font-bold text-xl tracking-tight"
