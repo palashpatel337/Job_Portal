@@ -164,7 +164,7 @@ function JobApplicants() {
   border border-white/10
   rounded-2xl p-6
   shadow-lg shadow-purple-500/20
-  hover:shadow-purple-800/40
+  hover:shadow-purple-600/40
   hover:border-purple-400/30
   transition-all duration-300
 ">    
@@ -179,11 +179,11 @@ function JobApplicants() {
                   />
 
                   <div>
-                    <h2 className="text-lg font-semibold text-gray-100">
+                    <h2 className="text-lg font-semibold text-white">
                       {app?.applicant?.fullname}
                     </h2>
 
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-300 text-sm">
                       {app?.applicant?.email}
                     </p>
                   </div>
@@ -205,12 +205,12 @@ function JobApplicants() {
               </div>
 
               {/* Bio */}
-              <p className="text-gray-600 text-sm mb-2">
+              <p className="text-gray-500 text-sm mb-2">
                 {app?.applicant?.profile?.bio || "No bio provided"}
               </p>
 
               {/* Skills */}
-              <p className="text-sm text-gray-600 mb-3">
+              <p className="text-sm text-gray-500 mb-3">
                 Skills:{" "}
                 {app?.applicant?.profile?.skills?.length > 0
                   ? app?.applicant?.profile?.skills.join(", ")
