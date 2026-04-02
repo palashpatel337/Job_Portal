@@ -1,6 +1,7 @@
 import express from "express"
 import { loginController, logoutController, registerController, updateController, userProfileController } from "../controllers/userController.js"
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
+import { loginRateLimit } from "../middlewares/rateLimitMiddleware.js";
 import { upload } from "../middlewares/uploadmiddleware.js";
 
 
@@ -11,7 +12,7 @@ router.post("/register",
   // upload.single("photo"),
    registerController);
 
-router.post("/login", loginController)
+router.post("/login", loginRateLimit, loginController);
 
 router.get("/logout", logoutController)
 

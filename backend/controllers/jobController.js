@@ -1,4 +1,5 @@
 import Job from "../models/jobModel.js";
+import client from "../config/valkey.js";
 
 export const postJobController = async (req, res) => {
   try {
@@ -64,6 +65,21 @@ export const postJobController = async (req, res) => {
 export const getAllJobController = async (req, res) => {
   try {
     const keyword = req.query.keyword || "";
+    
+    // Create cache key based on keyword
+    const cacheKey = `jobs:${keyword}`;
+
+    // Try to get from cache
+    const cachedJobs = await client.get(cacheKey);
+    if (cachedJobs) {
+      console.log("📦 Jobs fetched from cache");
+      return res.status(200).json({
+        message: "Jobs successfully fetched from cache",
+        jobs: JSON.parse(cachedJobs),
+        success: true,
+        source: "cache",
+      });
+    }
 
     const query = {
       $or: [
@@ -74,20 +90,31 @@ export const getAllJobController = async (req, res) => {
 
     const jobs = await Job.find(query)
       .populate("companyId")
-      .populate("createdBy")
-      if (!jobs) {
+      .populate("createdBy");
+    
+    if (!jobs) {
       return res.status(404).json({
         message: "No results",
         success: false,
       });
     }
+
+    // Store in cache with 1 hour TTL
+    await client.setEx(cacheKey, 3600, JSON.stringify(jobs));
+    console.log("💾 Jobs cached for 1 hour");
+
     return res.status(200).json({
-      message: "Jobs successfully fetched",
+      message: "Jobs successfully fetched from database",
       jobs,
       success: true,
+      source: "database",
     });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({
+      message: "Error fetching jobs",
+      success: false,
+    });
   }
 };
 
