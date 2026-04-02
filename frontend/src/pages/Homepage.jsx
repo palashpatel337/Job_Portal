@@ -451,7 +451,7 @@ function JobCard({ job: j }) {
 function Homepage() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [auth] = useAuth();
+  const {auth} = useAuth();
 
   const [searchQuery, setSearchQuery]   = useState('');
   const [locationQuery, setLocationQuery] = useState('');
