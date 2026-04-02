@@ -3,7 +3,6 @@ dotenv.config();
 import cookieParser from "cookie-parser";
 import express from "express";
 import cors from "cors";
-import valkeyClient from "./config/valkey.js";
 
 
 
@@ -49,8 +48,6 @@ const startServer = async () => {
   try {
     console.log("MONGO_URL =", process.env.MONGO_URL);
     await connectDB();
-    await valkeyClient.connect(); // 🔥 connect valkey
-
 
     app.listen(PORT, () => {
       console.log(`✅ Server running on port ${PORT}`);

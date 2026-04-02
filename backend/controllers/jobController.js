@@ -1,5 +1,5 @@
 import Job from "../models/jobModel.js";
-import client from "../config/valkey.js";
+import { redis } from "../config/redis.js";
 
 export const postJobController = async (req, res) => {
   try {
@@ -48,6 +48,9 @@ export const postJobController = async (req, res) => {
       createdBy: userId,
     });
 
+    // Clear cache
+    await redis.del("jobs:all");
+
     return res.status(200).json({
       message: "New job successfully posted",
       job,
@@ -64,56 +67,37 @@ export const postJobController = async (req, res) => {
 
 export const getAllJobController = async (req, res) => {
   try {
-    const keyword = req.query.keyword || "";
-    
-    // Create cache key based on keyword
-    const cacheKey = `jobs:${keyword}`;
+    const cacheKey = "jobs:all";
 
-    // Try to get from cache
-    const cachedJobs = await client.get(cacheKey);
+    // 1) Check cache first
+    const cachedJobs = await redis.get(cacheKey);
+
     if (cachedJobs) {
-      console.log("📦 Jobs fetched from cache");
-      return res.status(200).json({
-        message: "Jobs successfully fetched from cache",
-        jobs: JSON.parse(cachedJobs),
+      return res.json({
         success: true,
-        source: "cache",
+        fromCache: true,
+        jobs: cachedJobs,
       });
     }
 
-    const query = {
-      $or: [
-        { title: { $regex: keyword, $options: "i" } },
-        { description: { $regex: keyword, $options: "i" } },
-      ],
-    };
-
-    const jobs = await Job.find(query)
+    // 2) Fetch from DB
+    const jobs = await Job.find({})
       .populate("companyId")
-      .populate("createdBy");
-    
-    if (!jobs) {
-      return res.status(404).json({
-        message: "No results",
-        success: false,
-      });
-    }
+      .sort({ createdAt: -1 });
 
-    // Store in cache with 1 hour TTL
-    await client.setEx(cacheKey, 3600, JSON.stringify(jobs));
-    console.log("💾 Jobs cached for 1 hour");
+    // 3) Save in cache for 60 seconds
+    await redis.set(cacheKey, jobs, { ex: 60 });
 
-    return res.status(200).json({
-      message: "Jobs successfully fetched from database",
-      jobs,
+    res.json({
       success: true,
-      source: "database",
+      fromCache: false,
+      jobs,
     });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({
-      message: "Error fetching jobs",
+    res.status(500).json({
       success: false,
+      message: "Error fetching jobs",
     });
   }
 };
@@ -121,28 +105,47 @@ export const getAllJobController = async (req, res) => {
 export const getJobByIdController = async (req, res) => {
   try {
     const jobId = req.params.id;
+    const cacheKey = `job:${jobId}`;
 
-const job = await Job.findById(req.params.id)
-  .populate({
-    path: "applications",
-    populate: {
-      path: "applicant",
-      select: "_id fullname email profile"
-    }
-  });
-    if (!job) {
-      return res.status(404).json({
-        message: "No results",
-        success: false,
+    const cachedJob = await redis.get(cacheKey);
+
+    if (cachedJob) {
+      return res.json({
+        success: true,
+        fromCache: true,
+        job: cachedJob,
       });
     }
-    return res.status(200).json({
-      message: "Job successfully fetched",
-      job,
+
+    const job = await Job.findById(jobId)
+      .populate({
+        path: "applications",
+        populate: {
+          path: "applicant",
+          select: "_id fullname email profile"
+        }
+      });
+
+    if (!job) {
+      return res.status(404).json({
+        success: false,
+        message: "Job not found",
+      });
+    }
+
+    await redis.set(cacheKey, job, { ex: 120 });
+
+    res.json({
       success: true,
+      fromCache: false,
+      job,
     });
   } catch (error) {
     console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Error fetching job",
+    });
   }
 };
 

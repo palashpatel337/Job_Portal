@@ -1,11 +1,12 @@
 import express from 'express'
 import { appliedJobs, applyJob, getApplicants, updateStaus } from '../controllers/applicationController.js'
 import { requireSignIn } from '../middlewares/authMiddleware.js'
-import { applyJobRateLimit } from '../middlewares/rateLimitMiddleware.js'
+import { upstashRateLimit } from '../middlewares/upstashRateLimit.js'
+import { applyLimiter } from '../middlewares/rateLimiter.js'
 
 const router = express.Router()
 
-router.post("/apply/:jobId", requireSignIn, applyJobRateLimit, applyJob)
+router.post("/apply/:jobId", requireSignIn, upstashRateLimit(applyLimiter), applyJob)
 
 router.get("/get",requireSignIn,appliedJobs)
 
