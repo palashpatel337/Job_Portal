@@ -29,59 +29,57 @@ function Login() {
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/v1/user/login`,
-      { email, password, role }
-    );
-
-    if (res.data.success) {
-      setAuth({
-        user: res.data.user,
-        token: res.data.token,
-      });
-
-      localStorage.setItem(
-        "auth",
-        JSON.stringify(res.data)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/user/login`,
+        { email, password, role },
       );
 
-      navigate("/");
-      console.log(res.data.token);
+      if (res.data.success) {
+        setAuth({
+          user: res.data.user,
+          token: res.data.token,
+        });
 
+        localStorage.setItem("auth", JSON.stringify(res.data));
+
+        navigate("/");
+        console.log(res.data.token);
+      }
+    } catch (error) {
+      console.log(error.response?.data?.message || "Login failed");
     }
-  } catch (error) {
-    console.log(error.response?.data?.message || "Login failed");
-  }
-};
-
+  };
 
   return (
     <Layout>
-      <div className="lg:max-w-4xl lg:py-[20px] border-y-2 border-zinc-200 flex h-[100vh] px-20 mx-auto lg:flex  justify-cente items-center lg:gap-4 lg:justify-around lg:shadow-2xl  lg:max-h-[200vh] lg:border-1 border-zinc-200 rounded-lg">
-        <div className="flex items-center  lg:flex-col lg:w-[180px] lg:h-[50vh] py-5">
+      <div className="lg:max-w-4xl lg:py-[20px]  flex h-[100vh] px-20 mx-auto lg:flex  justify-cente items-center lg:gap-4 lg:justify-around lg:shadow-2xl  lg:max-h-[200vh] lg:border-1 border-zinc-200 rounded-lg">
+        <div className="flex items-center  lg:border-2 border-zinc-200 lg:flex-col lg:w-[180px] lg:h-[50vh] py-5">
           <div className="hidden lg:inline-block">
-            <span 
-                      className="font-bold text-xl tracking-tight"
-          style={{
-            // background: "linear-gradient(90deg, #413863, #715893)",
-              background: "linear-gradient(90deg, #C4B5FD, #9D5CF6)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          Jobs
-        </span>
-        <span className="font-bold text-xl text-zinc-100 tracking-tight"> X</span>
-</div>
+            <span
+              className="font-bold text-xl tracking-tight"
+              style={{
+                // background: "linear-gradient(90deg, #413863, #715893)",
+                background: "linear-gradient(90deg, #C4B5FD, #9D5CF6)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Jobs
+            </span>
+            <span className="font-bold text-xl text-zinc-100 tracking-tight">
+              {" "}
+              X
+            </span>
+          </div>
           <div className="flex items-center border-b-4 border-indigo-800">
             <div>
-            <h1 className="text-4xl p-2 font-semibold text-white">Sign in</h1>
+              <h1 className="text-4xl p-2 font-semibold text-white">Sign in</h1>
             </div>
             <div>
-            <KeyRoundIcon className="text-zinc-100"/>
+              <KeyRoundIcon className="text-zinc-100" />
             </div>
           </div>
         </div>
@@ -93,7 +91,9 @@ const handleSubmit = async (e) => {
           >
             <FieldGroup>
               <Field>
-                <FieldLabel className="text-white" htmlFor="form-email">Email</FieldLabel>
+                <FieldLabel className="text-white" htmlFor="form-email">
+                  Email
+                </FieldLabel>
                 <Input
                   className="text-white"
                   onChange={(e) => setEmail(e.target.value)}
@@ -104,7 +104,9 @@ const handleSubmit = async (e) => {
                 />
               </Field>
               <Field>
-                <FieldLabel className="text-white" htmlFor="form-password">Password</FieldLabel>
+                <FieldLabel className="text-white" htmlFor="form-password">
+                  Password
+                </FieldLabel>
                 <Input
                   className="text-white"
                   onChange={(e) => setPassword(e.target.value)}
