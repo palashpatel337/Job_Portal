@@ -105,7 +105,7 @@ function CreateCompany() {
   }, []);
 
   return (
-    <div className="min-h-screen p-8 lg:ml-[10vw]">
+    <div className="min-h-screen p-8 lg:ml-[10vw] shadow-lg rounded-2xl">
       <div className="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
 
         {/* FORM */}

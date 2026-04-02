@@ -116,7 +116,7 @@ function JobApplicants() {
   // UI
   // ==============================
   return (
-    <div className="min-h-screen bg-gray-100 p-10 ml-[10vw] w-[60vw]">
+    <div className="min-h-screen bg-gray-100 p-10 ml-[10vw] w-[60vw] shadow-lg rounded-2xl">
       {/* Job Header */}
       <div className="bg-white shadow-sm rounded-sm p-4 mb-6 border-b-2">
         <div className="flex justify-between p-2 border-b-2">

@@ -106,7 +106,7 @@ function PostJob() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-transparent p-8 ml-[10vw]">
+    <div className="min-h-screen bg-transparent p-8 ml-[10vw] shadow-lg rounded-2xl">
       <h1 className="text-3xl font-bold text-left text-white w-full ml-8">
         Post a New Job
       </h1>

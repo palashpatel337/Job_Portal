@@ -39,7 +39,7 @@ function MyJobs() {
 
 
   return (
-  <div className="min-h-screen bg-transparent p-8 ml-[8vw] ">
+  <div className="min-h-screen bg-transparent p-8 ml-[8vw] shadow-lg rounded-2xl">
     <h1 className="text-3xl font-bold mb-8 text-gray-800">
       My Posted Jobs
     </h1>
