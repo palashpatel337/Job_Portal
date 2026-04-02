@@ -132,7 +132,7 @@ function JobApplicants() {
               placeholder="Search applicant..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="border px-3 py-2 rounded-md w-full text-zinc-400"
+              className="border px-3 py-2 rounded-md w-full text-zinc-400 bg-[#7C3AED]"
             />
           </div>
         </div>
@@ -172,11 +172,11 @@ function JobApplicants() {
                   />
 
                   <div>
-                    <h2 className="text-lg font-semibold text-gray-800">
+                    <h2 className="text-lg font-semibold text-gray-100">
                       {app?.applicant?.fullname}
                     </h2>
 
-                    <p className="text-gray-500 text-sm">
+                    <p className="text-gray-400 text-sm">
                       {app?.applicant?.email}
                     </p>
                   </div>
