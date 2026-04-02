@@ -132,7 +132,7 @@ function JobApplicants() {
               placeholder="Search applicant..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="border px-3 py-2 rounded-md w-full text-zinc-400 bg-[#7C3AED]"
+              className="border-1 border-[#7C3AED] px-3 py-2 rounded-md w-full text-zinc-400 bg-[#380070]"
             />
           </div>
         </div>
