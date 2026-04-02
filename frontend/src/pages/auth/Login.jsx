@@ -55,7 +55,9 @@ function Login() {
 
   return (
     <Layout>
-      <div className="lg:max-w-4xl lg:py-[20px]  flex h-[100vh] px-20 mx-auto lg:flex  justify-cente items-center lg:gap-4 lg:justify-around lg:shadow-2xl  lg:max-h-[200vh] lg:border-1 border-zinc-200 rounded-lg">
+      <div className="lg:h-[100vh]">
+
+      <div className="lg:max-w-4xl lg:py-[20px]  flex lg:h-[50vh] px-20 mx-auto lg:flex  justify-cente items-center lg:gap-4 lg:justify-around lg:shadow-2xl  lg:max-h-[200vh] lg:border-1 border-zinc-200 rounded-lg">
         <div className="flex items-center  lg:border-2 border-zinc-200 lg:flex-col lg:w-[180px] lg:h-[50vh] py-5">
           <div className="hidden lg:inline-block">
             <span
@@ -66,7 +68,7 @@ function Login() {
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
-            >
+              >
               Jobs
             </span>
             <span className="font-bold text-xl text-zinc-100 tracking-tight">
@@ -88,7 +90,7 @@ function Login() {
             action=""
             onSubmit={handleSubmit}
             className="w-[350px] max-w-sm"
-          >
+            >
             <FieldGroup>
               <Field>
                 <FieldLabel className="text-white" htmlFor="form-email">
@@ -101,7 +103,7 @@ function Login() {
                   id="form-email"
                   type="email"
                   placeholder="john@example.com"
-                />
+                  />
               </Field>
               <Field>
                 <FieldLabel className="text-white" htmlFor="form-password">
@@ -114,12 +116,12 @@ function Login() {
                   id="form-password"
                   type="password"
                   placeholder="password"
-                />
+                  />
               </Field>
               <RadioGroup
                 value={role}
                 onValueChange={(value) => setRole(value)}
-              >
+                >
                 <Label className="pb-3 text-white" htmlFor="Role">
                   Role
                 </Label>
@@ -148,6 +150,7 @@ function Login() {
           </form>
         </div>
       </div>
+                </div>
     </Layout>
   );
 }
