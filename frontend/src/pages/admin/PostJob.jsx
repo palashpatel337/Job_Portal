@@ -107,10 +107,10 @@ function PostJob() {
 
   return (
     <div className="min-h-screen bg-transparent p-8 ml-[10vw]">
-      <h1 className="text-3xl font-bold text-left text-white w-full mx-auto">
+      <h1 className="text-3xl font-bold text-left text-white w-full ml-8">
         Post a New Job
       </h1>
-      <div className="mx-auto p-[1px] rounded-2xl bg-gradient-to-r from-purple-900 via-indigo-900 to-fuchsia-800"></div>
+      <div className="ml-8 p-[1px] rounded-2xl bg-gradient-to-r from-indigo-900 via-indigo-700 to-fuchsia-800"></div>
 
 
       <div className="max-w-4xl mx-auto bg-transparent p-8 rounded-2xl shadow-lg">
