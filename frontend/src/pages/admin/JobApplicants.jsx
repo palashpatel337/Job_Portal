@@ -164,7 +164,7 @@ function JobApplicants() {
   border border-white/10
   rounded-2xl p-6
   shadow-lg shadow-purple-500/20
-  hover:shadow-purple-500/40
+  hover:shadow-purple-800/40
   hover:border-purple-400/30
   transition-all duration-300
 ">    
