@@ -232,7 +232,7 @@ function PostJob() {
 
               <Button
                 type="submit"
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+                className="w-full bg-[#210042] hover:bg-[#310061] text-white"
               >
                 Post Job
               </Button>
