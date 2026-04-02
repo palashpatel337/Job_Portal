@@ -263,7 +263,7 @@ export default function AdminMenu() {
         <div className="flex items-center gap-3">
           <div
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold text-white"
-            style={{ background: "linear-gradient(135deg, #7C3AED, #9D5CF6)" }}
+            style={{ background: "linear-gradient(135deg, #3f02a9, #28045c)" }}
           >
             R
           </div>

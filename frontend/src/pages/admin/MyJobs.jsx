@@ -39,7 +39,7 @@ function MyJobs() {
 
 
   return (
-  <div className="min-h-screen bg-transparent p-8 ml-[8vw] bg-gradient-to-br form-purple-300 to-red-400">
+  <div className="min-h-screen bg-transparent p-8 ml-[8vw] ">
     <h1 className="text-3xl font-bold mb-8 text-gray-800">
       My Posted Jobs
     </h1>
@@ -53,7 +53,7 @@ function MyJobs() {
         {jobs.map((j) => (
           <div
             key={j._id}
-            className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 border"
+            className="bg-transparent rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 border"
           >
             {/* Job Title */}
             <h2 className="text-xl font-bold text-indigo-600 mb-3">

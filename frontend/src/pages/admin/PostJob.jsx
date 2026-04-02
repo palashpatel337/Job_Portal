@@ -106,12 +106,12 @@ function PostJob() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8 ml-[10vw]">
+    <div className="min-h-screen bg-transparent p-8 ml-[10vw]">
       <h1 className="text-3xl font-bold text-center mb-10 text-gray-800">
         Post a New Job
       </h1>
 
-      <div className="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+      <div className="max-w-4xl mx-auto bg-transparent p-8 rounded-2xl shadow-lg">
         <form onSubmit={handlePost}>
           <FieldSet className="space-y-6 w-[40vw]">
             <FieldGroup>

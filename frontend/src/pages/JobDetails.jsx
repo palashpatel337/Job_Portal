@@ -21,11 +21,11 @@ function GlowOrb({ className, style }) {
 // ── Info badge ────────────────────────────────────────────────────────────────
 function InfoBadge({ children, color = "purple" }) {
   const styles = {
-    purple: "bg-purple-500/20 text-purple-300 border-purple-500/30",
-    green:  "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
-    amber:  "bg-amber-500/20 text-amber-300 border-amber-500/30",
-    rose:   "bg-rose-500/20 text-rose-300 border-rose-500/30",
-    sky:    "bg-sky-500/20 text-sky-300 border-sky-500/30",
+    purple: "bg-transparent text-purple-300 border-purple-500/30",
+    green:  "bg-transparent text-emerald-300 border-emerald-500/30",
+    amber:  "bg-transparent text-amber-300 border-amber-500/30",
+    rose:   "bg-transparent text-rose-300 border-rose-500/30",
+    sky:    "bg-transparent text-sky-300 border-sky-500/30",
   };
   return (
     <span
