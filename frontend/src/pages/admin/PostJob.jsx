@@ -107,9 +107,11 @@ function PostJob() {
 
   return (
     <div className="min-h-screen bg-transparent p-8 ml-[10vw]">
-      <h1 className="text-3xl font-bold text-left mb-10 text-white border-b-2 border-indigo-600 w-full pl-10">
+      <h1 className="text-3xl font-bold text-left mb-10 text-white w-full ml-10">
         Post a New Job
       </h1>
+      <div className="ml-10 p-[1px] rounded-2xl bg-gradient-to-r from-purple-500 via-indigo-500 to-fuchsia-500"></div>
+
 
       <div className="max-w-4xl mx-auto bg-transparent p-8 rounded-2xl shadow-lg">
         <form onSubmit={handlePost}>
