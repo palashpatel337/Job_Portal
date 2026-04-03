@@ -609,7 +609,7 @@ function JobApplicants() {
               {/* Left Side */}
               <div className="flex items-center gap-4">
                 <img
-                  src={`${import.meta.env.VITE_API_URL}/uploads/${app?.applicant?.profile?.profilePhoto}`}
+                  src={`${app?.applicant?.profile?.profilePhoto}`}
                   alt="profile"
                   className="w-14 h-14 rounded-full object-cover border border-white/10"
                 />
