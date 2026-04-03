@@ -295,7 +295,7 @@ function CreateCompany() {
 
   return (
     <div
-      className="min-h-screen relative overflow-hidden px-4 sm:px-8 lg:px-16 py-12"
+      className="min-h-screen relative overflow-hidden px-4 sm:px-8 lg:pl-16 lg:pr-48 py-12"
       style={{
         background:
           "linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)",
@@ -323,7 +323,7 @@ function CreateCompany() {
             Create and manage your recruiter companies.
           </p>
 
-        <div className="grid lg:grid-cols-2 gap-10">
+        <div className="px-8 mx-28 mt-10">
           {/* FORM */}
           <div
             className="p-8 rounded-2xl border backdrop-blur-xl"
@@ -415,7 +415,7 @@ function CreateCompany() {
               borderColor: "rgba(196,181,253,0.15)",
             }}
           >
-            <h2 className="text-xl font-semibold text-white mb-6 px-48">
+            <h2 className="text-xl font-semibold text-white mb-6 px-8">
               Your Companies
             </h2>
 
