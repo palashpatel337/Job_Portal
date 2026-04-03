@@ -1635,12 +1635,14 @@ className="
                 }}
               >
                 {/* LEFT: Profile + Basic Info */}
-                <div className="flex items-center gap-4 w-full md:w-[35%]">
-                  <img
-                    src={`${app?.applicant?.profile?.profilePhoto}`}
-                    alt="profile"
-                    className="w-14 h-14 rounded-full object-cover border border-white/10"
-                  />
+                <div className="flex justify-between gap-12 w-full md:w-[35%]">
+                  <div>
+
+                    <img
+                      src={`${app?.applicant?.profile?.profilePhoto}`}
+                      alt="profile"
+                      className="w-14 h-14 rounded-full object-cover border border-white/10"
+                    />
 
                   <div className="flex flex-col">
                     <h2 className="text-lg font-semibold text-white">
@@ -1655,10 +1657,7 @@ className="
                       Applied on{" "}
                       {new Date(app.createdAt).toLocaleDateString("en-IN")}
                     </p>
-                  </div>
-                </div>
-
-                {/* CENTER: Bio + Skills */}
+                    </div>
                 <div className="w-full md:w-[40%] text-sm text-white/50 leading-relaxed border-t md:border-t-0 md:border-l border-white/10 md:pl-6 pt-4 md:pt-0">
                   <p className="mb-2">
                     <span className="text-white/70 font-semibold">Bio:</span>{" "}
@@ -1673,6 +1672,10 @@ className="
                   </p>
                 </div>
 
+                  </div>
+                </div>
+
+                {/* CENTER: Bio + Skills */}
                 {/* RIGHT: Status + Actions */}
                 <div className="flex flex-col md:items-end gap-4 w-full md:w-[25%]">
                   {/* Badge */}
