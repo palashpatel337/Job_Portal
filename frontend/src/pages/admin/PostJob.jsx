@@ -387,7 +387,7 @@ function PostJob() {
 
       {/* Main Form Card */}
       <div
-        className="relative z-10 max-w-4xl lg:w-[50vw] mx-auto rounded-2xl border backdrop-blur-xl shadow-lg"
+        className="relative z-10 max-w-4xl lg:w-[50vw] p-8 mx-auto rounded-2xl border backdrop-blur-xl shadow-lg"
         style={{
           background: "rgba(255,255,255,0.04)",
           borderColor: "rgba(196,181,253,0.15)",
