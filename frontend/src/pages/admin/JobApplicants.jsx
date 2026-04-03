@@ -1620,8 +1620,15 @@ function JobApplicants() {
             {filteredApplicants.map((app) => (
               <div
                 key={app._id}
-                className="p-6 rounded-2xl border backdrop-blur-xl shadow-lg flex flex-col md:flex-row md:items-center md:justify-between gap-6"
-                style={{
+className="
+        bg-white/5 backdrop-blur-xl
+        border border-white/10
+        rounded-2xl p-6
+        shadow-lg shadow-purple-500/20
+        hover:shadow-purple-600/40
+        hover:border-purple-400/30
+        transition-all duration-300
+      "                style={{
                   background: "rgba(255,255,255,0.04)",
                   borderColor: "rgba(196,181,253,0.15)",
                 }}
