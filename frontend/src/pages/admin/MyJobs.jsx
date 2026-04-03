@@ -243,7 +243,7 @@ function MyJobs() {
 
         {/* Jobs Grid */}
         {!loading && jobs.length > 0 && (
-          <div className="relative z-10 flex md:flex-row-2 lg:flex-row-3 gap-4">
+          <div className="relative z-10 flex md:flex-wrap lg:flex-wrap gap-4">
             {jobs.map((j) => (
               <div
                 key={j._id}
