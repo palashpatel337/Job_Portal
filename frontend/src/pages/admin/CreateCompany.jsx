@@ -618,7 +618,7 @@ function CreateCompany() {
 
   return (
     <div
-      className="min-h-screen relative overflow-hidden sm:px-8 lg:pl-16 lg:pr-48 py-10 w-full"
+      className="min-h-screen relative overflow-hidden sm:px-8 lg:pl-16 lg:pr-48 py-16 w-full"
       style={{
         background:
           "linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)",
