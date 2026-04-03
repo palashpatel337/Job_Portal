@@ -323,7 +323,7 @@ function CreateCompany() {
             Create and manage your recruiter companies.
           </p>
 
-        <div className="px-8 mx-28 mt-10">
+        <div className="px-8 ml-28 mt-10">
           {/* FORM */}
           <div
             className="p-8 rounded-2xl border backdrop-blur-xl"
@@ -347,7 +347,7 @@ function CreateCompany() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter company name"
                   required
-                  className="bg-transparent text-white border-white/10 focus:border-purple-400 focus:ring-purple-500/30"
+                  className="lg:w-[40vw] bg-transparent text-white border-white/10 focus:border-purple-400 focus:ring-purple-500/30"
                 />
               </div>
 
@@ -409,7 +409,7 @@ function CreateCompany() {
 
           {/* COMPANY LIST */}
           <div
-            className="p-8 mx-28 rounded-2xl border backdrop-blur-xl w-full"
+            className="p-8 mx-28 rounded-2xl border backdrop-blur-xl w-full mt-10"
             style={{
               background: "rgba(255,255,255,0.04)",
               borderColor: "rgba(196,181,253,0.15)",
