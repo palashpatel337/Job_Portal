@@ -898,7 +898,7 @@ function RecruiterDashboard() {
         }}
       />
 
-      <div className="flex-1 lg:pl-20 lg:pr-48 lg:py-10 mt-5">
+      <div className="flex-1 lg:pl-16 lg:pr-48 lg:py-10 mt-5">
         {/* Title */}
         <div className="mb-10">
           <h1 className="text-3xl font-bold text-white">Recruiter Dashboard</h1>
