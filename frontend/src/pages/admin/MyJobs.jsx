@@ -460,7 +460,7 @@ function MyJobs() {
 
   return (
     <div
-      className="min-h-screen relative overflow-hidden lg:pl-16 py-12 mr-32 pr-8"
+      className="min-h-screen relative overflow-hidden lg:pl-16 py-5 mr-32 pr-8"
       style={{
         background:
           "linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)",
@@ -488,7 +488,6 @@ function MyJobs() {
             View, manage, and track all your posted jobs.
           </p>
 
-          <div className="mt-5 h-[1px] w-full rounded-2xl bg-gradient-to-r from-purple-500/60 via-fuchsia-500/40 to-indigo-500/20" />
         </div>
 
         {/* Skeleton Loading */}
