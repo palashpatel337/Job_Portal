@@ -607,7 +607,7 @@ function JobApplicants() {
               }}
             >
               {/* Left Side */}
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col md:flex-row md:items-center gap-4">
                 <img
                   src={`${app?.applicant?.profile?.profilePhoto}`}
                   alt="profile"
