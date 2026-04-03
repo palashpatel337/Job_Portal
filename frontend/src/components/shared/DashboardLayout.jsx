@@ -96,13 +96,7 @@ function DashboardLayout() {
             {/* ── Main content ── */}
             <main className="flex-1 p-8 overflow-auto">
               {/* Accent line */}
-              <div
-                className="mb-8 h-px w-full"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(124,58,237,0.6), rgba(196,181,253,0.2), transparent)",
-                }}
-              />
+              
               <div className="text-white">
                 <Outlet />
               </div>
