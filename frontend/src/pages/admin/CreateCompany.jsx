@@ -315,14 +315,13 @@ function CreateCompany() {
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto flex flex-col ">
         {/* Page Title */}
         <div className="mb-10">
           <h1 className="text-3xl font-bold text-white">Company Management</h1>
           <p className="text-sm mt-2 text-white/50">
             Create and manage your recruiter companies.
           </p>
-        </div>
 
         <div className="grid lg:grid-cols-2 gap-10">
           {/* FORM */}
@@ -406,10 +405,11 @@ function CreateCompany() {
               </Button>
             </form>
           </div>
+        </div>
 
           {/* COMPANY LIST */}
           <div
-            className="p-8 rounded-2xl border backdrop-blur-xl"
+            className="p-8 rounded-2xl border backdrop-blur-xl w-full"
             style={{
               background: "rgba(255,255,255,0.04)",
               borderColor: "rgba(196,181,253,0.15)",
