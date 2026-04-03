@@ -247,7 +247,7 @@ function MyJobs() {
             {jobs.map((j) => (
               <div
                 key={j._id}
-                className="rounded-2xl lg:w-[15vw] border backdrop-blur-xl p-6 shadow-lg hover:scale-[1.02] transition duration-200"
+                className="rounded-2xl lg:w-[20vw] border backdrop-blur-xl p-6 mx-5 shadow-lg hover:scale-[1.02] transition duration-200"
                 style={{
                   background: "rgba(255,255,255,0.04)",
                   borderColor: "rgba(196,181,253,0.15)",
