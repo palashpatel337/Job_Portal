@@ -359,7 +359,7 @@ function PostJob() {
       }}
     >
 
-    <div className="relative overflow-hidden min-h-screen px-6 py-10 lg:pl-20 ">
+    <div className="relative overflow-hidden min-h-screen py-10 lg:pl-16 ">
       {/* Glow Orbs */}
       <div
         className="fixed top-0 right-0 w-96 h-96 rounded-full pointer-events-none blur-3xl opacity-25"
