@@ -969,7 +969,7 @@ function JobApplicants() {
         />
 
         {/* Header */}
-        <div className="relative z-10 mb-10">
+        <div className="relative z-10 mb-10 w-[60vw]">
           <h1 className="text-3xl font-bold text-white">
             {job?.title || "Loading Job..."}
           </h1>
