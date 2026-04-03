@@ -300,7 +300,7 @@ function RecruiterDashboard() {
   return (
     // <Layout>
       <div
-        className="min-h-screen relative overflow-hidden"
+        className="relative overflow-hidden"
         style={{
           background:
             "linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)",
@@ -320,11 +320,6 @@ function RecruiterDashboard() {
           }}
         />
 
-        <div className="relative z-10 flex">
-          {/* Sidebar */}
-          <AdminMenu />
-
-          {/* Main */}
           <div className="flex-1 px-6 py-10 mt-20 ml-[20vw]">
             {/* Title */}
             <div className="mb-10">
@@ -654,9 +649,14 @@ function RecruiterDashboard() {
             <div className="h-20"></div>
           </div>
         </div>
-      </div>
-    // {/* </Layout> */}
   );
 }
 
 export default RecruiterDashboard;
+{/* <div className="relative z-10 flex"> */}
+  {/* Sidebar */}
+  // <AdminMenu />
+
+  {/* Main */}
+// </div>
+// {/* </Layout> */}
