@@ -323,7 +323,7 @@ function CreateCompany() {
             Create and manage your recruiter companies.
           </p>
 
-        <div className="px-8 ml-24 mt-10">
+        <div className="px-8 ml-20 mt-10">
           {/* FORM */}
           <div
             className="p-8 rounded-2xl border backdrop-blur-xl"
@@ -452,7 +452,7 @@ function CreateCompany() {
                       </div>
                     )}
 
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1">
                       <p className="text-white font-semibold truncate">
                         {c.name}
                       </p>
