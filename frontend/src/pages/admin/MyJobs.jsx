@@ -191,7 +191,7 @@ function MyJobs() {
           "linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)",
       }}
     >
-      <div className="relative overflow-hidden min-h-screen px-6 py-10 lg:pl-20 lg:pr-48">
+      <div className="relative overflow-hidden min-h-screen px-6 py-10 lg:pl-20 ">
         {/* Glow Orbs */}
         <div
           className="fixed top-0 right-0 w-96 h-96 rounded-full pointer-events-none blur-3xl opacity-25"
