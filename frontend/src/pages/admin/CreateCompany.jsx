@@ -316,12 +316,14 @@ function CreateCompany() {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col mb-16">
-        <div className="mb-10 ml-20">
+        <div className="mb-10 ">
         {/* Page Title */}
+        <div className="ml-20">
           <h1 className="text-3xl font-bold text-white">Company Management</h1>
           <p className="text-sm mt-2 text-white/50">
             Create and manage your recruiter companies.
           </p>
+        </div>
 
         <div className="px-8 ml-20 mt-10">
           {/* FORM */}

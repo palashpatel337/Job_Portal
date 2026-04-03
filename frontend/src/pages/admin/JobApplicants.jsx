@@ -19,7 +19,7 @@
 //       setLoading(true);
 //       console.log("🔍 Params:", jobId);
 //       console.log("🔑 Auth Token:", auth?.token);
-      
+
 //       const url = `${import.meta.env.VITE_API_URL}/api/v1/application/${jobId}/applicants`;
 //       console.log("📡 API URL:", url);
 //       console.log("🚀 Sending request with header:", { Authorization: `Bearer ${auth?.token}` });
@@ -35,7 +35,7 @@
 //       if (data?.success) {
 //         console.log("📦 Job data:", data?.job);
 //         console.log("📝 Applications:", data?.job?.applications);
-        
+
 //         const sortedApplicants =
 //           data?.job?.applications?.sort(
 //             (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
@@ -63,7 +63,7 @@
 //     try {
 //       console.log("🔄 Updating status for:", applicationId, "to:", newStatus);
 //       console.log("🔑 Auth Token:", auth?.token);
-      
+
 //       const url = `${import.meta.env.VITE_API_URL}/api/v1/application/status/${applicationId}/update`;
 //       console.log("📡 API URL:", url);
 
@@ -167,7 +167,7 @@
 //   hover:shadow-purple-600/40
 //   hover:border-purple-400/30
 //   transition-all duration-300
-// ">    
+// ">
 //               {/* Applicant Header */}
 //               <div className="flex justify-between items-center mb-4">
 //                 <div className="flex items-center gap-4">
@@ -279,8 +279,6 @@
 // }
 
 // export default JobApplicants;
-
-
 
 import { useAuth } from "@/context/Auth";
 import axios from "axios";
@@ -444,282 +442,291 @@ function JobApplicants() {
   };
 
   return (
-    <div className="relative overflow-hidden min-h-screen px-6 py-10 lg:pl-20 lg:pr-48">
-      {/* Glow Orbs */}
-      <div
-        className="fixed top-0 right-0 w-96 h-96 rounded-full pointer-events-none blur-3xl opacity-25"
-        style={{
-          background: "radial-gradient(circle, #7C3AED, transparent 70%)",
-        }}
-      />
-      <div
-        className="fixed bottom-1/3 left-0 w-72 h-72 rounded-full pointer-events-none blur-3xl opacity-20"
-        style={{
-          background: "radial-gradient(circle, #9D5CF6, transparent 70%)",
-        }}
-      />
-
-      {/* Header */}
-      <div className="relative z-10 mb-10">
-        <h1 className="text-3xl font-bold text-white">
-          {job?.title || "Loading Job..."}
-        </h1>
-        <p className="text-sm mt-2 text-white/50">
-          Manage applicants and update their status instantly.
-        </p>
-
-        <div className="mt-5 h-[1px] w-full rounded-2xl bg-gradient-to-r from-purple-500/60 via-fuchsia-500/40 to-indigo-500/20" />
-      </div>
-
-      {/* Stats */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+    <div
+      className="min-h-screen relative overflow-hidden px-4 sm:px-8 lg:pl-16 lg:pr-48 py-12"
+      style={{
+        background:
+          "linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)",
+      }}
+    >
+      <div className="relative overflow-hidden min-h-screen px-6 py-10 lg:pl-20 lg:pr-48">
+        {/* Glow Orbs */}
         <div
-          className="p-5 rounded-2xl border backdrop-blur-xl"
+          className="fixed top-0 right-0 w-96 h-96 rounded-full pointer-events-none blur-3xl opacity-25"
           style={{
-            background: "rgba(255,255,255,0.04)",
-            borderColor: "rgba(196,181,253,0.15)",
+            background: "radial-gradient(circle, #7C3AED, transparent 70%)",
           }}
-        >
-          <div className="flex items-center gap-3">
-            <Users className="text-purple-300" size={20} />
-            <p className="text-white/60 text-sm font-semibold">Applicants</p>
-          </div>
-          <h2 className="text-3xl font-bold text-white mt-3">{stats.total}</h2>
-        </div>
-
+        />
         <div
-          className="p-5 rounded-2xl border backdrop-blur-xl"
+          className="fixed bottom-1/3 left-0 w-72 h-72 rounded-full pointer-events-none blur-3xl opacity-20"
           style={{
-            background: "rgba(255,255,255,0.04)",
-            borderColor: "rgba(196,181,253,0.15)",
+            background: "radial-gradient(circle, #9D5CF6, transparent 70%)",
           }}
-        >
-          <div className="flex items-center gap-3">
-            <Clock className="text-yellow-300" size={20} />
-            <p className="text-white/60 text-sm font-semibold">Pending</p>
-          </div>
-          <h2 className="text-3xl font-bold text-white mt-3">
-            {stats.pending}
-          </h2>
-        </div>
+        />
 
-        <div
-          className="p-5 rounded-2xl border backdrop-blur-xl"
-          style={{
-            background: "rgba(255,255,255,0.04)",
-            borderColor: "rgba(196,181,253,0.15)",
-          }}
-        >
-          <div className="flex items-center gap-3">
-            <CheckCircle2 className="text-emerald-300" size={20} />
-            <p className="text-white/60 text-sm font-semibold">Accepted</p>
-          </div>
-          <h2 className="text-3xl font-bold text-white mt-3">
-            {stats.accepted}
-          </h2>
-        </div>
-
-        <div
-          className="p-5 rounded-2xl border backdrop-blur-xl"
-          style={{
-            background: "rgba(255,255,255,0.04)",
-            borderColor: "rgba(196,181,253,0.15)",
-          }}
-        >
-          <div className="flex items-center gap-3">
-            <XCircle className="text-rose-300" size={20} />
-            <p className="text-white/60 text-sm font-semibold">Rejected</p>
-          </div>
-          <h2 className="text-3xl font-bold text-white mt-3">
-            {stats.rejected}
-          </h2>
-        </div>
-      </div>
-
-      {/* Search */}
-      <div
-        className="relative z-10 p-6 rounded-2xl border backdrop-blur-xl mb-10"
-        style={{
-          background: "rgba(255,255,255,0.04)",
-          borderColor: "rgba(196,181,253,0.15)",
-        }}
-      >
-        <h2 className="text-lg font-semibold text-white mb-4">
-          Search Applicants
-        </h2>
-
-        <div className="relative w-full md:w-[400px]">
-          <Search
-            size={18}
-            className="absolute left-3 top-3 text-white/40"
-          />
-          <input
-            type="text"
-            placeholder="Search by name..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-transparent border text-white outline-none"
-            style={{
-              borderColor: "rgba(196,181,253,0.2)",
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Loading */}
-      {loading && (
-        <p className="relative z-10 text-white/50 text-sm">
-          Loading applicants...
-        </p>
-      )}
-
-      {/* No Applicants */}
-      {!loading && filteredApplicants.length === 0 && (
-        <div
-          className="relative z-10 p-10 rounded-2xl border backdrop-blur-xl text-center"
-          style={{
-            background: "rgba(255,255,255,0.04)",
-            borderColor: "rgba(196,181,253,0.15)",
-          }}
-        >
-          <p className="text-white/60 text-lg font-semibold">
-            No applicants found.
+        {/* Header */}
+        <div className="relative z-10 mb-10">
+          <h1 className="text-3xl font-bold text-white">
+            {job?.title || "Loading Job..."}
+          </h1>
+          <p className="text-sm mt-2 text-white/50">
+            Manage applicants and update their status instantly.
           </p>
-          <p className="text-white/40 text-sm mt-2">
-            Try searching with a different name.
-          </p>
-        </div>
-      )}
 
-      {/* Applicants List */}
-      <div className="relative z-10 space-y-5">
-        {filteredApplicants.map((app) => (
+          <div className="mt-5 h-[1px] w-full rounded-2xl bg-gradient-to-r from-purple-500/60 via-fuchsia-500/40 to-indigo-500/20" />
+        </div>
+
+        {/* Stats */}
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
           <div
-            key={app._id}
-            className="p-6 rounded-2xl border backdrop-blur-xl shadow-lg flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+            className="p-5 rounded-2xl border backdrop-blur-xl"
             style={{
               background: "rgba(255,255,255,0.04)",
               borderColor: "rgba(196,181,253,0.15)",
             }}
           >
-            {/* Left Side */}
-            <div className="flex items-center gap-4">
-              <img
-                src={`${import.meta.env.VITE_API_URL}/uploads/${app?.applicant?.profile?.profilePhoto}`}
-                alt="profile"
-                className="w-14 h-14 rounded-full object-cover border border-white/10"
-              />
+            <div className="flex items-center gap-3">
+              <Users className="text-purple-300" size={20} />
+              <p className="text-white/60 text-sm font-semibold">Applicants</p>
+            </div>
+            <h2 className="text-3xl font-bold text-white mt-3">
+              {stats.total}
+            </h2>
+          </div>
 
-              <div>
-                <h2 className="text-lg font-semibold text-white">
-                  {app?.applicant?.fullname}
-                </h2>
-                <p className="text-sm text-white/50">{app?.applicant?.email}</p>
+          <div
+            className="p-5 rounded-2xl border backdrop-blur-xl"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              borderColor: "rgba(196,181,253,0.15)",
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <Clock className="text-yellow-300" size={20} />
+              <p className="text-white/60 text-sm font-semibold">Pending</p>
+            </div>
+            <h2 className="text-3xl font-bold text-white mt-3">
+              {stats.pending}
+            </h2>
+          </div>
 
-                <p className="text-xs text-white/40 mt-1">
-                  Applied on{" "}
-                  {new Date(app.createdAt).toLocaleDateString("en-IN")}
+          <div
+            className="p-5 rounded-2xl border backdrop-blur-xl"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              borderColor: "rgba(196,181,253,0.15)",
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <CheckCircle2 className="text-emerald-300" size={20} />
+              <p className="text-white/60 text-sm font-semibold">Accepted</p>
+            </div>
+            <h2 className="text-3xl font-bold text-white mt-3">
+              {stats.accepted}
+            </h2>
+          </div>
+
+          <div
+            className="p-5 rounded-2xl border backdrop-blur-xl"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              borderColor: "rgba(196,181,253,0.15)",
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <XCircle className="text-rose-300" size={20} />
+              <p className="text-white/60 text-sm font-semibold">Rejected</p>
+            </div>
+            <h2 className="text-3xl font-bold text-white mt-3">
+              {stats.rejected}
+            </h2>
+          </div>
+        </div>
+
+        {/* Search */}
+        <div
+          className="relative z-10 p-6 rounded-2xl border backdrop-blur-xl mb-10"
+          style={{
+            background: "rgba(255,255,255,0.04)",
+            borderColor: "rgba(196,181,253,0.15)",
+          }}
+        >
+          <h2 className="text-lg font-semibold text-white mb-4">
+            Search Applicants
+          </h2>
+
+          <div className="relative w-full md:w-[400px]">
+            <Search size={18} className="absolute left-3 top-3 text-white/40" />
+            <input
+              type="text"
+              placeholder="Search by name..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-transparent border text-white outline-none"
+              style={{
+                borderColor: "rgba(196,181,253,0.2)",
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Loading */}
+        {loading && (
+          <p className="relative z-10 text-white/50 text-sm">
+            Loading applicants...
+          </p>
+        )}
+
+        {/* No Applicants */}
+        {!loading && filteredApplicants.length === 0 && (
+          <div
+            className="relative z-10 p-10 rounded-2xl border backdrop-blur-xl text-center"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              borderColor: "rgba(196,181,253,0.15)",
+            }}
+          >
+            <p className="text-white/60 text-lg font-semibold">
+              No applicants found.
+            </p>
+            <p className="text-white/40 text-sm mt-2">
+              Try searching with a different name.
+            </p>
+          </div>
+        )}
+
+        {/* Applicants List */}
+        <div className="relative z-10 space-y-5">
+          {filteredApplicants.map((app) => (
+            <div
+              key={app._id}
+              className="p-6 rounded-2xl border backdrop-blur-xl shadow-lg flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                borderColor: "rgba(196,181,253,0.15)",
+              }}
+            >
+              {/* Left Side */}
+              <div className="flex items-center gap-4">
+                <img
+                  src={`${import.meta.env.VITE_API_URL}/uploads/${app?.applicant?.profile?.profilePhoto}`}
+                  alt="profile"
+                  className="w-14 h-14 rounded-full object-cover border border-white/10"
+                />
+
+                <div>
+                  <h2 className="text-lg font-semibold text-white">
+                    {app?.applicant?.fullname}
+                  </h2>
+                  <p className="text-sm text-white/50">
+                    {app?.applicant?.email}
+                  </p>
+
+                  <p className="text-xs text-white/40 mt-1">
+                    Applied on{" "}
+                    {new Date(app.createdAt).toLocaleDateString("en-IN")}
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Side */}
+              <div className="flex flex-col md:items-end gap-4">
+                {/* Badge */}
+                <StatusBadge status={app?.status} />
+
+                {/* Resume + Contact */}
+                <div className="flex flex-wrap gap-3">
+                  {app?.applicant?.profile?.resume ? (
+                    <>
+                      <a
+                        href={`${app?.applicant?.profile?.resume}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 rounded-xl text-sm font-semibold border hover:opacity-90 transition flex items-center gap-2"
+                        style={{
+                          borderColor: "rgba(196,181,253,0.2)",
+                          background:
+                            "linear-gradient(135deg, rgba(124,58,237,0.35), rgba(157,92,246,0.2))",
+                          color: "white",
+                        }}
+                      >
+                        <FileText size={16} />
+                        View Resume
+                      </a>
+
+                      <a
+                        href={`${app?.applicant?.profile?.resume}`}
+                        download
+                        className="px-4 py-2 rounded-xl text-sm font-semibold border hover:opacity-90 transition flex items-center gap-2"
+                        style={{
+                          borderColor: "rgba(196,181,253,0.2)",
+                          background: "rgba(255,255,255,0.05)",
+                          color: "white",
+                        }}
+                      >
+                        <Download size={16} />
+                        Download
+                      </a>
+                    </>
+                  ) : (
+                    <span className="text-xs text-white/40">No Resume</span>
+                  )}
+
+                  <a
+                    href={`mailto:${app?.applicant?.email}`}
+                    className="px-4 py-2 rounded-xl text-sm font-semibold border hover:opacity-90 transition flex items-center gap-2"
+                    style={{
+                      borderColor: "rgba(196,181,253,0.2)",
+                      background: "rgba(255,255,255,0.05)",
+                      color: "white",
+                    }}
+                  >
+                    <Mail size={16} />
+                    Contact
+                  </a>
+                </div>
+
+                {/* Dropdown */}
+                <select
+                  value={app.status}
+                  onChange={(e) => handleStatusChange(app._id, e.target.value)}
+                  className="px-4 py-2 rounded-xl border bg-transparent text-white text-sm outline-none"
+                  style={{
+                    borderColor: "rgba(196,181,253,0.2)",
+                  }}
+                >
+                  <option value="pending" className="text-black">
+                    Pending
+                  </option>
+                  <option value="accepted" className="text-black">
+                    Accept
+                  </option>
+                  <option value="rejected" className="text-black">
+                    Reject
+                  </option>
+                </select>
+              </div>
+
+              {/* Bio + Skills */}
+              <div className="w-full md:w-[35%] text-sm text-white/50 leading-relaxed">
+                <p className="mb-2">
+                  <span className="text-white/70 font-semibold">Bio:</span>{" "}
+                  {app?.applicant?.profile?.bio || "No bio provided"}
+                </p>
+
+                <p>
+                  <span className="text-white/70 font-semibold">Skills:</span>{" "}
+                  {app?.applicant?.profile?.skills?.length > 0
+                    ? app?.applicant?.profile?.skills.join(", ")
+                    : "Not specified"}
                 </p>
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* Right Side */}
-            <div className="flex flex-col md:items-end gap-4">
-              {/* Badge */}
-              <StatusBadge status={app?.status} />
-
-              {/* Resume + Contact */}
-              <div className="flex flex-wrap gap-3">
-                {app?.applicant?.profile?.resume ? (
-                  <>
-                    <a
-                      href={`${app?.applicant?.profile?.resume}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-xl text-sm font-semibold border hover:opacity-90 transition flex items-center gap-2"
-                      style={{
-                        borderColor: "rgba(196,181,253,0.2)",
-                        background:
-                          "linear-gradient(135deg, rgba(124,58,237,0.35), rgba(157,92,246,0.2))",
-                        color: "white",
-                      }}
-                    >
-                      <FileText size={16} />
-                      View Resume
-                    </a>
-
-                    <a
-                      href={`${app?.applicant?.profile?.resume}`}
-                      download
-                      className="px-4 py-2 rounded-xl text-sm font-semibold border hover:opacity-90 transition flex items-center gap-2"
-                      style={{
-                        borderColor: "rgba(196,181,253,0.2)",
-                        background: "rgba(255,255,255,0.05)",
-                        color: "white",
-                      }}
-                    >
-                      <Download size={16} />
-                      Download
-                    </a>
-                  </>
-                ) : (
-                  <span className="text-xs text-white/40">No Resume</span>
-                )}
-
-                <a
-                  href={`mailto:${app?.applicant?.email}`}
-                  className="px-4 py-2 rounded-xl text-sm font-semibold border hover:opacity-90 transition flex items-center gap-2"
-                  style={{
-                    borderColor: "rgba(196,181,253,0.2)",
-                    background: "rgba(255,255,255,0.05)",
-                    color: "white",
-                  }}
-                >
-                  <Mail size={16} />
-                  Contact
-                </a>
-              </div>
-
-              {/* Dropdown */}
-              <select
-                value={app.status}
-                onChange={(e) => handleStatusChange(app._id, e.target.value)}
-                className="px-4 py-2 rounded-xl border bg-transparent text-white text-sm outline-none"
-                style={{
-                  borderColor: "rgba(196,181,253,0.2)",
-                }}
-              >
-                <option value="pending" className="text-black">
-                  Pending
-                </option>
-                <option value="accepted" className="text-black">
-                  Accept
-                </option>
-                <option value="rejected" className="text-black">
-                  Reject
-                </option>
-              </select>
-            </div>
-
-            {/* Bio + Skills */}
-            <div className="w-full md:w-[35%] text-sm text-white/50 leading-relaxed">
-              <p className="mb-2">
-                <span className="text-white/70 font-semibold">Bio:</span>{" "}
-                {app?.applicant?.profile?.bio || "No bio provided"}
-              </p>
-
-              <p>
-                <span className="text-white/70 font-semibold">Skills:</span>{" "}
-                {app?.applicant?.profile?.skills?.length > 0
-                  ? app?.applicant?.profile?.skills.join(", ")
-                  : "Not specified"}
-              </p>
-            </div>
-          </div>
-        ))}
+        <div className="h-20"></div>
       </div>
-
-      <div className="h-20"></div>
     </div>
   );
 }

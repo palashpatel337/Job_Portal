@@ -351,6 +351,14 @@ function PostJob() {
   }, [auth?.token]);
 
   return (
+        <div
+      className="min-h-screen relative overflow-hidden px-4 sm:px-8 lg:pl-16 lg:pr-48 py-12"
+      style={{
+        background:
+          "linear-gradient(135deg, #0D0A1A 0%, #1E1333 40%, #2D1B5E 70%, #3B1F7A 100%)",
+      }}
+    >
+
     <div className="relative overflow-hidden min-h-screen px-6 py-10 lg:pl-20 lg:pr-48">
       {/* Glow Orbs */}
       <div
@@ -379,7 +387,7 @@ function PostJob() {
 
       {/* Main Form Card */}
       <div
-        className="relative z-10 max-w-4xl mx-auto rounded-2xl border backdrop-blur-xl p-8 shadow-lg"
+        className="relative z-10 max-w-4xl lg:w-[50vw] mx-auto rounded-2xl border backdrop-blur-xl p-8 shadow-lg"
         style={{
           background: "rgba(255,255,255,0.04)",
           borderColor: "rgba(196,181,253,0.15)",
@@ -389,7 +397,7 @@ function PostJob() {
           <FieldSet className="space-y-6">
             <FieldGroup className="space-y-5">
               <Field>
-                <FieldLabel className="text-white">Job Title</FieldLabel>
+                <FieldLabel className="text-zinc-200 ">Job Title</FieldLabel>
                 <Input
                   className="bg-transparent text-zinc-200 border-white/10 focus:border-purple-400 focus:ring-purple-500/30"
                   value={title}
@@ -400,7 +408,7 @@ function PostJob() {
               </Field>
 
               <Field>
-                <FieldLabel className="text-white">Job Type</FieldLabel>
+                <FieldLabel className="text-zinc-200 ">Job Type</FieldLabel>
                 <select
                   className="w-full border rounded-xl px-3 py-2 bg-transparent text-zinc-200 outline-none focus:border-purple-400"
                   style={{
@@ -410,26 +418,26 @@ function PostJob() {
                   onChange={(e) => setJobType(e.target.value)}
                   required
                 >
-                  <option value="" className="text-black">
+                  <option value="" className="text-zinc-200 ">
                     Select Job Type
                   </option>
-                  <option value="Full-Time" className="text-black">
+                  <option value="Full-Time" className="text-zinc-200 ">
                     Full-Time
                   </option>
-                  <option value="Part-Time" className="text-black">
+                  <option value="Part-Time" className="text-zinc-200 ">
                     Part-Time
                   </option>
-                  <option value="Internship" className="text-black">
+                  <option value="Internship" className="text-zinc-200 ">
                     Internship
                   </option>
-                  <option value="Remote" className="text-black">
+                  <option value="Remote" className="text-zinc-200 ">
                     Remote
                   </option>
                 </select>
               </Field>
 
               <Field>
-                <FieldLabel className="text-white">Experience Level</FieldLabel>
+                <FieldLabel className="text-zinc-200 ">Experience Level</FieldLabel>
                 <select
                   className="w-full border rounded-xl px-3 py-2 bg-transparent text-zinc-200 outline-none focus:border-purple-400"
                   style={{
@@ -439,26 +447,26 @@ function PostJob() {
                   onChange={(e) => setExperienceLevel(e.target.value)}
                   required
                 >
-                  <option value="" className="text-black">
+                  <option value="" className="text-zinc-200 ">
                     Select Experience Level
                   </option>
-                  <option value="Fresher" className="text-black">
+                  <option value="Fresher" className="text-zinc-200 ">
                     Fresher
                   </option>
-                  <option value="1-2 Years" className="text-black">
+                  <option value="1-2 Years" className="text-zinc-200 ">
                     1-2 Years
                   </option>
-                  <option value="3-5 Years" className="text-black">
+                  <option value="3-5 Years" className="text-zinc-200 ">
                     3-5 Years
                   </option>
-                  <option value="5+ Years" className="text-black">
+                  <option value="5+ Years" className="text-zinc-200 ">
                     5+ Years
                   </option>
                 </select>
               </Field>
 
               <Field>
-                <FieldLabel className="text-white">
+                <FieldLabel className="text-zinc-200 ">
                   Salary (₹) in Lakh Per Annum (LPA)
                 </FieldLabel>
                 <Input
@@ -471,7 +479,7 @@ function PostJob() {
               </Field>
 
               <Field>
-                <FieldLabel className="text-white">
+                <FieldLabel className="text-zinc-200 ">
                   No. of Vacant Positions
                 </FieldLabel>
                 <Input
@@ -484,7 +492,7 @@ function PostJob() {
               </Field>
 
               <Field>
-                <FieldLabel className="text-white">Location</FieldLabel>
+                <FieldLabel className="text-zinc-200 ">Location</FieldLabel>
                 <Input
                   className="bg-transparent text-zinc-200 border-white/10 focus:border-purple-400 focus:ring-purple-500/30"
                   value={location}
@@ -494,7 +502,7 @@ function PostJob() {
               </Field>
 
               <Field>
-                <FieldLabel className="text-white">Requirements</FieldLabel>
+                <FieldLabel className="text-zinc-200 ">Requirements</FieldLabel>
                 <textarea
                   className="w-full border rounded-xl px-3 py-2 bg-transparent text-zinc-200 outline-none focus:border-purple-400"
                   style={{
@@ -508,7 +516,7 @@ function PostJob() {
               </Field>
 
               <Field>
-                <FieldLabel className="text-white">Job Description</FieldLabel>
+                <FieldLabel className="text-zinc-200 ">Job Description</FieldLabel>
                 <textarea
                   className="w-full border rounded-xl px-3 py-2 bg-transparent text-zinc-200 outline-none focus:border-purple-400"
                   style={{
@@ -522,7 +530,7 @@ function PostJob() {
               </Field>
 
               <Field>
-                <FieldLabel className="text-white">Select Company</FieldLabel>
+                <FieldLabel className="text-zinc-200 ">Select Company</FieldLabel>
                 <select
                   className="w-full border rounded-xl px-3 py-2 bg-transparent text-zinc-200 outline-none focus:border-purple-400"
                   style={{
@@ -532,11 +540,11 @@ function PostJob() {
                   onChange={(e) => setCompanyId(e.target.value)}
                   required
                 >
-                  <option value="" className="text-black">
+                  <option value="" className="text-zinc-200 ">
                     Choose Company
                   </option>
                   {companyList?.map((c) => (
-                    <option key={c._id} value={c._id} className="text-black">
+                    <option key={c._id} value={c._id} className="text-zinc-200 ">
                       {c?.name}
                     </option>
                   ))}
@@ -550,7 +558,7 @@ function PostJob() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full py-6 rounded-xl font-semibold text-white transition-all hover:opacity-90 disabled:opacity-50"
+                className="w-full py-6 rounded-xl font-semibold text-zinc-200  transition-all hover:opacity-90 disabled:opacity-50"
                 style={{
                   background: "linear-gradient(135deg, #7C3AED, #9D5CF6)",
                 }}
@@ -563,6 +571,7 @@ function PostJob() {
       </div>
 
       <div className="h-20"></div>
+    </div>
     </div>
   );
 }
