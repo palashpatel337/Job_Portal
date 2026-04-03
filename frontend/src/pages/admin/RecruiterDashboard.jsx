@@ -136,7 +136,7 @@ function RecruiterDashboard() {
   const { jobId } = useParams();
   const navigate = useNavigate();
 
-  const [auth] = useAuth();
+  const { auth, setAuth} = useAuth();
 
   const [jobs, setJobs] = useState([]);
   const [job, setJob] = useState(null);
