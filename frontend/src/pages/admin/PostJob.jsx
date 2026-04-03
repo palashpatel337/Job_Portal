@@ -359,7 +359,7 @@ function PostJob() {
       }}
     >
 
-    <div className="relative overflow-hidden min-h-screen px-6 py-10 lg:pl-20 lg:pr-48">
+    <div className="relative overflow-hidden min-h-screen px-6 py-10 lg:pl-20 ">
       {/* Glow Orbs */}
       <div
         className="fixed top-0 right-0 w-96 h-96 rounded-full pointer-events-none blur-3xl opacity-25"
@@ -387,7 +387,7 @@ function PostJob() {
 
       {/* Main Form Card */}
       <div
-        className="relative z-10 max-w-4xl lg:w-[50vw] mx-auto rounded-2xl border backdrop-blur-xl p-8 shadow-lg"
+        className="relative z-10 max-w-4xl lg:w-[50vw] mx-auto rounded-2xl border backdrop-blur-xl shadow-lg"
         style={{
           background: "rgba(255,255,255,0.04)",
           borderColor: "rgba(196,181,253,0.15)",
