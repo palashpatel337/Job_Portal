@@ -411,7 +411,7 @@ function CreateCompany() {
 
           {/* COMPANY LIST */}
           <div
-            className=" rounded-2xl border backdrop-blur-xl w-full mt-10"
+            className="p-8 rounded-2xl border backdrop-blur-xl w-full mt-10"
             style={{
               background: "rgba(255,255,255,0.04)",
               borderColor: "rgba(196,181,253,0.15)",
