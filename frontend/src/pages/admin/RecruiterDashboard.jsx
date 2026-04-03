@@ -298,7 +298,7 @@ function RecruiterDashboard() {
   };
 
   return (
-    <Layout>
+    // <Layout>
       <div
         className="min-h-screen relative overflow-hidden"
         style={{
@@ -655,7 +655,7 @@ function RecruiterDashboard() {
           </div>
         </div>
       </div>
-    </Layout>
+    // {/* </Layout> */}
   );
 }
 
