@@ -349,7 +349,7 @@ function CreateCompany() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter company name"
                   required
-                  className="lg:w-[40vw] lg:h-8 bg-transparent text-white border-white/10 focus:border-purple-400 focus:ring-purple-500/30"
+                  className="lg:w-[60vw] lg:h-8 bg-transparent text-white border-white/10 focus:border-purple-400 focus:ring-purple-500/30"
                 />
               </div>
 
