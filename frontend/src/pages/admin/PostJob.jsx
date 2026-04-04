@@ -196,19 +196,19 @@ function PostJob() {
                   onChange={(e) => setExperienceLevel(e.target.value)}
                   required
                 >
-                  <option value="" className="text-zinc-200 ">
+                  <option value="" className="text-zinc-100 bg-black ">
                     Select Experience Level
                   </option>
-                  <option value="Fresher" className="text-zinc-200 ">
+                  <option value="Fresher" className="text-zinc-100 bg-black ">
                     Fresher
                   </option>
-                  <option value="1-2 Years" className="text-zinc-200 ">
+                  <option value="1-2 Years" className="text-zinc-100 bg-black ">
                     1-2 Years
                   </option>
-                  <option value="3-5 Years" className="text-zinc-200 ">
+                  <option value="3-5 Years" className="text-zinc-100 bg-black ">
                     3-5 Years
                   </option>
-                  <option value="5+ Years" className="text-zinc-200 ">
+                  <option value="5+ Years" className="text-zinc-100 bg-black ">
                     5+ Years
                   </option>
                 </select>
