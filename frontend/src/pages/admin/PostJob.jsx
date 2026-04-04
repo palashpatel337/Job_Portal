@@ -167,19 +167,19 @@ function PostJob() {
                   onChange={(e) => setJobType(e.target.value)}
                   required
                 >
-                  <option value="" className="text-zinc-200 ">
+                  <option value="" className="bg-black text-zinc-100 ">
                     Select Job Type
                   </option>
-                  <option value="Full-Time" className="text-zinc-200 ">
+                  <option value="Full-Time" className="bg-black text-zinc-100 ">
                     Full-Time
                   </option>
-                  <option value="Part-Time" className="text-zinc-200 ">
+                  <option value="Part-Time" className="bg-black text-zinc-100 ">
                     Part-Time
                   </option>
-                  <option value="Internship" className="text-zinc-200 ">
+                  <option value="Internship" className="bg-black text-zinc-100 ">
                     Internship
                   </option>
-                  <option value="Remote" className="text-zinc-200 ">
+                  <option value="Remote" className="bg-black text-zinc-100 ">
                     Remote
                   </option>
                 </select>
