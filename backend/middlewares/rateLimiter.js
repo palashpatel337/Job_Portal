@@ -3,7 +3,7 @@ import { redis } from "../config/redis.js";
 
 export const loginLimiter = new Ratelimit({
   redis,
-  limiter: Ratelimit.slidingWindow(1, "10 m"), // 5 requests per minute
+  limiter: Ratelimit.slidingWindow(5, "2 m"), // 5 requests per 2 minute
 });
 
 export const registerLimiter = new Ratelimit({
