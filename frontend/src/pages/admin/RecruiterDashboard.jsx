@@ -1006,7 +1006,7 @@ function RecruiterDashboard() {
 
           <select
             value={jobId || ""}
-            onChange={(e) => navigate(`/dashboard/recruiter/${e.target.value}`)}
+            onChange={(e) => setJob(e.target.value)}
             className="w-full p-3 rounded-xl text-white bg-transparent border outline-none"
             style={{
               borderColor: "rgba(196,181,253,0.2)",
