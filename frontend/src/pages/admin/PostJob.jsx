@@ -293,7 +293,7 @@ function PostJob() {
                     Choose Company
                   </option>
                   {companyList?.map((c) => (
-                    <option key={c._id} value={c._id} className="text-zinc-200 ">
+                    <option key={c._id} value={c._id} className="text-zinc-100 bg-black ">
                       {c?.name}
                     </option>
                   ))}
