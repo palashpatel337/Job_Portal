@@ -1677,7 +1677,7 @@ className="
 
                 {/* CENTER: Bio + Skills */}
                 {/* RIGHT: Status + Actions */}
-                <div className="flex flex-col md:items-end gap-4 w-full md:w-[25%]">
+                <div className="flex  md:items-end gap-4 w-full md:w-[25%]">
                   {/* Badge */}
                   <StatusBadge status={app?.status} />
 

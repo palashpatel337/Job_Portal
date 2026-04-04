@@ -39,4 +39,4 @@ export const rateLimit = (maxRequests = 5, windowSeconds = 60) => {
 
 // Specific rate limiters for different endpoints
 export const loginRateLimit = rateLimit(5, 900); // 5 attempts per 15 minutes
-export const applyJobRateLimit = rateLimit(3, 86400); // 3 applications per 24 hours
+export const applyJobRateLimit = rateLimit(30, 86400); // 3 applications per 24 hours
