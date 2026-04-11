@@ -170,10 +170,10 @@ function JobDetails() {
               >
                 {/* Company logo + name */}
                 <div className="flex items-center gap-3 mb-6">
-                  {job.companyId?.logo ? (
+                  {job?.companyId?.logo ? (
                     <img
-                      src={job.companyId.logo}
-                      alt={job.companyId?.name}
+                      src={job?.companyId?.logo}
+                      alt={job?.companyId?.name}
                       className="w-12 h-12 rounded-xl object-cover"
                       style={{ border: "1px solid rgba(196,181,253,0.2)" }}
                     />
