@@ -153,7 +153,7 @@ function Navbar() {
 
   return (
     <div
-      className="sticky top-0 z-50 flex justify-between items-center mx-aut max-w-7x h-16 lg:px-[9vw] "
+      className="sticky top-0 z-50 flex justify-between items-center mx-aut max-w-7x h-16 lg:px-[9vw] sm:px-3"
       style={{
           background: 'linear-gradient(180deg, #0D0A1A 0%, #1E1333 40%)',
         }}
