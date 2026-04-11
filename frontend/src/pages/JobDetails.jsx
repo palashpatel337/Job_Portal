@@ -63,7 +63,7 @@ function JobDetails() {
   const getJob = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/v1/job/get/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/v1/job/get/${id}`,{},
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
       if (res?.data?.success) {
