@@ -1,5 +1,5 @@
 import express from "express"
-import { getAdminJobController, getAllJobController, getJobByIdController, postJobController } from "../controllers/jobController.js"
+import { getAdminJobController, getAllJobController, getJobByIdController, postJobController, saveJobController } from "../controllers/jobController.js"
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 
 const router = express.Router()
@@ -12,5 +12,8 @@ router.get("/get/admin",requireSignIn,isAdmin,getAdminJobController)
 
 router.get("/get/:id",requireSignIn,getJobByIdController)
 
+router.post("/save/:jobid",requireSignIn,saveJobController)
+
+router.get("/saved", requireSignIn, getSavedJobsController);
 
 export default router;

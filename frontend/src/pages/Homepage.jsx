@@ -5,7 +5,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import Layout from "../components/shared/Layout";
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { useAuth } from '@/context/Auth';
 import { Bookmark, Search, MapPin, X } from 'lucide-react';
 
@@ -90,8 +90,10 @@ function GlowOrb({ className, style }) {
 }
 
 // ── Card 2 — Job card ─────────────────────────────────────────────────────────
-function JobCard({ job: j }) {
-  const [saved, setSaved] = useState(false);
+function JobCard({ job: j,onToggleSave }) {
+  // const [saved, setSaved] = useState(false);
+    const saved = j?.isSaved;
+
 
   return (
     <div
@@ -122,18 +124,19 @@ function JobCard({ job: j }) {
             {j?.companyId?.name?.charAt(0)?.toUpperCase() || '?'}
           </div>
         )}
-        <button
-          onClick={(e) => { e.stopPropagation(); setSaved(!saved); }}
-          className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 flex-shrink-0"
-          style={{
-            background: saved ? 'rgba(124,58,237,0.25)' : 'rgba(255,255,255,0.05)',
-            border: saved ? '1px solid rgba(196,181,253,0.3)' : '1px solid rgba(196,181,253,0.12)',
-          }}
-        >
-          <Bookmark style={{ width: 13, height: 13 }}
-            className={saved ? 'text-purple-300' : 'text-white/30'}
-            fill={saved ? 'currentColor' : 'none'} />
-        </button>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onToggleSave(j._id, saved);
+        }}
+        className="w-8 h-8 rounded-lg ..."
+      >
+        <Bookmark
+          style={{ width: 13, height: 13 }}
+          className={saved ? "text-purple-300" : "text-white/30"}
+          fill={saved ? "currentColor" : "none"}
+        />
+      </button>
       </div>
 
       {/* ── Title + company ── */}
@@ -187,14 +190,38 @@ function JobCard({ job: j }) {
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 function Homepage() {
+  const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const {auth} = useAuth();
-
+  const [favourite, setFavourite] = useState()
   const [searchQuery, setSearchQuery]   = useState('');
   const [locationQuery, setLocationQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0]);
 
+  const toggleSaveJob = async (jobId, isSaved) => {
+  try {
+    const url = isSaved
+      ? `${import.meta.env.VITE_API_URL}/api/v1/job/unsave/${jobId}`
+      : `${import.meta.env.VITE_API_URL}/api/v1/job/save/${jobId}`;
+
+    const res = await axios.post(url, {}, {
+      headers: { Authorization: `Bearer ${auth?.token}` }
+    });
+
+    if (res.data.success) {
+      setJobs((prevJobs) =>
+        prevJobs.map((job) =>
+          job._id === jobId
+            ? { ...job, isSaved: !isSaved }
+            : job
+        )
+      );
+    }
+  } catch (error) {
+    console.log(error.response?.data?.message || error.message);
+  }
+};
   const getAllJobs = async () => {
     try {
       const { data } = await axios.get(

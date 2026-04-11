@@ -20,6 +20,7 @@ import CreateCompany from "./pages/admin/CreateCompany";
 import MyApplications from "./pages/user/MyApplications";
 import Profile from "./pages/user/Profile";
 import EditProfile from "./pages/user/EditProfile";
+import SavedJobs from "./pages/user/SavedJobs";
 
 function App() {
   const { auth, setAuth } = useAuth();
@@ -58,6 +59,7 @@ function App() {
           <Route path="/application/get" element={<MyApplications />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/update" element={<EditProfile />} />
+          <Route path="/saved" element={<SavedJobs />} />
         </Route>
 
       </Routes>
