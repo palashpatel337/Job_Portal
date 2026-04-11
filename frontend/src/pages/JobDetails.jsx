@@ -69,6 +69,8 @@ function JobDetails() {
       if (res?.data?.success) {
         console.log("Current user: user", auth?.user,auth?.token);
         console.log("Applications:", res.data.job.applications);
+        console.log(res.data.job.companyId);
+        
         setJob(res.data.job);
 
         const alreadyApplied = res.data.job.applications.some(
