@@ -67,7 +67,7 @@ function JobDetails() {
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
       if (res?.data?.success) {
-        console.log("Current user:", auth?.user,auth?.token);
+        console.log("Current user: user", auth?.user,auth?.token);
         console.log("Applications:", res.data.job.applications);
         setJob(res.data.job);
 
