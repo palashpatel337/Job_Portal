@@ -3,7 +3,7 @@ import userModel from "../models/userModel.js";
 
 export const requireSignIn = (req, res, next) => {
   try {
-    console.log("Incoming Authorization Header:", req.headers.authorization);
+    // console.log("Incoming Authorization Header:", req.headers.authorization);
 
     const authHeader = req.headers.authorization;
 
