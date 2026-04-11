@@ -117,7 +117,7 @@ export const getJobByIdController = async (req, res) => {
       });
     }
 
-    const job = await Job.findById(jobId)
+    const job = await Job.findById(jobId).populate({path: "companyId"})
       .populate({
         path: "applications",
         populate: {
