@@ -46,6 +46,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/get/:id" element={<JobDetails />} />
         <Route path="*" element={<h1>404 Page Not Found</h1>} />
+        <Route path="/saved" element={<SavedJobs />} />
+
 
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route element={<DashboardLayout />}>
@@ -60,7 +62,6 @@ function App() {
           <Route path="/application/get" element={<MyApplications />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/update" element={<EditProfile />} />
-          <Route path="/saved" element={<SavedJobs />} />
         </Route>
 
       </Routes>
