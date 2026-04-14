@@ -524,7 +524,7 @@ function Homepage() {
                   </button>
                 </div>
               )
-              : filteredJobs.map((j) => <JobCard key={j._id} job={j} />)
+              : filteredJobs.map((j) => <JobCard key={j._id} job={j} onToggleSave={toggleSaveJob} />)
           }
         </div>
 
