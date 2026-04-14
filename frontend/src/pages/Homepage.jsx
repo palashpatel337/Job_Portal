@@ -242,12 +242,12 @@ function Homepage() {
 
   // ── Debounce typing for filtered job calculations ──────────────────────────
   useEffect(() => {
-    const timeout = setTimeout(() => setDebouncedSearchQuery(searchQuery), 300);
+    const timeout = setTimeout(() => setDebouncedSearchQuery(searchQuery), 3000);
     return () => clearTimeout(timeout);
   }, [searchQuery]);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setDebouncedLocationQuery(locationQuery), 300);
+    const timeout = setTimeout(() => setDebouncedLocationQuery(locationQuery), 3000);
     return () => clearTimeout(timeout);
   }, [locationQuery]);
 
