@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Layout from "../components/shared/Layout";
+import Layout from "@/components/shared/Layout";
 import { useAuth } from "@/context/Auth";
 
 function SavedJobs() {
