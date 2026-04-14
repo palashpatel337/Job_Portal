@@ -197,6 +197,8 @@ function Homepage() {
   const [favourite, setFavourite] = useState()
   const [searchQuery, setSearchQuery]   = useState('');
   const [locationQuery, setLocationQuery] = useState('');
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState('');
+  const [debouncedLocationQuery, setDebouncedLocationQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0]);
 
   const toggleSaveJob = async (jobId, isSaved) => {
@@ -238,21 +240,32 @@ function Homepage() {
 
   useEffect(() => { getAllJobs(); }, []);
 
+  // ── Debounce typing for filtered job calculations ──────────────────────────
+  useEffect(() => {
+    const timeout = setTimeout(() => setDebouncedSearchQuery(searchQuery), 300);
+    return () => clearTimeout(timeout);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setDebouncedLocationQuery(locationQuery), 300);
+    return () => clearTimeout(timeout);
+  }, [locationQuery]);
+
   // ── Filter logic ──────────────────────────────────────────────────────────
   const filteredJobs = useMemo(() => {
     return jobs.filter((job) => {
-      const q = searchQuery.toLowerCase().trim();
+      const q = debouncedSearchQuery.toLowerCase().trim();
       const matchesSearch = !q || [job.title, job.description, job.companyId?.name, job.requirements]
         .join(' ').toLowerCase().includes(q);
 
-      const loc = locationQuery.toLowerCase().trim();
+      const loc = debouncedLocationQuery.toLowerCase().trim();
       const matchesLocation = !loc || job.location?.toLowerCase().includes(loc);
 
       const matchesCat = matchCategory(job, activeCategory);
 
       return matchesSearch && matchesLocation && matchesCat;
     });
-  }, [jobs, searchQuery, locationQuery, activeCategory]);
+  }, [jobs, debouncedSearchQuery, debouncedLocationQuery, activeCategory]);
 
   // ── Category job counts ───────────────────────────────────────────────────
   const categoryCounts = useMemo(() => {
