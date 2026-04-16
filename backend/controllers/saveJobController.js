@@ -1,31 +1,36 @@
 import SaveJob from "../models/saveJobModel";
+import Job from "../models/jobModel";
 
 export const saveJobController = async (req, res) => {
   try {
     const jobId = req.params.id;
     const userId = req.user;
 
-    const job = await SaveJob.findById(jobId);
+    const job = await Job.findById(jobId);
     if (!job) {
       return res.status(404).json({
         success: false,
         message: "Job not found",
       });
+    } 
+    
+    let savedJob = await SaveJob.findOne({ job: jobId });
+    if (!savedJob) {
+      savedJob = new SaveJob({ job: jobId, savedBy: [userId] });
     } else {
-      if (job.savedBy.includes(userId)) {
+      if (savedJob.savedBy.includes(userId)) {
         return res.status(400).json({
           success: false,
           message: "Job already saved",
         });
-      } else {
-        job.savedBy.push(userId);
-        await job.save();
-        return res.status(200).json({
-          success: true,
-          message: "Job saved successfully",
-        });
       }
+      savedJob.savedBy.push(userId);
     }
+    await savedJob.save();
+    return res.status(200).json({
+      success: true,
+      message: "Job saved successfully",
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({   
@@ -39,26 +44,27 @@ export const unsaveJobController = async (req, res) => {
   try {
     const jobId = req.params.id;
     const userId = req.user;
-    const job = await SaveJob.findById(jobId);
+    const job = await Job.findById(jobId);
     if (!job) {
       return res.status(404).json({ 
         success: false,
         message: "Job not found",
       });
-    } else {
-      if (!job.savedBy.includes(userId)) {
-        return res.status(400).json({
-          success: false,
-          message: "Job not saved",
-        });
-      }
-      job.savedBy = job.savedBy.filter((id) => id.toString() !== userId.toString());
-      await job.save();
-      return res.status(200).json({     
-        success: true,
-        message: "Job unsaved successfully",
+    } 
+    
+    const savedJob = await SaveJob.findOne({ job: jobId });
+    if (!savedJob || !savedJob.savedBy.includes(userId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Job not saved",
       });
     }
+    savedJob.savedBy = savedJob.savedBy.filter((id) => id.toString() !== userId.toString());
+    await savedJob.save();
+    return res.status(200).json({     
+      success: true,
+      message: "Job unsaved successfully",
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({

@@ -2,9 +2,9 @@ import { getSavedJobsController, saveJobController, unsaveJobController } from "
 
 const router = express.Router()
 
-router.post("/save/:jobid",requireSignIn,saveJobController)
+router.post("/save/:id",requireSignIn,saveJobController)
 
-router.delete("/unsave/:jobid",requireSignIn,unsaveJobController)
+router.delete("/unsave/:id",requireSignIn,unsaveJobController)
 
 router.get("/saved", requireSignIn, getSavedJobsController);
 
