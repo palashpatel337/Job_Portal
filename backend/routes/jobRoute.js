@@ -1,5 +1,5 @@
 import express from "express"
-import { getAdminJobController, getAllJobController, getJobByIdController, getSavedJobsController, postJobController, saveJobController, unsaveJobController } from "../controllers/jobController.js"
+import { getAdminJobController, getAllJobController, getJobByIdController, postJobController } from "../controllers/jobController.js"
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 
 const router = express.Router()
