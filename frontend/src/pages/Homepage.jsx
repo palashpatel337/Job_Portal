@@ -198,7 +198,7 @@ function GlowOrb({ className, style }) {
 }
 
 // ── Card 2 — Job card ─────────────────────────────────────────────────────────
-function JobCard({ job: j, toggleSaveJob }) {
+function JobCard({ job: j, onToggleSave }) {
   // const [saved, setSaved] = useState(false);
   const saved = j?.isSaved;
 
