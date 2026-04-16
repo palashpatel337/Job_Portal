@@ -1,5 +1,7 @@
 import { getSavedJobsController, saveJobsController, unsaveJobController } from "../controllers/saveJobController.js";
 import express  from 'express';
+import { requireSignIn } from "../middlewares/authMiddleware.js";
+
 
 const router = express.Router()
 
