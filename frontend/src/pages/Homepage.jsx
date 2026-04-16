@@ -203,15 +203,13 @@ function Homepage() {
 
   const toggleSaveJob = async (jobId, isSaved) => {
   try {
-    const url = isSaved
-      ? `${import.meta.env.VITE_API_URL}/api/v1/save-job/unsave/${jobId}`
-      : `${import.meta.env.VITE_API_URL}/api/v1/save-job/save/${jobId}`;
-
-    const res = await axios.post(url, {}, {
+     if(isSaved){
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/save-job/unsave/${jobId}`, {}, {
       headers: { Authorization: `Bearer ${auth?.token}` }
     });
 
-    if (res.data.success) {
+
+        if (res.data.success) {
       setJobs((prevJobs) =>
         prevJobs.map((job) =>
           job._id === jobId
@@ -220,6 +218,13 @@ function Homepage() {
         )
       );
     }
+
+  }else{    
+      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/save-job/save/${jobId}`, {}, {
+      headers: { Authorization: `Bearer ${auth?.token}` }
+    });
+  }
+
   } catch (error) {
     console.log(error.response?.data?.message || error.message);
   }
