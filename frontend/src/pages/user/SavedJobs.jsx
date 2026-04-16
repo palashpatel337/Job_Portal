@@ -18,9 +18,10 @@ function SavedJobs() {
           },
         }
       );
-
+      console.log(data?.jobs);
+      
       if (data?.success) {
-        setSavedJobs(data.jobs);
+        setSavedJobs(data?.jobs);
       }
     } catch (error) {
       console.log(error.response?.data?.message || error.message);
