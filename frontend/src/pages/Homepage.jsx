@@ -253,7 +253,7 @@ function JobCard({ job: j, onToggleSave }) {
         >
           <Bookmark
             style={{ width: 13, height: 13 }}
-            className={saved ? "text-purple-300" : "text-white/30"}
+            className={saved && favourite ? "text-purple-300" : "text-white/30"}
             fill={saved ? "currentColor" : "none"}
           />
         </button>
@@ -336,6 +336,22 @@ function Homepage() {
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
   const [debouncedLocationQuery, setDebouncedLocationQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0]);
+
+  const getSavedJobs = async () => {
+    try {      const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/v1/save-job/saved`,
+      {
+        headers: { Authorization: `Bearer ${auth?.token}` },
+      }
+    );
+    if(data?.success) {
+      setFavourite(data?.jobs);
+    }
+    } catch (error) {
+      console.log(error.response?.data?.message || error.message);
+    }
+  };
+
 
   const toggleSaveJob = async (jobId, isSaved) => {
     try {
