@@ -1,4 +1,4 @@
-import { getSavedJobsController, saveJobsController, unsaveJobController } from "../controllers/saveJobController";
+import { getSavedJobsController, saveJobsController, unsaveJobController } from "../controllers/saveJobController.js";
 
 const router = express.Router()
 
