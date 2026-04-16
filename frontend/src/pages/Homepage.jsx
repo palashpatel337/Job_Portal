@@ -198,7 +198,7 @@ function GlowOrb({ className, style }) {
 }
 
 // ── Card 2 — Job card ─────────────────────────────────────────────────────────
-function JobCard({ job: j, onToggleSave }) {
+function JobCard({ job: j, toggleSaveJob }) {
   // const [saved, setSaved] = useState(false);
   const saved = j?.isSaved;
 
@@ -392,12 +392,16 @@ useEffect(() => {
 const toggleSaveJob = async (jobId, isCurrentlySaved) => {
   try {
     // Optimistic Update: Change UI immediately
-    setJobs(prev => prev.map(job => {
-          console.log("Current job._id:", job._id, "Clicked jobId:", jobId);
-
-      return job._id === jobId ? { ...job, isSaved: !isCurrentlySaved } : job
-    }));
-
+setJobs(prev =>
+  prev.map(job => {
+    if (job._id.toString() === jobId.toString()) {
+      console.log("MATCH FOUND:", job._id, jobId);
+    }
+    return job._id.toString() === jobId.toString()
+      ? { ...job, isSaved: !isCurrentlySaved }
+      : job;
+  })
+);
     if (isCurrentlySaved) {
       await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/save-job/unsave/${jobId}`, {
         headers: { Authorization: `Bearer ${auth?.token}` },
