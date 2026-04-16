@@ -204,8 +204,8 @@ function Homepage() {
   const toggleSaveJob = async (jobId, isSaved) => {
   try {
     const url = isSaved
-      ? `${import.meta.env.VITE_API_URL}/api/v1/job/unsave/${jobId}`
-      : `${import.meta.env.VITE_API_URL}/api/v1/job/save/${jobId}`;
+      ? `${import.meta.env.VITE_API_URL}/api/v1/save-job/unsave/${jobId}`
+      : `${import.meta.env.VITE_API_URL}/api/v1/save-job/save/${jobId}`;
 
     const res = await axios.post(url, {}, {
       headers: { Authorization: `Bearer ${auth?.token}` }

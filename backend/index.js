@@ -14,7 +14,7 @@ import jobRoute from "./routes/jobRoute.js";
 import companyRoute from "./routes/companyRoute.js";
 import applicationRoute from "./routes/applicationRoutes.js";
 import uploadRoute from "./routes/uploadRoute.js";
-
+import saveJobRoute from "./routes/saveJobRoute.js";
 const app = express();
 
 
@@ -39,6 +39,7 @@ app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
+app.use("/api/v1/save-job", saveJobRoute);
 app.use("/api", uploadRoute);
 
 
