@@ -1,7 +1,7 @@
 import SaveJob from "../models/saveJobModel";
 import Job from "../models/jobModel";
 
-export const saveJobController = async (req, res) => {
+export const saveJobsController = async (req, res) => {
   try {
     const jobId = req.params.id;
     const userId = req.user;
