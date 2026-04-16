@@ -11,7 +11,7 @@ function SavedJobs() {
   const getSavedJobs = async () => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/v1/job/saved`,{},
+        `${import.meta.env.VITE_API_URL}/api/v1/save-job/saved`,{},
         {
           headers: {
             Authorization: `Bearer ${auth?.token}`,

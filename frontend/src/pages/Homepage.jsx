@@ -743,7 +743,7 @@ function Homepage() {
         {/* ══ JOB GRID ══ */}
         <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {loading ? (
-            Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
+            Array.from({ length: 2 }).map((_, i) => <SkeletonCard key={i} />)
           ) : filteredJobs.length === 0 ? (
             <div className="col-span-full flex flex-col items-center justify-center py-24 text-center">
               <span className="text-5xl mb-4 opacity-30">🔍</span>
