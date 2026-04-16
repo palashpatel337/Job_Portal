@@ -1,5 +1,5 @@
-import SaveJob from "../models/saveJobModel";
-import Job from "../models/jobModel";
+import SaveJob from "../models/saveJobModel.js";
+import Job from "../models/jobModel.js";
 
 export const saveJobsController = async (req, res) => {
   try {
