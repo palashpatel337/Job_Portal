@@ -253,7 +253,7 @@ function JobCard({ job: j, onToggleSave }) {
         >
           <Bookmark
             style={{ width: 13, height: 13 }}
-            className={saved && favourite ? "text-purple-300" : "text-white/30"}
+            className={saved  ? "text-purple-300" : "text-white/30"}
             fill={saved ? "currentColor" : "none"}
           />
         </button>
