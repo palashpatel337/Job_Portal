@@ -392,22 +392,20 @@ useEffect(() => {
 const toggleSaveJob = async (jobId, isCurrentlySaved) => {
   try {
     // Optimistic Update: Change UI immediately
-    setJobs(prev => prev.map(job => 
-      job._id === jobId ? { ...job, isSaved: !isCurrentlySaved } : job
-    ));
+    setJobs(prev => prev.map(job => {
+          console.log("Current job._id:", job._id, "Clicked jobId:", jobId);
+
+      return job._id === jobId ? { ...job, isSaved: !isCurrentlySaved } : job
+    }));
 
     if (isCurrentlySaved) {
       await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/save-job/unsave/${jobId}`, {
         headers: { Authorization: `Bearer ${auth?.token}` },
       });
-          console.log(jobId);
-console.log(auth?.user?.applications);
     } else {
       await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/save-job/save/${jobId}`, {}, {
         headers: { Authorization: `Bearer ${auth?.token}` },
       });
-          console.log(jobId);
-console.log(auth?.user?.applications);
     }
   } catch (error) {
     // Revert state if the API call fails
