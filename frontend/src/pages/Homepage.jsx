@@ -204,7 +204,7 @@ function Homepage() {
   const toggleSaveJob = async (jobId, isSaved) => {
   try {
      if(isSaved){
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/save-job/unsave/${jobId}`, {}, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/save-job/save/${jobId}`, {}, {
       headers: { Authorization: `Bearer ${auth?.token}` }
     });
 
@@ -220,7 +220,7 @@ function Homepage() {
     }
 
   }else{    
-      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/save-job/save/${jobId}`, {}, {
+      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/save-job/unsave/${jobId}`, {}, {
       headers: { Authorization: `Bearer ${auth?.token}` }
     });
   }
