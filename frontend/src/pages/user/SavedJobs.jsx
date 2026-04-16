@@ -45,18 +45,18 @@ function SavedJobs() {
           <p className="text-white/50">No saved jobs found.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {savedJobs.map((job) => (
+            {savedJobs.map((j) => (
               <div
-                key={job._id}
+                key={j._id}
                 className="p-5 rounded-xl border border-white/10 bg-white/5"
               >
-                <h2 className="text-lg font-semibold">{job.title}</h2>
+                <h2 className="text-lg font-semibold">{j.job.title}</h2>
                 <p className="text-sm text-white/50">
-                  {job.companyId?.name} • {job.location}
+                  {j.job.companyId?.name} • {j.job.location}
                 </p>
 
                 <p className="mt-2 text-sm text-white/70 line-clamp-3">
-                  {job.description}
+                  {j.job.description}
                 </p>
               </div>
             ))}
