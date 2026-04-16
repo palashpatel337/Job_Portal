@@ -337,52 +337,113 @@ function Homepage() {
   const [debouncedLocationQuery, setDebouncedLocationQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0]);
 
-  const getSavedJobs = async () => {
-    try {      const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/v1/save-job/saved`,
-      {
-        headers: { Authorization: `Bearer ${auth?.token}` },
-      }
-    );
-    if(data?.success) {
-      setFavourite(data?.jobs);
-    }
-    } catch (error) {
-      console.log(error.response?.data?.message || error.message);
-    }
-  };
+  // const getSavedJobs = async () => {
+  //   try {      const { data } = await axios.get(
+  //     `${import.meta.env.VITE_API_URL}/api/v1/save-job/saved`,
+  //     {
+  //       headers: { Authorization: `Bearer ${auth?.token}` },
+  //     }
+  //   );
+  //   if(data?.success) {
+  //     setFavourite(data?.jobs);
+  //   }
+  //   } catch (error) {
+  //     console.log(error.response?.data?.message || error.message);
+  //   }
+  // };
 
-
-  const toggleSaveJob = async (jobId, isSaved) => {
+// Inside Homepage component
+useEffect(() => {
+  const initData = async () => {
     try {
-      if (isSaved) {
-        const res = await axios.delete(
-          `${import.meta.env.VITE_API_URL}/api/v1/save-job/unsave/${jobId}`,
-          {
-            headers: { Authorization: `Bearer ${auth?.token}` },
-          },
-        );
-      } else {
-        const res = await axios.post(
-          `${import.meta.env.VITE_API_URL}/api/v1/save-job/save/${jobId}`,
-          {},
-          {
-            headers: { Authorization: `Bearer ${auth?.token}` },
-          },
-        );
+      setLoading(true);
+      // 1. Get all jobs and saved jobs concurrently
+      const [jobsRes, savedRes] = await Promise.all([
+        axios.get(`${import.meta.env.VITE_API_URL}/api/v1/job/get`, {
+          headers: { Authorization: `Bearer ${auth?.token}` },
+        }),
+        axios.get(`${import.meta.env.VITE_API_URL}/api/v1/save-job/saved`, {
+          headers: { Authorization: `Bearer ${auth?.token}` },
+        })
+      ]);
 
-        if (res.data.success) {
-          setJobs((prevJobs) =>
-            prevJobs.map((job) =>
-              job._id === jobId ? { ...job, isSaved: !isSaved } : job,
-            ),
-          );
-        }
-      }
+      const allJobs = jobsRes.data?.jobs || [];
+      const savedJobIds = new Set((savedRes.data?.jobs || []).map(j => j._id));
+
+      // 2. Map through jobs and inject the saved status
+      const syncedJobs = allJobs.map(job => ({
+        ...job,
+        isSaved: savedJobIds.has(job._id)
+      }));
+
+      setJobs(syncedJobs);
+      setFavourite(savedRes.data?.jobs || []);
     } catch (error) {
-      console.log(error.response?.data?.message || error.message);
+      console.error("Initialization error", error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (auth?.token) initData();
+}, [auth?.token]);
+
+
+const toggleSaveJob = async (jobId, isCurrentlySaved) => {
+  try {
+    // Optimistic Update: Change UI immediately
+    setJobs(prev => prev.map(job => 
+      job._id === jobId ? { ...job, isSaved: !isCurrentlySaved } : job
+    ));
+
+    if (isCurrentlySaved) {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/save-job/unsave/${jobId}`, {
+        headers: { Authorization: `Bearer ${auth?.token}` },
+      });
+    } else {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/save-job/save/${jobId}`, {}, {
+        headers: { Authorization: `Bearer ${auth?.token}` },
+      });
+    }
+  } catch (error) {
+    // Revert state if the API call fails
+    setJobs(prev => prev.map(job => 
+      job._id === jobId ? { ...job, isSaved: isCurrentlySaved } : job
+    ));
+    console.log(error.response?.data?.message || error.message);
+  }
+};
+
+  // const toggleSaveJob = async (jobId, isSaved) => {
+  //   try {
+  //     if (isSaved) {
+  //       const res = await axios.delete(
+  //         `${import.meta.env.VITE_API_URL}/api/v1/save-job/unsave/${jobId}`,
+  //         {
+  //           headers: { Authorization: `Bearer ${auth?.token}` },
+  //         },
+  //       );
+  //     } else {
+  //       const res = await axios.post(
+  //         `${import.meta.env.VITE_API_URL}/api/v1/save-job/save/${jobId}`,
+  //         {},
+  //         {
+  //           headers: { Authorization: `Bearer ${auth?.token}` },
+  //         },
+  //       );
+
+  //       if (res.data.success) {
+  //         setJobs((prevJobs) =>
+  //           prevJobs.map((job) =>
+  //             job._id === jobId ? { ...job, isSaved: !isSaved } : job,
+  //           ),
+  //         );
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.log(error.response?.data?.message || error.message);
+  //   }
+  // };
   const getAllJobs = async () => {
     try {
       const { data } = await axios.get(
@@ -398,7 +459,7 @@ function Homepage() {
   };
 
   useEffect(() => {
-    getAllJobs().then(() => getSavedJobs());
+    getAllJobs()
   }, []);
 
   // ── Debounce typing for filtered job calculations ──────────────────────────
