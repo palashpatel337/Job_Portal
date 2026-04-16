@@ -400,13 +400,20 @@ const toggleSaveJob = async (jobId, isCurrentlySaved) => {
       await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/save-job/unsave/${jobId}`, {
         headers: { Authorization: `Bearer ${auth?.token}` },
       });
+          console.log(jobs?._id);
+    console.log(auth.user.applications.jobs?.jobId);
+
     } else {
       await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/save-job/save/${jobId}`, {}, {
         headers: { Authorization: `Bearer ${auth?.token}` },
       });
+          console.log(jobs?._id);
+    console.log(auth.user.applications.jobs?.jobId);
+
     }
   } catch (error) {
     // Revert state if the API call fails
+    
     setJobs(prev => prev.map(job => 
       job._id === jobId ? { ...job, isSaved: isCurrentlySaved } : job
     ));
