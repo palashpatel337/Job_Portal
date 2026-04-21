@@ -22,7 +22,7 @@ import Profile from "./pages/user/Profile";
 import EditProfile from "./pages/user/EditProfile";
 import SavedJobs from "./pages/user/SavedJobs";
 
-import AppliedJobs from "./pages/user/AplliedJobs";
+import AppliedJobs from "./pages/user/AppliedJobs";
 
 function App() {
   const { auth, setAuth } = useAuth();
