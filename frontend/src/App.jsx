@@ -22,6 +22,8 @@ import Profile from "./pages/user/Profile";
 import EditProfile from "./pages/user/EditProfile";
 import SavedJobs from "./pages/user/SavedJobs";
 
+import AppliedJobs from "./pages/user/AplliedJobs";
+
 function App() {
   const { auth, setAuth } = useAuth();
 // useEffect(() => {
@@ -62,6 +64,7 @@ function App() {
           <Route path="/application/get" element={<MyApplications />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/update" element={<EditProfile />} />
+          <Route path="/profile/app" element={<AppliedJobs />} />
         </Route>
 
       </Routes>
