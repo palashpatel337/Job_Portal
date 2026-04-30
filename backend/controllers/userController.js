@@ -4,6 +4,7 @@ import bcrypt,{  hash } from 'bcryptjs';
 // import userModel from "../models/userModel.js";
 import cloudinary from "../cloud/cloudinary.js";
 import streamifier from 'streamifier';
+import { sendVerificationEmail } from "../config/sendEmail.js";
 
 export const registerController = async (req,res) => {
     try {
@@ -31,8 +32,14 @@ export const registerController = async (req,res) => {
       role,
     });
 
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d"
+    });
+
+    await sendVerificationEmail(user.email, token);
+
     return res.status(200).json({
-            message:'Account created successfully',
+            message:'Account created successfully, please verify your email',
             success: true
         })
     } catch (error) {
@@ -43,6 +50,29 @@ export const registerController = async (req,res) => {
   });
 }
 }
+
+export const verifyEmail = async (req, res) => {
+  try {
+    const { token } = req.params;
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const user = await User.findById(decoded.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    if (user.isVerified) {
+      return res.json({ message: "Email already verified" });
+    }
+
+    user.isVerified = true;
+    await user.save();
+
+    res.json({ message: "Email verified successfully" });
+  } catch (error) {
+    res.status(400).json({ message: "Invalid or expired token" });
+  }
+};
+
 
 export const loginController = async (req, res) => {
   try {

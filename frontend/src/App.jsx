@@ -23,6 +23,7 @@ import EditProfile from "./pages/user/EditProfile";
 import SavedJobs from "./pages/user/SavedJobs";
 
 import AppliedJobs from "./pages/user/AppliedJobs";
+import VerifyEmail from "./pages/auth/VerifyEmail";
 
 function App() {
   const { auth, setAuth } = useAuth();
@@ -46,6 +47,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/verify-email/:token" element={<VerifyEmail />} />
         <Route path="/get/:id" element={<JobDetails />} />
         <Route path="*" element={<h1>404 Page Not Found</h1>} />
         <Route path="/saved" element={<SavedJobs />} />

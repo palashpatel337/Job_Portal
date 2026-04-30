@@ -1,5 +1,5 @@
 import express from "express"
-import { loginController, logoutController, registerController, updateController, userProfileController } from "../controllers/userController.js"
+import { loginController, logoutController, registerController, updateController, userProfileController, verifyEmail } from "../controllers/userController.js"
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import { upstashRateLimit } from "../middlewares/upstashRateLimit.js";
 import { loginLimiter, registerLimiter } from "../middlewares/rateLimiter.js";
@@ -12,6 +12,8 @@ const router = express.Router();
 router.post("/register", upstashRateLimit(registerLimiter), registerController);
 
 router.post("/login", upstashRateLimit(loginLimiter), loginController);
+
+router.get("/verify-email/:token", verifyEmail);
 
 router.get("/logout", logoutController)
 

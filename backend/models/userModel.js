@@ -33,7 +33,9 @@ phone: {
         resumeOriginalName: {type: String},
         company: {type: mongoose.Schema.Types.ObjectId, ref: 'Company'},
         profilePhoto: {type: String, default: ''}
-    }
+    },
+    isVerified: { type: Boolean, default: false }
+
 },{timestamps: true})
 
 export default mongoose.model('User',userSchema) ;
