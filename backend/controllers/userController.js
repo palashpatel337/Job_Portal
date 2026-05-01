@@ -32,7 +32,7 @@ export const registerController = async (req,res) => {
       role,
     });
 
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: newUser._id }, process.env.SECRET_KEY, {
       expiresIn: "14d"
     });
 
@@ -55,7 +55,7 @@ export const verifyEmail = async (req, res) => {
   try {
     const { token } = req.params;
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
 
     const user = await User.findById(decoded.id);
     if (!user) return res.status(404).json({ message: "User not found" });
@@ -107,6 +107,13 @@ export const loginController = async (req, res) => {
         success: false,
       });
     }
+
+//     if (!user.isVerified) {
+//   return res.status(401).json({
+//     message: "Please verify your email first",
+//     success: false,
+//   });
+// }
 
     const token = jwt.sign(
       { _id: user._id },

@@ -13,7 +13,7 @@ export default function VerifyEmail() {
     const verify = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/auth/verify-email/${token}`
+          `${import.meta.env.VITE_API_URL}/api/v1/auth/verify-email/${token}`
         );
 
         setMessage(res.data.message);
