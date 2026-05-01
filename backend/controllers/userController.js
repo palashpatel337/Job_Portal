@@ -24,7 +24,7 @@ export const registerController = async (req,res) => {
     } 
     
     const hashedPassword = await bcrypt.hash(password,10);
-    await User.create({
+    const newUser = await User.create({
       fullname,
       phone,
       email,
@@ -32,11 +32,11 @@ export const registerController = async (req,res) => {
       role,
     });
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d"
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+      expiresIn: "14d"
     });
 
-    await sendVerificationEmail(user.email, token);
+    await sendVerificationEmail(newUser.email, token);
 
     return res.status(200).json({
             message:'Account created successfully, please verify your email',
